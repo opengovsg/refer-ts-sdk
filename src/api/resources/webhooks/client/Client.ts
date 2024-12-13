@@ -44,8 +44,8 @@ export class Webhooks {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "ogp-refx",
-                "X-Fern-SDK-Version": "0.0.1",
-                "User-Agent": "ogp-refx/0.0.1",
+                "X-Fern-SDK-Version": "0.0.2",
+                "User-Agent": "ogp-refx/0.0.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -77,6 +77,64 @@ export class Webhooks {
             case "timeout":
                 throw new errors.ReferralExchangeTimeoutError(
                     "Timeout exceeded when calling POST /api/v1/webhooks/formsg/singhealth-profile."
+                );
+            case "unknown":
+                throw new errors.ReferralExchangeError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * @param {string} formId
+     * @param {Webhooks.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.webhooks.handleDoctorNotes("formId")
+     */
+    public async handleDoctorNotes(formId: string, requestOptions?: Webhooks.RequestOptions): Promise<void> {
+        const _response = await (this._options.fetcher ?? core.fetcher)({
+            url: urlJoin(
+                await core.Supplier.get(this._options.environment),
+                `api/v1/webhooks/formsg/form-submission/${encodeURIComponent(formId)}`
+            ),
+            method: "POST",
+            headers: {
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "ogp-refx",
+                "X-Fern-SDK-Version": "0.0.2",
+                "User-Agent": "ogp-refx/0.0.2",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            requestType: "json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return;
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.ReferralExchangeError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.ReferralExchangeError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.ReferralExchangeTimeoutError(
+                    "Timeout exceeded when calling POST /api/v1/webhooks/formsg/form-submission/{formId}."
                 );
             case "unknown":
                 throw new errors.ReferralExchangeError({

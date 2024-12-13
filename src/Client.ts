@@ -3,8 +3,6 @@
  */
 
 import * as core from "./core";
-import urlJoin from "url-join";
-import * as errors from "./errors/index";
 import { Eligibility } from "./api/resources/eligibility/client/Client";
 import { Referrals } from "./api/resources/referrals/client/Client";
 import { Offerings } from "./api/resources/offerings/client/Client";
@@ -63,73 +61,5 @@ export class ReferralExchangeClient {
 
     public get health(): Health {
         return (this._health ??= new Health(this._options));
-    }
-
-    /**
-     * @param {unknown} formId
-     * @param {ReferralExchangeClient.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await client.formSgWebhooksControllerHandleDoctorNotesFormWebhook({
-     *         "key": "value"
-     *     })
-     */
-    public async formSgWebhooksControllerHandleDoctorNotesFormWebhook(
-        formId: unknown,
-        requestOptions?: ReferralExchangeClient.RequestOptions
-    ): Promise<void> {
-        const _response = await (this._options.fetcher ?? core.fetcher)({
-            url: urlJoin(
-                await core.Supplier.get(this._options.environment),
-                `api/v1/webhooks/formsg/form-submission/${encodeURIComponent(formId)}`
-            ),
-            method: "POST",
-            headers: {
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "ogp-refx",
-                "X-Fern-SDK-Version": "0.0.1",
-                "User-Agent": "ogp-refx/0.0.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...(await this._getCustomAuthorizationHeaders()),
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
-        });
-        if (_response.ok) {
-            return;
-        }
-
-        if (_response.error.reason === "status-code") {
-            throw new errors.ReferralExchangeError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.ReferralExchangeError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                });
-            case "timeout":
-                throw new errors.ReferralExchangeTimeoutError(
-                    "Timeout exceeded when calling POST /api/v1/webhooks/formsg/form-submission/{formId}."
-                );
-            case "unknown":
-                throw new errors.ReferralExchangeError({
-                    message: _response.error.errorMessage,
-                });
-        }
-    }
-
-    protected async _getCustomAuthorizationHeaders() {
-        const apiKeyValue = await core.Supplier.get(this._options.apiKey);
-        return { Authorization: apiKeyValue };
     }
 }

@@ -1,57 +1,5 @@
 # Reference
 
-<details><summary><code>client.<a href="/src/Client.ts">formSgWebhooksControllerHandleDoctorNotesFormWebhook</a>(formId) -> void</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.formSgWebhooksControllerHandleDoctorNotesFormWebhook({
-    key: "value",
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**formId:** `unknown`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `ReferralExchangeClient.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-##
-
 ## Eligibility
 
 <details><summary><code>client.eligibility.<a href="/src/api/resources/eligibility/client/Client.ts">get</a>({ ...params }) -> ReferralExchange.EligibilityRes</code></summary>
@@ -781,6 +729,54 @@ await client.webhooks.handleSinghealthProfile();
 
 <dl>
 <dd>
+
+<dl>
+<dd>
+
+**requestOptions:** `Webhooks.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.webhooks.<a href="/src/api/resources/webhooks/client/Client.ts">handleDoctorNotes</a>(formId) -> void</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.webhooks.handleDoctorNotes("formId");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**formId:** `string`
+
+</dd>
+</dl>
 
 <dl>
 <dd>
