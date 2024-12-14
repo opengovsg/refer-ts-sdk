@@ -9,13 +9,13 @@ export interface PublicReferralDto {
     sender: ReferralExchange.InstitutionCoreDto;
     offering: ReferralExchange.OfferingFullDto;
     patient: ReferralExchange.GetReferralPatientDto;
-    referringDoctor: ReferralExchange.PublicReferralDtoReferringDoctor;
+    referringDoctor: ReferralExchange.ReferringDoctorDto;
     isSubsidised: boolean;
     isUrgent: boolean;
     /** Created at (ISO datetime) */
     createdAt: string;
     formResponses: ReferralExchange.FormResponse[];
     /** Form ID of the referral form */
-    formId?: Record<string, unknown>;
+    formId?: string;
     attachments: ReferralExchange.AttachmentDto[];
 }

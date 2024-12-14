@@ -4,5 +4,5 @@
 
 export interface ReferralEligibility {
     isAllowed: boolean;
-    reason?: string;
+    reason: string;
 }

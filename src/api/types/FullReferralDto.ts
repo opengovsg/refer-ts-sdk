@@ -9,14 +9,14 @@ export interface FullReferralDto {
     sender: ReferralExchange.InstitutionCoreDto;
     offering: ReferralExchange.OfferingFullDto;
     patient: ReferralExchange.GetReferralPatientDto;
-    referringDoctor: ReferralExchange.FullReferralDtoReferringDoctor;
+    referringDoctor: ReferralExchange.ReferringDoctorDto;
     isSubsidised: boolean;
     isUrgent: boolean;
     /** Created at (ISO datetime) */
     createdAt: string;
     formResponses: ReferralExchange.FormResponse[];
     /** Form ID of the referral form */
-    formId?: Record<string, unknown>;
+    formId?: string;
     attachments: ReferralExchange.AttachmentDto[];
     status: ReferralExchange.FullReferralDtoStatus;
     /** Timeslot start time (ISO datetime) */

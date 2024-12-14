@@ -4,7 +4,7 @@
 
 export interface PaginatedQuery {
     /** Offset for pagination */
-    offset?: Record<string, unknown>;
+    offset?: number;
     /** Number of items per page */
-    pageSize?: Record<string, unknown>;
+    pageSize?: number;
 }

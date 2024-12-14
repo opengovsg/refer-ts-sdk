@@ -5,10 +5,11 @@
 /**
  * @example
  *     {
- *         from: 1.1
+ *         from: 1.1,
+ *         isSubsidised: true
  *     }
  */
 export interface OfferingsListTimeslotsRequest {
     from: number;
-    isSubsidised?: boolean;
+    isSubsidised: boolean;
 }

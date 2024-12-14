@@ -1,55 +1,5 @@
 # Reference
 
-<details><summary><code>client.<a href="/src/Client.ts">apiHoldingControllerBackToDraftReferral</a>(referralId) -> ReferralExchange.ReferralDto</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.apiHoldingControllerBackToDraftReferral("referralId");
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**referralId:** `string`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `ReferralExchangeClient.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-##
-
 ## Eligibility
 
 <details><summary><code>client.eligibility.<a href="/src/api/resources/eligibility/client/Client.ts">get</a>({ ...params }) -> ReferralExchange.EligibilityRes</code></summary>
@@ -183,16 +133,18 @@ await client.referrals.upsert({
     doctorName: "doctorName",
     doctorEmail: "doctorEmail",
     doctorContactNumber: "doctorContactNumber",
-    isSubsidised: {
-        key: "value",
-    },
-    isUrgent: {
-        key: "value",
-    },
-    isDraft: {
-        key: "value",
-    },
-    formResponses: [{}],
+    isSubsidised: true,
+    isUrgent: true,
+    isDraft: true,
+    formResponses: [
+        {
+            question: "question",
+            id: "id",
+            answer: {
+                key: "value",
+            },
+        },
+    ],
 });
 ```
 
@@ -257,7 +209,7 @@ await client.referrals.get("referralId");
 <dl>
 <dd>
 
-**referralId:** `string`
+**referralId:** `string` — Referral ID
 
 </dd>
 </dl>
@@ -313,7 +265,7 @@ await client.referrals.delete("referralId");
 <dl>
 <dd>
 
-**referralId:** `string`
+**referralId:** `string` — Referral ID
 
 </dd>
 </dl>
@@ -361,7 +313,7 @@ await client.referrals.cancel("referralId");
 <dl>
 <dd>
 
-**referralId:** `string`
+**referralId:** `string` — Referral ID
 
 </dd>
 </dl>
@@ -419,7 +371,7 @@ await client.referrals.amend("referralId", {
 <dl>
 <dd>
 
-**referralId:** `string`
+**referralId:** `string` — Referral ID
 
 </dd>
 </dl>
@@ -477,7 +429,7 @@ await client.referrals.accept("referralId", {
 <dl>
 <dd>
 
-**referralId:** `string`
+**referralId:** `string` — Referral ID
 
 </dd>
 </dl>
@@ -535,7 +487,7 @@ await client.referrals.reject("referralId", {
 <dl>
 <dd>
 
-**referralId:** `string`
+**referralId:** `string` — Referral ID
 
 </dd>
 </dl>
@@ -552,6 +504,114 @@ await client.referrals.reject("referralId", {
 <dd>
 
 **requestOptions:** `Referrals.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.referrals.<a href="/src/api/resources/referrals/client/Client.ts">apiHoldingControllerBackToDraftReferral</a>(referralId) -> ReferralExchange.ReferralDto</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.referrals.apiHoldingControllerBackToDraftReferral("referralId");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**referralId:** `string` — Referral ID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Referrals.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Notes
+
+<details><summary><code>client.notes.<a href="/src/api/resources/notes/client/Client.ts">apiHoldingControllerCreateNote</a>(referralId, { ...params }) -> ReferralExchange.NoteDto</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.notes.apiHoldingControllerCreateNote("referralId", {
+    authorHciCode: "authorHciCode",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**referralId:** `string` — Referral ID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `ReferralExchange.CreateNoteReq`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Notes.RequestOptions`
 
 </dd>
 </dl>
@@ -667,6 +727,7 @@ await client.offerings.get("offeringId");
 ```typescript
 await client.offerings.listTimeslots("offeringId", {
     from: 1.1,
+    isSubsidised: true,
 });
 ```
 
@@ -712,7 +773,7 @@ await client.offerings.listTimeslots("offeringId", {
 
 ## Public
 
-<details><summary><code>client.public.<a href="/src/api/resources/public/client/Client.ts">getReferral</a>(referralId, { ...params }) -> ReferralExchange.PublicReferralDto[]</code></summary>
+<details><summary><code>client.public.<a href="/src/api/resources/public/client/Client.ts">getReferral</a>(referralId, { ...params }) -> ReferralExchange.PublicReferralDto</code></summary>
 <dl>
 <dd>
 
@@ -741,7 +802,7 @@ await client.public.getReferral("referralId");
 <dl>
 <dd>
 
-**referralId:** `string`
+**referralId:** `string` — Referral ID
 
 </dd>
 </dl>
@@ -770,7 +831,7 @@ await client.public.getReferral("referralId");
 
 ## Webhooks
 
-<details><summary><code>client.webhooks.<a href="/src/api/resources/webhooks/client/Client.ts">handleSinghealthProfile</a>() -> void</code></summary>
+<details><summary><code>client.webhooks.<a href="/src/api/resources/webhooks/client/Client.ts">submitSingHealthFormSg</a>() -> void</code></summary>
 <dl>
 <dd>
 
@@ -783,7 +844,7 @@ await client.public.getReferral("referralId");
 <dd>
 
 ```typescript
-await client.webhooks.handleSinghealthProfile();
+await client.webhooks.submitSingHealthFormSg();
 ```
 
 </dd>
@@ -810,7 +871,7 @@ await client.webhooks.handleSinghealthProfile();
 </dl>
 </details>
 
-<details><summary><code>client.webhooks.<a href="/src/api/resources/webhooks/client/Client.ts">handleDoctorNotes</a>(formId) -> void</code></summary>
+<details><summary><code>client.webhooks.<a href="/src/api/resources/webhooks/client/Client.ts">submitFormSg</a>(formId) -> void</code></summary>
 <dl>
 <dd>
 
@@ -823,7 +884,7 @@ await client.webhooks.handleSinghealthProfile();
 <dd>
 
 ```typescript
-await client.webhooks.handleDoctorNotes("formId");
+await client.webhooks.submitFormSg("formId");
 ```
 
 </dd>

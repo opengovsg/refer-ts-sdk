@@ -13,8 +13,11 @@ export interface OfferingFullDto {
     /** TODO - do not use this field right now */
     specialty: string;
     /** Whether the offering is able to receive new referrals currently */
-    isActive: Record<string, unknown>;
+    isActive: boolean;
+    /** Whether this offering supports urgent referrals. TODO - will deprecate soon. */
     isUrgentable: boolean;
+    /** Whether this offering supports subsidized referrals. */
     isSubsidisable: boolean;
+    /** Whether this offering requires selecting timeslots during referral. */
     shouldShowTimeslots: boolean;
 }

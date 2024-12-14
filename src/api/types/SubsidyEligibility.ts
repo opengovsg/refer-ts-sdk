@@ -4,6 +4,6 @@
 
 export interface SubsidyEligibility {
     isAllowed: boolean;
-    reason?: string;
+    reason: string;
     scheme?: "chas";
 }

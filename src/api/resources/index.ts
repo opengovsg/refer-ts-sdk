@@ -1,11 +1,13 @@
 export * as referrals from "./referrals";
 export * from "./referrals/types";
 export * as eligibility from "./eligibility";
+export * as notes from "./notes";
 export * as offerings from "./offerings";
 export * as public_ from "./public";
 export * as webhooks from "./webhooks";
 export * as health from "./health";
 export * from "./eligibility/client/requests";
 export * from "./referrals/client/requests";
+export * from "./notes/client/requests";
 export * from "./offerings/client/requests";
 export * from "./public/client/requests";

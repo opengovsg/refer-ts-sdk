@@ -8,7 +8,7 @@ import * as ReferralExchange from "../../../index";
 import urlJoin from "url-join";
 import * as errors from "../../../../errors/index";
 
-export declare namespace Health {
+export declare namespace Notes {
     interface Options {
         environment?: core.Supplier<environments.ReferralExchangeEnvironment | string>;
         apiKey?: core.Supplier<string | undefined>;
@@ -27,23 +27,31 @@ export declare namespace Health {
     }
 }
 
-export class Health {
-    constructor(protected readonly _options: Health.Options = {}) {}
+export class Notes {
+    constructor(protected readonly _options: Notes.Options = {}) {}
 
     /**
-     * @param {Health.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {string} referralId - Referral ID
+     * @param {ReferralExchange.CreateNoteReq} request
+     * @param {Notes.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.health.check()
+     *     await client.notes.apiHoldingControllerCreateNote("referralId", {
+     *         authorHciCode: "authorHciCode"
+     *     })
      */
-    public async check(requestOptions?: Health.RequestOptions): Promise<ReferralExchange.OkResponse> {
+    public async apiHoldingControllerCreateNote(
+        referralId: string,
+        request: ReferralExchange.CreateNoteReq,
+        requestOptions?: Notes.RequestOptions
+    ): Promise<ReferralExchange.NoteDto> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ??
                     environments.ReferralExchangeEnvironment.Production,
-                "api/v1/health"
+                `api/v1/referrals/${encodeURIComponent(referralId)}/notes`
             ),
-            method: "GET",
+            method: "POST",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
@@ -56,12 +64,13 @@ export class Health {
             },
             contentType: "application/json",
             requestType: "json",
+            body: request,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return _response.body as ReferralExchange.OkResponse;
+            return _response.body as ReferralExchange.NoteDto;
         }
 
         if (_response.error.reason === "status-code") {
@@ -78,7 +87,9 @@ export class Health {
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.ReferralExchangeTimeoutError("Timeout exceeded when calling GET /api/v1/health.");
+                throw new errors.ReferralExchangeTimeoutError(
+                    "Timeout exceeded when calling POST /api/v1/referrals/{referralId}/notes."
+                );
             case "unknown":
                 throw new errors.ReferralExchangeError({
                     message: _response.error.errorMessage,

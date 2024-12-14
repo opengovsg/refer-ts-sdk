@@ -3,5 +3,5 @@
  */
 
 export interface CreatedEventMetadata {
-    appointmentTime?: Record<string, unknown>;
+    appointmentTime?: number;
 }

@@ -21,16 +21,16 @@ import * as ReferralExchange from "../../../../index";
  *         doctorName: "doctorName",
  *         doctorEmail: "doctorEmail",
  *         doctorContactNumber: "doctorContactNumber",
- *         isSubsidised: {
- *             "key": "value"
- *         },
- *         isUrgent: {
- *             "key": "value"
- *         },
- *         isDraft: {
- *             "key": "value"
- *         },
- *         formResponses: [{}]
+ *         isSubsidised: true,
+ *         isUrgent: true,
+ *         isDraft: true,
+ *         formResponses: [{
+ *                 question: "question",
+ *                 id: "id",
+ *                 answer: {
+ *                     "key": "value"
+ *                 }
+ *             }]
  *     }
  */
 export interface CreateReferralReq {
@@ -48,10 +48,10 @@ export interface CreateReferralReq {
     doctorEmail: string;
     /** Contact number of the doctor authoring this referral. */
     doctorContactNumber: string;
-    isSubsidised: Record<string, unknown>;
-    isUrgent: Record<string, unknown>;
+    isSubsidised: boolean;
+    isUrgent: boolean;
     /** In draft state, further edits can be made. No referral will be emitted to the service provider yet. */
-    isDraft: Record<string, unknown>;
+    isDraft: boolean;
     /** Referral ID */
     id?: string;
     /** Timeslot start time, in milliseconds since epoch. */

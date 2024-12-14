@@ -4,6 +4,6 @@
 
 export interface RescheduleEventMetadata {
     appointmentTime: number;
-    previousAppointmentTime?: Record<string, unknown>;
-    systemUserIdentifier?: Record<string, unknown>;
+    previousAppointmentTime?: number;
+    systemUserIdentifier?: string;
 }

@@ -12,6 +12,14 @@ import * as ReferralExchange from "../../../../index";
  */
 export interface ReferralsListRequest {
     /**
+     * Offset for pagination
+     */
+    offset?: number;
+    /**
+     * Number of items per page
+     */
+    pageSize?: number;
+    /**
      * To identify the requesting institution
      */
     hciCode: string;
@@ -20,12 +28,4 @@ export interface ReferralsListRequest {
      * To filter by the institution's role in the referral. e.g. For outbound referrals, use "sender'
      */
     role?: ReferralExchange.ReferralsListRequestRole;
-    /**
-     * Offset for pagination
-     */
-    offset?: Record<string, unknown>;
-    /**
-     * Number of items per page
-     */
-    pageSize?: Record<string, unknown>;
 }

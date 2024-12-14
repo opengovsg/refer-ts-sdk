@@ -5,7 +5,7 @@
 import * as ReferralExchange from "../index";
 
 export interface GetReferralPatientDto {
-    /** Patient UIN */
+    /** Patient UIN, e.g. NRIC or FIN */
     uin: string;
     /** Patient name */
     name: string;
