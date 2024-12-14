@@ -15,11 +15,12 @@ export interface FullReferralDto {
     /** Created at (ISO datetime) */
     createdAt: string;
     formResponses: ReferralExchange.FormResponse[];
+    /** Form ID of the referral form */
+    formId?: Record<string, unknown>;
+    attachments: ReferralExchange.AttachmentDto[];
     status: ReferralExchange.FullReferralDtoStatus;
     /** Timeslot start time (ISO datetime) */
     timeslotStartAt?: string;
-    /** TODO - do not use this, will be removed */
-    rejectionReason?: string;
     notes: ReferralExchange.NoteDto[];
     /** URL of the FormSG required to complete the referral */
     formUrl?: string;

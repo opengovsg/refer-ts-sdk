@@ -3,6 +3,9 @@
  */
 
 import * as core from "./core";
+import * as ReferralExchange from "./api/index";
+import urlJoin from "url-join";
+import * as errors from "./errors/index";
 import { Eligibility } from "./api/resources/eligibility/client/Client";
 import { Referrals } from "./api/resources/referrals/client/Client";
 import { Offerings } from "./api/resources/offerings/client/Client";
@@ -61,5 +64,137 @@ export class ReferralExchangeClient {
 
     public get health(): Health {
         return (this._health ??= new Health(this._options));
+    }
+
+    /**
+     * @param {string} referralId
+     * @param {ReferralExchange.CreateNoteReq} request
+     * @param {ReferralExchangeClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.apiHoldingControllerCreateNote("referralId", {
+     *         authorHciCode: "authorHciCode"
+     *     })
+     */
+    public async apiHoldingControllerCreateNote(
+        referralId: string,
+        request: ReferralExchange.CreateNoteReq,
+        requestOptions?: ReferralExchangeClient.RequestOptions
+    ): Promise<ReferralExchange.NoteDto> {
+        const _response = await (this._options.fetcher ?? core.fetcher)({
+            url: urlJoin(
+                await core.Supplier.get(this._options.environment),
+                `api/v1/referrals/${encodeURIComponent(referralId)}/notes`
+            ),
+            method: "POST",
+            headers: {
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
+                "X-Fern-SDK-Version": "0.0.7",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.7",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            requestType: "json",
+            body: request,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return _response.body as ReferralExchange.NoteDto;
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.ReferralExchangeError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.ReferralExchangeError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.ReferralExchangeTimeoutError(
+                    "Timeout exceeded when calling POST /api/v1/referrals/{referralId}/notes."
+                );
+            case "unknown":
+                throw new errors.ReferralExchangeError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * @param {string} referralId
+     * @param {ReferralExchangeClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.apiHoldingControllerBackToDraftReferral("referralId")
+     */
+    public async apiHoldingControllerBackToDraftReferral(
+        referralId: string,
+        requestOptions?: ReferralExchangeClient.RequestOptions
+    ): Promise<ReferralExchange.ReferralDto> {
+        const _response = await (this._options.fetcher ?? core.fetcher)({
+            url: urlJoin(
+                await core.Supplier.get(this._options.environment),
+                `api/v1/referrals/${encodeURIComponent(referralId)}/back-to-draft`
+            ),
+            method: "POST",
+            headers: {
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
+                "X-Fern-SDK-Version": "0.0.7",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.7",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            requestType: "json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return _response.body as ReferralExchange.ReferralDto;
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.ReferralExchangeError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.ReferralExchangeError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.ReferralExchangeTimeoutError(
+                    "Timeout exceeded when calling POST /api/v1/referrals/{referralId}/back-to-draft."
+                );
+            case "unknown":
+                throw new errors.ReferralExchangeError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    protected async _getCustomAuthorizationHeaders() {
+        const apiKeyValue = await core.Supplier.get(this._options.apiKey);
+        return { Authorization: apiKeyValue };
     }
 }

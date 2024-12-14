@@ -1,5 +1,55 @@
 # Reference
 
+<details><summary><code>client.<a href="/src/Client.ts">apiHoldingControllerBackToDraftReferral</a>(referralId) -> ReferralExchange.ReferralDto</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.apiHoldingControllerBackToDraftReferral("referralId");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**referralId:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `ReferralExchangeClient.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+##
+
 ## Eligibility
 
 <details><summary><code>client.eligibility.<a href="/src/api/resources/eligibility/client/Client.ts">get</a>({ ...params }) -> ReferralExchange.EligibilityRes</code></summary>
@@ -178,7 +228,7 @@ await client.referrals.upsert({
 </dl>
 </details>
 
-<details><summary><code>client.referrals.<a href="/src/api/resources/referrals/client/Client.ts">get</a>(referralId) -> ReferralExchange.FullReferralDto</code></summary>
+<details><summary><code>client.referrals.<a href="/src/api/resources/referrals/client/Client.ts">get</a>(referralId, { ...params }) -> ReferralExchange.FullReferralDto</code></summary>
 <dl>
 <dd>
 
@@ -208,6 +258,14 @@ await client.referrals.get("referralId");
 <dd>
 
 **referralId:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `ReferralExchange.ReferralsGetRequest`
 
 </dd>
 </dl>
@@ -654,7 +712,7 @@ await client.offerings.listTimeslots("offeringId", {
 
 ## Public
 
-<details><summary><code>client.public.<a href="/src/api/resources/public/client/Client.ts">getReferral</a>(referralId) -> ReferralExchange.PublicReferralDto[]</code></summary>
+<details><summary><code>client.public.<a href="/src/api/resources/public/client/Client.ts">getReferral</a>(referralId, { ...params }) -> ReferralExchange.PublicReferralDto[]</code></summary>
 <dl>
 <dd>
 
@@ -684,6 +742,14 @@ await client.public.getReferral("referralId");
 <dd>
 
 **referralId:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `ReferralExchange.PublicGetReferralRequest`
 
 </dd>
 </dl>

@@ -15,4 +15,7 @@ export interface PublicReferralDto {
     /** Created at (ISO datetime) */
     createdAt: string;
     formResponses: ReferralExchange.FormResponse[];
+    /** Form ID of the referral form */
+    formId?: Record<string, unknown>;
+    attachments: ReferralExchange.AttachmentDto[];
 }

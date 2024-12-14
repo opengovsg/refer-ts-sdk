@@ -6,6 +6,7 @@ export * from "./OfferingFullDto";
 export * from "./GetReferralPatientDtoGender";
 export * from "./GetReferralPatientDto";
 export * from "./FormResponse";
+export * from "./AttachmentDto";
 export * from "./NoteDto";
 export * from "./ReferralDtoReferringDoctor";
 export * from "./ReferralDtoStatus";

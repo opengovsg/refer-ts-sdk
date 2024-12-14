@@ -20,7 +20,8 @@ export type TimelineEventDtoType =
     | "note.created"
     | "singhealth-patient-details.submitted"
     | "referral.ea-reminder-sent"
-    | "referral.form-response-submitted";
+    | "referral.form-response-submitted"
+    | "referral.back-to-draft";
 export const TimelineEventDtoType = {
     DraftCreated: "draft.created",
     DraftUpdated: "draft.updated",
@@ -40,4 +41,5 @@ export const TimelineEventDtoType = {
     SinghealthPatientDetailsSubmitted: "singhealth-patient-details.submitted",
     ReferralEaReminderSent: "referral.ea-reminder-sent",
     ReferralFormResponseSubmitted: "referral.form-response-submitted",
+    ReferralBackToDraft: "referral.back-to-draft",
 } as const;

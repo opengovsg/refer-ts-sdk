@@ -17,5 +17,4 @@ export interface OfferingFullDto {
     isUrgentable: boolean;
     isSubsidisable: boolean;
     shouldShowTimeslots: boolean;
-    formVariant?: Record<string, unknown>;
 }

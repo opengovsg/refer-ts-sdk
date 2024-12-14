@@ -8,3 +8,4 @@ export * as health from "./health";
 export * from "./eligibility/client/requests";
 export * from "./referrals/client/requests";
 export * from "./offerings/client/requests";
+export * from "./public/client/requests";
