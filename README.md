@@ -1,9 +1,9 @@
-# Ogp TypeScript Library
+# Opengovsg TypeScript Library
 
 [![fern shield](https://img.shields.io/badge/%F0%9F%8C%BF-Built%20with%20Fern-brightgreen)](https://buildwithfern.com?utm_source=github&utm_medium=github&utm_campaign=readme&utm_source=https%3A%2F%2Fgithub.com%2Fopengovsg%2Frefer-ts-sdk)
 [![npm shield](https://img.shields.io/npm/v/ogp-refx)](https://www.npmjs.com/package/ogp-refx)
 
-The Ogp TypeScript library provides convenient access to the Ogp API from TypeScript.
+The Opengovsg TypeScript library provides convenient access to the Opengovsg API from TypeScript.
 
 ## Installation
 

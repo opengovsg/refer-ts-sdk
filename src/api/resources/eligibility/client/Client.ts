@@ -53,8 +53,8 @@ export class Eligibility {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "ogp-refx",
-                "X-Fern-SDK-Version": "0.0.2",
-                "User-Agent": "ogp-refx/0.0.2",
+                "X-Fern-SDK-Version": "0.0.1",
+                "User-Agent": "ogp-refx/0.0.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
