@@ -1,14 +1,14 @@
 # Opengovsg TypeScript Library
 
 [![fern shield](https://img.shields.io/badge/%F0%9F%8C%BF-Built%20with%20Fern-brightgreen)](https://buildwithfern.com?utm_source=github&utm_medium=github&utm_campaign=readme&utm_source=https%3A%2F%2Fgithub.com%2Fopengovsg%2Frefer-ts-sdk)
-[![npm shield](https://img.shields.io/npm/v/ogp-refx)](https://www.npmjs.com/package/ogp-refx)
+[![npm shield](https://img.shields.io/npm/v/@opengovsg/refx-ts-sdk)](https://www.npmjs.com/package/@opengovsg/refx-ts-sdk)
 
 The Opengovsg TypeScript library provides convenient access to the Opengovsg API from TypeScript.
 
 ## Installation
 
 ```sh
-npm i -s ogp-refx
+npm i -s @opengovsg/refx-ts-sdk
 ```
 
 ## Reference
@@ -20,7 +20,7 @@ A full reference for this library is available [here](./reference.md).
 Instantiate and use the client with the following:
 
 ```typescript
-import { ReferralExchangeClient } from "ogp-refx";
+import { ReferralExchangeClient } from "@opengovsg/refx-ts-sdk";
 
 const client = new ReferralExchangeClient({ environment: "YOUR_BASE_URL", apiKey: "YOUR_API_KEY" });
 await client.referrals.upsert({
@@ -57,7 +57,7 @@ The SDK exports all request and response types as TypeScript interfaces. Simply 
 following namespace:
 
 ```typescript
-import { ReferralExchange } from "ogp-refx";
+import { ReferralExchange } from "@opengovsg/refx-ts-sdk";
 
 const request: ReferralExchange.EligibilityGetRequest = {
     ...
@@ -70,7 +70,7 @@ When the API returns a non-success status code (4xx or 5xx response), a subclass
 will be thrown.
 
 ```typescript
-import { ReferralExchangeError } from "ogp-refx";
+import { ReferralExchangeError } from "@opengovsg/refx-ts-sdk";
 
 try {
     await client.referrals.upsert(...);
@@ -157,7 +157,7 @@ The SDK provides a way for your to customize the underlying HTTP client / Fetch 
 unsupported environment, this provides a way for you to break glass and ensure the SDK works.
 
 ```typescript
-import { ReferralExchangeClient } from "ogp-refx";
+import { ReferralExchangeClient } from "@opengovsg/refx-ts-sdk";
 
 const client = new ReferralExchangeClient({
     ...

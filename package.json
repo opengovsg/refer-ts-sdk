@@ -1,6 +1,6 @@
 {
-    "name": "ogp-refx",
-    "version": "0.0.3",
+    "name": "@opengovsg/refx-ts-sdk",
+    "version": "2024.10.3",
     "private": false,
     "repository": "https://github.com/opengovsg/refer-ts-sdk",
     "main": "./index.js",
