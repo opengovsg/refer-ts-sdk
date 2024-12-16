@@ -36,11 +36,11 @@ export class Notes {
      * @param {Notes.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.notes.apiHoldingControllerCreateNote("referralId", {
+     *     await client.notes.create("referralId", {
      *         authorHciCode: "authorHciCode"
      *     })
      */
-    public async apiHoldingControllerCreateNote(
+    public async create(
         referralId: string,
         request: ReferralExchange.CreateNoteReq,
         requestOptions?: Notes.RequestOptions
@@ -55,8 +55,8 @@ export class Notes {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.8",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.8",
+                "X-Fern-SDK-Version": "0.0.9",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.9",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

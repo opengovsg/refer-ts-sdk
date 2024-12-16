@@ -514,7 +514,7 @@ await client.referrals.reject("referralId", {
 </dl>
 </details>
 
-<details><summary><code>client.referrals.<a href="/src/api/resources/referrals/client/Client.ts">apiHoldingControllerBackToDraftReferral</a>(referralId) -> ReferralExchange.ReferralDto</code></summary>
+<details><summary><code>client.referrals.<a href="/src/api/resources/referrals/client/Client.ts">backToDraft</a>(referralId) -> ReferralExchange.ReferralDto</code></summary>
 <dl>
 <dd>
 
@@ -527,7 +527,7 @@ await client.referrals.reject("referralId", {
 <dd>
 
 ```typescript
-await client.referrals.apiHoldingControllerBackToDraftReferral("referralId");
+await client.referrals.backToDraft("referralId");
 ```
 
 </dd>
@@ -564,7 +564,7 @@ await client.referrals.apiHoldingControllerBackToDraftReferral("referralId");
 
 ## Notes
 
-<details><summary><code>client.notes.<a href="/src/api/resources/notes/client/Client.ts">apiHoldingControllerCreateNote</a>(referralId, { ...params }) -> ReferralExchange.NoteDto</code></summary>
+<details><summary><code>client.notes.<a href="/src/api/resources/notes/client/Client.ts">create</a>(referralId, { ...params }) -> ReferralExchange.NoteDto</code></summary>
 <dl>
 <dd>
 
@@ -577,7 +577,7 @@ await client.referrals.apiHoldingControllerBackToDraftReferral("referralId");
 <dd>
 
 ```typescript
-await client.notes.apiHoldingControllerCreateNote("referralId", {
+await client.notes.create("referralId", {
     authorHciCode: "authorHciCode",
 });
 ```

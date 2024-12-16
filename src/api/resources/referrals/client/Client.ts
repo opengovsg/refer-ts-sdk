@@ -76,8 +76,8 @@ export class Referrals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.8",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.8",
+                "X-Fern-SDK-Version": "0.0.9",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.9",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -162,8 +162,8 @@ export class Referrals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.8",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.8",
+                "X-Fern-SDK-Version": "0.0.9",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.9",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -231,8 +231,8 @@ export class Referrals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.8",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.8",
+                "X-Fern-SDK-Version": "0.0.9",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.9",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -294,8 +294,8 @@ export class Referrals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.8",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.8",
+                "X-Fern-SDK-Version": "0.0.9",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.9",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -358,8 +358,8 @@ export class Referrals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.8",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.8",
+                "X-Fern-SDK-Version": "0.0.9",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.9",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -425,8 +425,8 @@ export class Referrals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.8",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.8",
+                "X-Fern-SDK-Version": "0.0.9",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.9",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -492,8 +492,8 @@ export class Referrals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.8",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.8",
+                "X-Fern-SDK-Version": "0.0.9",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.9",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -559,8 +559,8 @@ export class Referrals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.8",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.8",
+                "X-Fern-SDK-Version": "0.0.9",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.9",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -606,9 +606,9 @@ export class Referrals {
      * @param {Referrals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.referrals.apiHoldingControllerBackToDraftReferral("referralId")
+     *     await client.referrals.backToDraft("referralId")
      */
-    public async apiHoldingControllerBackToDraftReferral(
+    public async backToDraft(
         referralId: string,
         requestOptions?: Referrals.RequestOptions
     ): Promise<ReferralExchange.ReferralDto> {
@@ -622,8 +622,8 @@ export class Referrals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.8",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.8",
+                "X-Fern-SDK-Version": "0.0.9",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.9",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
