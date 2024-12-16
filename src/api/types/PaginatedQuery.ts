@@ -4,7 +4,7 @@
 
 export interface PaginatedQuery {
     /** Offset for pagination */
-    offset?: number;
+    offset: number;
     /** Number of items per page */
-    pageSize?: number;
+    pageSize: number;
 }

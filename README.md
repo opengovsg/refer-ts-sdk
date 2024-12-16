@@ -45,9 +45,7 @@ await client.referrals.upsert({
         {
             question: "question",
             id: "id",
-            answer: {
-                key: "value",
-            },
+            answer: "answer",
         },
     ],
 });

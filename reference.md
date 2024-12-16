@@ -69,6 +69,8 @@ await client.eligibility.get({
 
 ```typescript
 await client.referrals.list({
+    offset: 1.1,
+    pageSize: 1.1,
     hciCode: "hciCode",
 });
 ```
@@ -140,9 +142,7 @@ await client.referrals.upsert({
         {
             question: "question",
             id: "id",
-            answer: {
-                key: "value",
-            },
+            answer: "answer",
         },
     ],
 });

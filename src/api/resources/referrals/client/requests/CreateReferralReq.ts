@@ -27,9 +27,7 @@ import * as ReferralExchange from "../../../../index";
  *         formResponses: [{
  *                 question: "question",
  *                 id: "id",
- *                 answer: {
- *                     "key": "value"
- *                 }
+ *                 answer: "answer"
  *             }]
  *     }
  */
