@@ -69,8 +69,6 @@ await client.eligibility.get({
 
 ```typescript
 await client.referrals.list({
-    offset: 1.1,
-    pageSize: 1.1,
     hciCode: "hciCode",
 });
 ```
@@ -831,7 +829,7 @@ await client.public.getReferral("referralId");
 
 ## Webhooks
 
-<details><summary><code>client.webhooks.<a href="/src/api/resources/webhooks/client/Client.ts">submitSingHealthFormSg</a>() -> void</code></summary>
+<details><summary><code>client.webhooks.<a href="/src/api/resources/webhooks/client/Client.ts">submitSingHealthFormsg</a>() -> void</code></summary>
 <dl>
 <dd>
 
@@ -844,7 +842,7 @@ await client.public.getReferral("referralId");
 <dd>
 
 ```typescript
-await client.webhooks.submitSingHealthFormSg();
+await client.webhooks.submitSingHealthFormsg();
 ```
 
 </dd>
@@ -871,7 +869,7 @@ await client.webhooks.submitSingHealthFormSg();
 </dl>
 </details>
 
-<details><summary><code>client.webhooks.<a href="/src/api/resources/webhooks/client/Client.ts">submitFormSg</a>(formId) -> void</code></summary>
+<details><summary><code>client.webhooks.<a href="/src/api/resources/webhooks/client/Client.ts">submitFormsg</a>(formId) -> void</code></summary>
 <dl>
 <dd>
 
@@ -884,7 +882,7 @@ await client.webhooks.submitSingHealthFormSg();
 <dd>
 
 ```typescript
-await client.webhooks.submitFormSg("formId");
+await client.webhooks.submitFormsg("formId");
 ```
 
 </dd>

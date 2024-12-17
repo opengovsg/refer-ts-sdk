@@ -33,9 +33,9 @@ export class Webhooks {
      * @param {Webhooks.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.webhooks.submitSingHealthFormSg()
+     *     await client.webhooks.submitSingHealthFormsg()
      */
-    public async submitSingHealthFormSg(requestOptions?: Webhooks.RequestOptions): Promise<void> {
+    public async submitSingHealthFormsg(requestOptions?: Webhooks.RequestOptions): Promise<void> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ??
@@ -46,8 +46,8 @@ export class Webhooks {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.10",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.10",
+                "X-Fern-SDK-Version": "0.0.11",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.11",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -92,9 +92,9 @@ export class Webhooks {
      * @param {Webhooks.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.webhooks.submitFormSg("formId")
+     *     await client.webhooks.submitFormsg("formId")
      */
-    public async submitFormSg(formId: string, requestOptions?: Webhooks.RequestOptions): Promise<void> {
+    public async submitFormsg(formId: string, requestOptions?: Webhooks.RequestOptions): Promise<void> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ??
@@ -105,8 +105,8 @@ export class Webhooks {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.10",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.10",
+                "X-Fern-SDK-Version": "0.0.11",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.11",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

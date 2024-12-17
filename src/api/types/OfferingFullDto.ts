@@ -14,7 +14,7 @@ export interface OfferingFullDto {
     specialty: string;
     /** Whether the offering is able to receive new referrals currently */
     isActive: boolean;
-    /** Whether this offering supports urgent referrals. TODO - will deprecate soon. */
+    /** Whether this offering supports urgent referrals. TODO - may deprecate soon. */
     isUrgentable: boolean;
     /** Whether this offering supports subsidized referrals. */
     isSubsidisable: boolean;

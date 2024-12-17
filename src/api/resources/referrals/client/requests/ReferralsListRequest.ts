@@ -7,8 +7,6 @@ import * as ReferralExchange from "../../../../index";
 /**
  * @example
  *     {
- *         offset: 1.1,
- *         pageSize: 1.1,
  *         hciCode: "hciCode"
  *     }
  */
@@ -16,11 +14,11 @@ export interface ReferralsListRequest {
     /**
      * Offset for pagination
      */
-    offset: number;
+    offset?: number;
     /**
      * Number of items per page
      */
-    pageSize: number;
+    pageSize?: number;
     /**
      * To identify the requesting institution
      */

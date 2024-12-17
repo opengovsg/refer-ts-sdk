@@ -7,7 +7,7 @@ import * as ReferralExchange from "../index";
 export interface InstitutionCoreDto {
     hciCode: string;
     name: string;
-    system: ReferralExchange.InstitutionCoreDtoSystem;
+    system: ReferralExchange.System;
     block: string;
     streetName: string;
     buildingName?: string;

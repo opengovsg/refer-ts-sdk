@@ -4,5 +4,6 @@
 
 export interface AttachmentDto {
     url: string;
+    /** Human readable - include extension */
     name: string;
 }

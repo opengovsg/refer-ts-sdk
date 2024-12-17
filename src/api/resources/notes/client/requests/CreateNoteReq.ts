@@ -11,6 +11,6 @@
 export interface CreateNoteReq {
     /** Note content - plaintext. */
     content?: string;
-    /** Author HCI code. Must be already tied by your system. */
+    /** Author HCI code. Must be already tied to your system. */
     authorHciCode: string;
 }
