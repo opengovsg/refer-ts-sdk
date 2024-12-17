@@ -16,7 +16,7 @@ export * from "./ReferralDto";
 export * from "./PaginatedQuery";
 export * from "./PaginationMetadata";
 export * from "./PaginatedReferralsDto";
-export * from "./TimelineEventDtoType";
+export * from "./TimelineEventType";
 export * from "./TimelineEventDtoSystem";
 export * from "./TimelineEventDto";
 export * from "./FullReferralDtoStatus";

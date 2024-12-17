@@ -5,10 +5,8 @@
 import * as ReferralExchange from "../index";
 
 export interface TimelineEventDto {
-    type: ReferralExchange.TimelineEventDtoType;
-    label: string;
-    /** Additional (verbose) information, where relevant */
-    description?: string;
+    type: ReferralExchange.TimelineEventType;
+    description: string;
     /** milliseconds since epoch */
     producedAt: number;
     /** System that produced the event */
