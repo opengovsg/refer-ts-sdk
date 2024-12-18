@@ -1,6 +1,8 @@
 export * from "./ReferralEligibility";
 export * from "./SubsidyEligibility";
 export * from "./EligibilityRes";
+export * from "./ReferralStatusFilter";
+export * from "./ReferralRole";
 export * from "./System";
 export * from "./InstitutionCoreDto";
 export * from "./OfferingFullDto";
@@ -23,7 +25,6 @@ export * from "./FullReferralDtoStatus";
 export * from "./FullReferralDto";
 export * from "./CreatePatientReqGender";
 export * from "./CreatePatientReq";
-export * from "./OfferingCoreDto";
 export * from "./Timeslot";
 export * from "./PublicReferralDto";
 export * from "./OkResponse";

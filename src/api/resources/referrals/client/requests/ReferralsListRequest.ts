@@ -23,9 +23,9 @@ export interface ReferralsListRequest {
      * To identify the requesting institution
      */
     hciCode: string;
-    status?: ReferralExchange.ReferralsListRequestStatusItem | ReferralExchange.ReferralsListRequestStatusItem[];
+    status?: ReferralExchange.ReferralStatusFilter | ReferralExchange.ReferralStatusFilter[];
     /**
      * To filter by the institution's role in the referral. e.g. For outbound referrals, use "sender'
      */
-    role?: ReferralExchange.ReferralsListRequestRole;
+    role?: ReferralExchange.ReferralRole;
 }
