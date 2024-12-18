@@ -5,7 +5,7 @@ export * from "./ReferralStatusFilter";
 export * from "./ReferralRole";
 export * from "./System";
 export * from "./InstitutionCoreDto";
-export * from "./OfferingFullDto";
+export * from "./OfferingDto";
 export * from "./GetReferralPatientDtoGender";
 export * from "./GetReferralPatientDto";
 export * from "./ReferringDoctorDto";

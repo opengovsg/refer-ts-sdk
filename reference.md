@@ -622,7 +622,7 @@ await client.notes.create("referralId", {
 
 ## Offerings
 
-<details><summary><code>client.offerings.<a href="/src/api/resources/offerings/client/Client.ts">list</a>() -> void</code></summary>
+<details><summary><code>client.offerings.<a href="/src/api/resources/offerings/client/Client.ts">list</a>() -> ReferralExchange.OfferingDto[]</code></summary>
 <dl>
 <dd>
 
@@ -662,7 +662,7 @@ await client.offerings.list();
 </dl>
 </details>
 
-<details><summary><code>client.offerings.<a href="/src/api/resources/offerings/client/Client.ts">get</a>(offeringId) -> void</code></summary>
+<details><summary><code>client.offerings.<a href="/src/api/resources/offerings/client/Client.ts">get</a>(offeringId) -> ReferralExchange.OfferingDto</code></summary>
 <dl>
 <dd>
 

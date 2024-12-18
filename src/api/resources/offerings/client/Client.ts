@@ -4,9 +4,9 @@
 
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
+import * as ReferralExchange from "../../../index";
 import urlJoin from "url-join";
 import * as errors from "../../../../errors/index";
-import * as ReferralExchange from "../../../index";
 
 export declare namespace Offerings {
     interface Options {
@@ -36,7 +36,7 @@ export class Offerings {
      * @example
      *     await client.offerings.list()
      */
-    public async list(requestOptions?: Offerings.RequestOptions): Promise<void> {
+    public async list(requestOptions?: Offerings.RequestOptions): Promise<ReferralExchange.OfferingDto[]> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ??
@@ -47,8 +47,8 @@ export class Offerings {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.16",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.16",
+                "X-Fern-SDK-Version": "0.0.18",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.18",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -61,7 +61,7 @@ export class Offerings {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return;
+            return _response.body as ReferralExchange.OfferingDto[];
         }
 
         if (_response.error.reason === "status-code") {
@@ -93,7 +93,10 @@ export class Offerings {
      * @example
      *     await client.offerings.get("offeringId")
      */
-    public async get(offeringId: string, requestOptions?: Offerings.RequestOptions): Promise<void> {
+    public async get(
+        offeringId: string,
+        requestOptions?: Offerings.RequestOptions
+    ): Promise<ReferralExchange.OfferingDto> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ??
@@ -104,8 +107,8 @@ export class Offerings {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.16",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.16",
+                "X-Fern-SDK-Version": "0.0.18",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.18",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -118,7 +121,7 @@ export class Offerings {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return;
+            return _response.body as ReferralExchange.OfferingDto;
         }
 
         if (_response.error.reason === "status-code") {
@@ -175,8 +178,8 @@ export class Offerings {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.16",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.16",
+                "X-Fern-SDK-Version": "0.0.18",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.18",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

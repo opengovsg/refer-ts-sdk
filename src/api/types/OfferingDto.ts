@@ -4,7 +4,7 @@
 
 import * as ReferralExchange from "../index";
 
-export interface OfferingFullDto {
+export interface OfferingDto {
     id: string;
     /** Name of the offering - use these as labels */
     name: string;
