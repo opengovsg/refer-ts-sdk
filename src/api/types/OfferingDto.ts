@@ -14,10 +14,11 @@ export interface OfferingDto {
     specialty: string;
     /** Whether the offering is able to receive new referrals currently */
     isActive: boolean;
-    /** Whether this offering supports urgent referrals. TODO - may deprecate soon. */
+    /** deprecated - use timeslotPolicy instead */
     isUrgentable: boolean;
     /** Whether this offering supports subsidized referrals. */
     isSubsidisable: boolean;
-    /** Whether this offering requires selecting timeslots during referral. */
+    /** deprecated - use timeslotPolicy instead */
     shouldShowTimeslots: boolean;
+    timeslotPolicy: ReferralExchange.TimeslotPolicy;
 }
