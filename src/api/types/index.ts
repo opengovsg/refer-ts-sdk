@@ -14,6 +14,7 @@ export * from "./FormResponseAnswer";
 export * from "./FormResponse";
 export * from "./AttachmentDto";
 export * from "./NoteDto";
+export * from "./Form";
 export * from "./ReferralDtoStatus";
 export * from "./ReferralDto";
 export * from "./PaginatedQuery";

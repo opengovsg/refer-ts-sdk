@@ -25,6 +25,6 @@ export interface FullReferralDto {
     /** URL of the FormSG required to complete the referral */
     formUrl?: string;
     /** List of forms required to complete the referral */
-    forms?: string[];
+    forms?: ReferralExchange.Form[];
     timelineEvents: ReferralExchange.TimelineEventDto[];
 }
