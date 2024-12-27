@@ -5,4 +5,5 @@
 export interface Form {
     url: string;
     description: string;
+    isFilled: boolean;
 }

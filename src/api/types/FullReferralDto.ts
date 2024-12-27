@@ -27,5 +27,4 @@ export interface FullReferralDto {
     /** List of forms required to complete the referral */
     forms?: ReferralExchange.Form[];
     timelineEvents: ReferralExchange.TimelineEventDto[];
-    areFormsFilled: boolean;
 }
