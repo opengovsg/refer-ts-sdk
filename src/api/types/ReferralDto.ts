@@ -17,6 +17,8 @@ export interface ReferralDto {
     formResponses: ReferralExchange.FormResponse[];
     /** Form ID of the referral form */
     formId?: string;
+    /** List of forms required to complete the referral */
+    forms?: ReferralExchange.Form[];
     attachments: ReferralExchange.AttachmentDto[];
     status: ReferralExchange.ReferralDtoStatus;
     /** Timeslot start time (ISO datetime) */
@@ -24,6 +26,4 @@ export interface ReferralDto {
     notes: ReferralExchange.NoteDto[];
     /** URL of the FormSG required to complete the referral */
     formUrl?: string;
-    /** List of forms required to complete the referral */
-    forms?: ReferralExchange.Form[];
 }

@@ -17,5 +17,7 @@ export interface PublicReferralDto {
     formResponses: ReferralExchange.FormResponse[];
     /** Form ID of the referral form */
     formId?: string;
+    /** List of forms required to complete the referral */
+    forms?: ReferralExchange.Form[];
     attachments: ReferralExchange.AttachmentDto[];
 }
