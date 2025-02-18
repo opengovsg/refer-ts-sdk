@@ -5,10 +5,11 @@
 /**
  * System that produced the event
  */
-export type TimelineEventDtoSystem = "HAS" | "PartnersBuddy" | "Refer" | "EmailAck";
+export type TimelineEventDtoSystem = "HAS" | "PartnersBuddy" | "Refer" | "EmailAck" | "Bright";
 export const TimelineEventDtoSystem = {
     Has: "HAS",
     PartnersBuddy: "PartnersBuddy",
     Refer: "Refer",
     EmailAck: "EmailAck",
+    Bright: "Bright",
 } as const;

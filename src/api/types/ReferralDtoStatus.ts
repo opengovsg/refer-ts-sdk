@@ -8,10 +8,12 @@ export type ReferralDtoStatus =
     | "processing-has"
     | "processing-pb"
     | "processing-ea"
+    | "processing-bright"
     | "pending-singhealth-formsg"
     | "pending-singhealth-call-centre"
     | "referral-confirmed-pending-appt"
     | "pending-email-ack"
+    | "submitted-to-bright"
     | "pending-amend-timeslot"
     | "confirmed"
     | "rejected"
@@ -24,10 +26,12 @@ export const ReferralDtoStatus = {
     ProcessingHas: "processing-has",
     ProcessingPb: "processing-pb",
     ProcessingEa: "processing-ea",
+    ProcessingBright: "processing-bright",
     PendingSinghealthFormsg: "pending-singhealth-formsg",
     PendingSinghealthCallCentre: "pending-singhealth-call-centre",
     ReferralConfirmedPendingAppt: "referral-confirmed-pending-appt",
     PendingEmailAck: "pending-email-ack",
+    SubmittedToBright: "submitted-to-bright",
     PendingAmendTimeslot: "pending-amend-timeslot",
     Confirmed: "confirmed",
     Rejected: "rejected",
