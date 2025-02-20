@@ -9,6 +9,7 @@ export type ReferralDtoStatus =
     | "processing-pb"
     | "processing-ea"
     | "processing-bright"
+    | "processing-fyi"
     | "pending-singhealth-formsg"
     | "pending-singhealth-call-centre"
     | "referral-confirmed-pending-appt"
@@ -16,6 +17,7 @@ export type ReferralDtoStatus =
     | "submitted-to-bright"
     | "pending-amend-timeslot"
     | "confirmed"
+    | "sent"
     | "rejected"
     | "failed"
     | "pending-cancelled"
@@ -27,6 +29,7 @@ export const ReferralDtoStatus = {
     ProcessingPb: "processing-pb",
     ProcessingEa: "processing-ea",
     ProcessingBright: "processing-bright",
+    ProcessingFyi: "processing-fyi",
     PendingSinghealthFormsg: "pending-singhealth-formsg",
     PendingSinghealthCallCentre: "pending-singhealth-call-centre",
     ReferralConfirmedPendingAppt: "referral-confirmed-pending-appt",
@@ -34,6 +37,7 @@ export const ReferralDtoStatus = {
     SubmittedToBright: "submitted-to-bright",
     PendingAmendTimeslot: "pending-amend-timeslot",
     Confirmed: "confirmed",
+    Sent: "sent",
     Rejected: "rejected",
     Failed: "failed",
     PendingCancelled: "pending-cancelled",

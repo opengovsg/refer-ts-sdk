@@ -76,8 +76,8 @@ export class Referrals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "2025.2.20",
-                "User-Agent": "@opengovsg/refx-ts-sdk/2025.2.20",
+                "X-Fern-SDK-Version": "2025.2.21",
+                "User-Agent": "@opengovsg/refx-ts-sdk/2025.2.21",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -160,8 +160,8 @@ export class Referrals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "2025.2.20",
-                "User-Agent": "@opengovsg/refx-ts-sdk/2025.2.20",
+                "X-Fern-SDK-Version": "2025.2.21",
+                "User-Agent": "@opengovsg/refx-ts-sdk/2025.2.21",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -229,8 +229,8 @@ export class Referrals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "2025.2.20",
-                "User-Agent": "@opengovsg/refx-ts-sdk/2025.2.20",
+                "X-Fern-SDK-Version": "2025.2.21",
+                "User-Agent": "@opengovsg/refx-ts-sdk/2025.2.21",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -292,8 +292,8 @@ export class Referrals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "2025.2.20",
-                "User-Agent": "@opengovsg/refx-ts-sdk/2025.2.20",
+                "X-Fern-SDK-Version": "2025.2.21",
+                "User-Agent": "@opengovsg/refx-ts-sdk/2025.2.21",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -356,8 +356,8 @@ export class Referrals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "2025.2.20",
-                "User-Agent": "@opengovsg/refx-ts-sdk/2025.2.20",
+                "X-Fern-SDK-Version": "2025.2.21",
+                "User-Agent": "@opengovsg/refx-ts-sdk/2025.2.21",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -423,8 +423,8 @@ export class Referrals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "2025.2.20",
-                "User-Agent": "@opengovsg/refx-ts-sdk/2025.2.20",
+                "X-Fern-SDK-Version": "2025.2.21",
+                "User-Agent": "@opengovsg/refx-ts-sdk/2025.2.21",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -490,8 +490,8 @@ export class Referrals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "2025.2.20",
-                "User-Agent": "@opengovsg/refx-ts-sdk/2025.2.20",
+                "X-Fern-SDK-Version": "2025.2.21",
+                "User-Agent": "@opengovsg/refx-ts-sdk/2025.2.21",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -557,8 +557,8 @@ export class Referrals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "2025.2.20",
-                "User-Agent": "@opengovsg/refx-ts-sdk/2025.2.20",
+                "X-Fern-SDK-Version": "2025.2.21",
+                "User-Agent": "@opengovsg/refx-ts-sdk/2025.2.21",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -620,8 +620,8 @@ export class Referrals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "2025.2.20",
-                "User-Agent": "@opengovsg/refx-ts-sdk/2025.2.20",
+                "X-Fern-SDK-Version": "2025.2.21",
+                "User-Agent": "@opengovsg/refx-ts-sdk/2025.2.21",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -653,6 +653,71 @@ export class Referrals {
             case "timeout":
                 throw new errors.ReferralExchangeTimeoutError(
                     "Timeout exceeded when calling POST /api/v1/referrals/{referralId}/back-to-draft."
+                );
+            case "unknown":
+                throw new errors.ReferralExchangeError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * @param {string} referralId - Referral ID
+     * @param {ReferralExchange.TriggerEmailReminderBody} request
+     * @param {Referrals.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.referrals.apiHoldingControllerTriggerEmailReminder("referralId")
+     */
+    public async apiHoldingControllerTriggerEmailReminder(
+        referralId: string,
+        request: ReferralExchange.TriggerEmailReminderBody = {},
+        requestOptions?: Referrals.RequestOptions
+    ): Promise<void> {
+        const _response = await (this._options.fetcher ?? core.fetcher)({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ??
+                    environments.ReferralExchangeEnvironment.Production,
+                `api/v1/referrals/${encodeURIComponent(referralId)}/reminder`
+            ),
+            method: "POST",
+            headers: {
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
+                "X-Fern-SDK-Version": "2025.2.21",
+                "User-Agent": "@opengovsg/refx-ts-sdk/2025.2.21",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            requestType: "json",
+            body: request,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return;
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.ReferralExchangeError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.ReferralExchangeError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.ReferralExchangeTimeoutError(
+                    "Timeout exceeded when calling POST /api/v1/referrals/{referralId}/reminder."
                 );
             case "unknown":
                 throw new errors.ReferralExchangeError({

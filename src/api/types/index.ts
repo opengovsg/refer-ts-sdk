@@ -28,5 +28,6 @@ export * from "./FullReferralDto";
 export * from "./CreatePatientReqGender";
 export * from "./CreatePatientReq";
 export * from "./Timeslot";
+export * from "./EmailReminderSignature";
 export * from "./PublicReferralDto";
 export * from "./OkResponse";

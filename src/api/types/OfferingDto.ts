@@ -10,6 +10,7 @@ export interface OfferingDto {
     name: string;
     institutionHciCode: string;
     institution: ReferralExchange.InstitutionCoreDto;
+    system: ReferralExchange.System;
     /** TODO - do not use this field right now */
     specialty: string;
     /** Whether the offering is able to receive new referrals currently */

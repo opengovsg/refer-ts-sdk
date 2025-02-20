@@ -21,7 +21,8 @@ export type TimelineEventType =
     | "singhealth-patient-details.submitted"
     | "referral.ea-reminder-sent"
     | "referral.form-response-submitted"
-    | "referral.back-to-draft";
+    | "referral.back-to-draft"
+    | "referral.fyi-sent";
 export const TimelineEventType = {
     DraftCreated: "draft.created",
     DraftUpdated: "draft.updated",
@@ -42,4 +43,5 @@ export const TimelineEventType = {
     ReferralEaReminderSent: "referral.ea-reminder-sent",
     ReferralFormResponseSubmitted: "referral.form-response-submitted",
     ReferralBackToDraft: "referral.back-to-draft",
+    ReferralFyiSent: "referral.fyi-sent",
 } as const;
