@@ -11,15 +11,11 @@ export interface OfferingDto {
     institutionHciCode: string;
     institution: ReferralExchange.InstitutionCoreDto;
     system: ReferralExchange.System;
-    /** TODO - do not use this field right now */
-    specialty: string;
+    /** Clinical guidelines and other information which clinicians should read before proceeding with creating the referral. May contain URLs - should be rendered in a Linkify component */
+    description: string;
     /** Whether the offering is able to receive new referrals currently */
     isActive: boolean;
-    /** deprecated - use timeslotPolicy instead */
-    isUrgentable: boolean;
     /** Whether this offering supports subsidized referrals. */
     isSubsidisable: boolean;
-    /** deprecated - use timeslotPolicy instead */
-    shouldShowTimeslots: boolean;
     timeslotPolicy: ReferralExchange.TimeslotPolicy;
 }
