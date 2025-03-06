@@ -46,8 +46,8 @@ export class Webhooks {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "2024.10.16",
-                "User-Agent": "@opengovsg/refx-ts-sdk/2024.10.16",
+                "X-Fern-SDK-Version": "0.0.24",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.24",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -105,8 +105,8 @@ export class Webhooks {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "2024.10.16",
-                "User-Agent": "@opengovsg/refx-ts-sdk/2024.10.16",
+                "X-Fern-SDK-Version": "0.0.24",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.24",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
