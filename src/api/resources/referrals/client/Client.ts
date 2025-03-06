@@ -34,6 +34,8 @@ export class Referrals {
      * @param {ReferralExchange.ReferralsListRequest} request
      * @param {Referrals.RequestOptions} requestOptions - Request-specific configuration.
      *
+     * @throws {@link ReferralExchange.UnauthorizedError}
+     *
      * @example
      *     await client.referrals.list({
      *         hciCode: "hciCode"
@@ -76,8 +78,8 @@ export class Referrals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.28",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.28",
+                "X-Fern-SDK-Version": "0.0.29",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.29",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -95,10 +97,15 @@ export class Referrals {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.ReferralExchangeError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new ReferralExchange.UnauthorizedError(_response.error.body as unknown);
+                default:
+                    throw new errors.ReferralExchangeError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {
@@ -119,6 +126,9 @@ export class Referrals {
     /**
      * @param {ReferralExchange.CreateReferralReq} request
      * @param {Referrals.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link ReferralExchange.BadRequestError}
+     * @throws {@link ReferralExchange.UnauthorizedError}
      *
      * @example
      *     await client.referrals.upsert({
@@ -160,8 +170,8 @@ export class Referrals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.28",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.28",
+                "X-Fern-SDK-Version": "0.0.29",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.29",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -179,10 +189,19 @@ export class Referrals {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.ReferralExchangeError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
+            switch (_response.error.statusCode) {
+                case 400:
+                    throw new ReferralExchange.BadRequestError(
+                        _response.error.body as ReferralExchange.BadRequestErrorBody
+                    );
+                case 401:
+                    throw new ReferralExchange.UnauthorizedError(_response.error.body as unknown);
+                default:
+                    throw new errors.ReferralExchangeError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {
@@ -204,6 +223,9 @@ export class Referrals {
      * @param {string} referralId - Referral ID
      * @param {ReferralExchange.ReferralsGetRequest} request
      * @param {Referrals.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link ReferralExchange.UnauthorizedError}
+     * @throws {@link ReferralExchange.NotFoundError}
      *
      * @example
      *     await client.referrals.get("referralId")
@@ -229,8 +251,8 @@ export class Referrals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.28",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.28",
+                "X-Fern-SDK-Version": "0.0.29",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.29",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -248,10 +270,17 @@ export class Referrals {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.ReferralExchangeError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new ReferralExchange.UnauthorizedError(_response.error.body as unknown);
+                case 404:
+                    throw new ReferralExchange.NotFoundError(_response.error.body as unknown);
+                default:
+                    throw new errors.ReferralExchangeError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {
@@ -275,6 +304,8 @@ export class Referrals {
      * @param {string} referralId - Referral ID
      * @param {Referrals.RequestOptions} requestOptions - Request-specific configuration.
      *
+     * @throws {@link ReferralExchange.UnauthorizedError}
+     *
      * @example
      *     await client.referrals.delete("referralId")
      */
@@ -292,8 +323,8 @@ export class Referrals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.28",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.28",
+                "X-Fern-SDK-Version": "0.0.29",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.29",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -310,10 +341,15 @@ export class Referrals {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.ReferralExchangeError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new ReferralExchange.UnauthorizedError(_response.error.body as unknown);
+                default:
+                    throw new errors.ReferralExchangeError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {
@@ -338,6 +374,8 @@ export class Referrals {
      * @param {ReferralExchange.CancelReferralReq} request
      * @param {Referrals.RequestOptions} requestOptions - Request-specific configuration.
      *
+     * @throws {@link ReferralExchange.UnauthorizedError}
+     *
      * @example
      *     await client.referrals.cancel("referralId")
      */
@@ -356,8 +394,8 @@ export class Referrals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.28",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.28",
+                "X-Fern-SDK-Version": "0.0.29",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.29",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -375,10 +413,15 @@ export class Referrals {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.ReferralExchangeError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new ReferralExchange.UnauthorizedError(_response.error.body as unknown);
+                default:
+                    throw new errors.ReferralExchangeError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {
@@ -403,6 +446,8 @@ export class Referrals {
      * @param {ReferralExchange.AmendReferralReq} request
      * @param {Referrals.RequestOptions} requestOptions - Request-specific configuration.
      *
+     * @throws {@link ReferralExchange.UnauthorizedError}
+     *
      * @example
      *     await client.referrals.amend("referralId", {
      *         timeslotStartAt: 1714857600000
@@ -423,8 +468,8 @@ export class Referrals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.28",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.28",
+                "X-Fern-SDK-Version": "0.0.29",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.29",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -442,10 +487,15 @@ export class Referrals {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.ReferralExchangeError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new ReferralExchange.UnauthorizedError(_response.error.body as unknown);
+                default:
+                    throw new errors.ReferralExchangeError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {
@@ -470,6 +520,8 @@ export class Referrals {
      * @param {ReferralExchange.EaConfirmReferralBody} request
      * @param {Referrals.RequestOptions} requestOptions - Request-specific configuration.
      *
+     * @throws {@link ReferralExchange.UnauthorizedError}
+     *
      * @example
      *     await client.referrals.accept("referralId", {
      *         appointmentTime: 1714857600000
@@ -490,8 +542,8 @@ export class Referrals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.28",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.28",
+                "X-Fern-SDK-Version": "0.0.29",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.29",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -509,10 +561,15 @@ export class Referrals {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.ReferralExchangeError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new ReferralExchange.UnauthorizedError(_response.error.body as unknown);
+                default:
+                    throw new errors.ReferralExchangeError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {
@@ -537,6 +594,8 @@ export class Referrals {
      * @param {ReferralExchange.EaRejectReferralBody} request
      * @param {Referrals.RequestOptions} requestOptions - Request-specific configuration.
      *
+     * @throws {@link ReferralExchange.UnauthorizedError}
+     *
      * @example
      *     await client.referrals.reject("referralId", {
      *         rejectionMessage: "rejectionMessage"
@@ -557,8 +616,8 @@ export class Referrals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.28",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.28",
+                "X-Fern-SDK-Version": "0.0.29",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.29",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -576,10 +635,15 @@ export class Referrals {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.ReferralExchangeError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new ReferralExchange.UnauthorizedError(_response.error.body as unknown);
+                default:
+                    throw new errors.ReferralExchangeError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {
@@ -603,6 +667,8 @@ export class Referrals {
      * @param {string} referralId - Referral ID
      * @param {Referrals.RequestOptions} requestOptions - Request-specific configuration.
      *
+     * @throws {@link ReferralExchange.UnauthorizedError}
+     *
      * @example
      *     await client.referrals.backToDraft("referralId")
      */
@@ -620,8 +686,8 @@ export class Referrals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.28",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.28",
+                "X-Fern-SDK-Version": "0.0.29",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.29",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -638,10 +704,15 @@ export class Referrals {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.ReferralExchangeError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new ReferralExchange.UnauthorizedError(_response.error.body as unknown);
+                default:
+                    throw new errors.ReferralExchangeError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {
@@ -666,6 +737,8 @@ export class Referrals {
      * @param {ReferralExchange.TriggerEmailReminderBody} request
      * @param {Referrals.RequestOptions} requestOptions - Request-specific configuration.
      *
+     * @throws {@link ReferralExchange.UnauthorizedError}
+     *
      * @example
      *     await client.referrals.apiHoldingControllerTriggerEmailReminder("referralId")
      */
@@ -684,8 +757,8 @@ export class Referrals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.28",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.28",
+                "X-Fern-SDK-Version": "0.0.29",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.29",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -703,10 +776,15 @@ export class Referrals {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.ReferralExchangeError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new ReferralExchange.UnauthorizedError(_response.error.body as unknown);
+                default:
+                    throw new errors.ReferralExchangeError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {

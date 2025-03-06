@@ -33,6 +33,8 @@ export class Offerings {
     /**
      * @param {Offerings.RequestOptions} requestOptions - Request-specific configuration.
      *
+     * @throws {@link ReferralExchange.UnauthorizedError}
+     *
      * @example
      *     await client.offerings.list()
      */
@@ -47,8 +49,8 @@ export class Offerings {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.28",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.28",
+                "X-Fern-SDK-Version": "0.0.29",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.29",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -65,10 +67,15 @@ export class Offerings {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.ReferralExchangeError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new ReferralExchange.UnauthorizedError(_response.error.body as unknown);
+                default:
+                    throw new errors.ReferralExchangeError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {
@@ -90,6 +97,8 @@ export class Offerings {
      * @param {string} offeringId
      * @param {ReferralExchange.OfferingsListTimeslotsRequest} request
      * @param {Offerings.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link ReferralExchange.UnauthorizedError}
      *
      * @example
      *     await client.offerings.listTimeslots("offeringId", {
@@ -116,8 +125,8 @@ export class Offerings {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.28",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.28",
+                "X-Fern-SDK-Version": "0.0.29",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.29",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -135,10 +144,15 @@ export class Offerings {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.ReferralExchangeError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new ReferralExchange.UnauthorizedError(_response.error.body as unknown);
+                default:
+                    throw new errors.ReferralExchangeError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {

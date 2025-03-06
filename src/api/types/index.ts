@@ -1,3 +1,6 @@
+export * from "./UnauthorizedErrorBody";
+export * from "./BadRequestErrorBody";
+export * from "./NotFoundErrorBody";
 export * from "./ReferralEligibility";
 export * from "./SubsidyEligibility";
 export * from "./EligibilityRes";
