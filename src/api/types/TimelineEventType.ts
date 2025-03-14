@@ -22,7 +22,8 @@ export type TimelineEventType =
     | "referral.ea-reminder-sent"
     | "referral.form-response-submitted"
     | "referral.back-to-draft"
-    | "referral.fyi-sent";
+    | "referral.fyi-sent"
+    | "referral.email-sent";
 export const TimelineEventType = {
     DraftCreated: "draft.created",
     DraftUpdated: "draft.updated",
@@ -44,4 +45,5 @@ export const TimelineEventType = {
     ReferralFormResponseSubmitted: "referral.form-response-submitted",
     ReferralBackToDraft: "referral.back-to-draft",
     ReferralFyiSent: "referral.fyi-sent",
+    ReferralEmailSent: "referral.email-sent",
 } as const;

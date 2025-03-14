@@ -560,62 +560,6 @@ await client.referrals.backToDraft("referralId");
 </dl>
 </details>
 
-<details><summary><code>client.referrals.<a href="/src/api/resources/referrals/client/Client.ts">apiHoldingControllerTriggerEmailReminder</a>(referralId, { ...params }) -> void</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.referrals.apiHoldingControllerTriggerEmailReminder("referralId");
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**referralId:** `string` — Referral ID
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `ReferralExchange.TriggerEmailReminderBody`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `Referrals.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
 ## Notes
 
 <details><summary><code>client.notes.<a href="/src/api/resources/notes/client/Client.ts">create</a>(referralId, { ...params }) -> ReferralExchange.NoteDto</code></summary>

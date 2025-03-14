@@ -32,5 +32,6 @@ export * from "./CreatePatientReqGender";
 export * from "./CreatePatientReq";
 export * from "./Timeslot";
 export * from "./EmailReminderSignature";
+export * from "./TriggerEmailReminderBody";
 export * from "./PublicReferralDto";
 export * from "./OkResponse";
