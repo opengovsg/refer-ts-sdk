@@ -3,10 +3,12 @@
  */
 
 export const ReferralExchangeEnvironment = {
+    SmartCms: "https://dummy-url-see-smartcms-spec",
     Production: "https://refer.health.gov.sg",
     Staging: "https://refer-staging.health.gov.sg",
 } as const;
 
 export type ReferralExchangeEnvironment =
+    | typeof ReferralExchangeEnvironment.SmartCms
     | typeof ReferralExchangeEnvironment.Production
     | typeof ReferralExchangeEnvironment.Staging;

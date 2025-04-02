@@ -50,15 +50,15 @@ export class Notes {
         const _response = await (this._options.fetcher ?? core.fetcher)({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ??
-                    environments.ReferralExchangeEnvironment.Production,
+                    environments.ReferralExchangeEnvironment.SmartCms,
                 `api/v1/referrals/${encodeURIComponent(referralId)}/notes`
             ),
             method: "POST",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.30",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.30",
+                "X-Fern-SDK-Version": "0.0.31",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.31",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
