@@ -9,13 +9,15 @@ import urlJoin from "url-join";
 import * as errors from "../../../../errors/index";
 
 export declare namespace Eligibility {
-    interface Options {
+    export interface Options {
         environment?: core.Supplier<environments.ReferralExchangeEnvironment | string>;
+        /** Specify a custom URL to connect the client to. */
+        baseUrl?: core.Supplier<string>;
         apiKey?: core.Supplier<string | undefined>;
         fetcher?: core.FetchFunction;
     }
 
-    interface RequestOptions {
+    export interface RequestOptions {
         /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
         /** The number of times to retry the request. Defaults to 2. */
@@ -44,24 +46,25 @@ export class Eligibility {
      */
     public async get(
         request: ReferralExchange.EligibilityGetRequest,
-        requestOptions?: Eligibility.RequestOptions
+        requestOptions?: Eligibility.RequestOptions,
     ): Promise<ReferralExchange.EligibilityRes> {
         const { uin, offeringId } = request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         _queryParams["uin"] = uin;
         _queryParams["offeringId"] = offeringId;
         const _response = await (this._options.fetcher ?? core.fetcher)({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ??
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
                     environments.ReferralExchangeEnvironment.SmartCms,
-                "api/v1/eligibility"
+                "api/v1/eligibility",
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.30",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.30",
+                "X-Fern-SDK-Version": "0.0.31",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.31",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

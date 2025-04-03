@@ -8,13 +8,15 @@ import urlJoin from "url-join";
 import * as errors from "../../../../errors/index";
 
 export declare namespace Webhooks {
-    interface Options {
+    export interface Options {
         environment?: core.Supplier<environments.ReferralExchangeEnvironment | string>;
+        /** Specify a custom URL to connect the client to. */
+        baseUrl?: core.Supplier<string>;
         apiKey?: core.Supplier<string | undefined>;
         fetcher?: core.FetchFunction;
     }
 
-    interface RequestOptions {
+    export interface RequestOptions {
         /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
         /** The number of times to retry the request. Defaults to 2. */
@@ -38,16 +40,17 @@ export class Webhooks {
     public async submitSingHealthFormsg(requestOptions?: Webhooks.RequestOptions): Promise<void> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ??
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
                     environments.ReferralExchangeEnvironment.SmartCms,
-                "api/v1/webhooks/formsg/singhealth-profile"
+                "api/v1/webhooks/formsg/singhealth-profile",
             ),
             method: "POST",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.30",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.30",
+                "X-Fern-SDK-Version": "0.0.31",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.31",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -78,7 +81,7 @@ export class Webhooks {
                 });
             case "timeout":
                 throw new errors.ReferralExchangeTimeoutError(
-                    "Timeout exceeded when calling POST /api/v1/webhooks/formsg/singhealth-profile."
+                    "Timeout exceeded when calling POST /api/v1/webhooks/formsg/singhealth-profile.",
                 );
             case "unknown":
                 throw new errors.ReferralExchangeError({
@@ -97,16 +100,17 @@ export class Webhooks {
     public async submitFormsg(formId: string, requestOptions?: Webhooks.RequestOptions): Promise<void> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ??
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
                     environments.ReferralExchangeEnvironment.SmartCms,
-                `api/v1/webhooks/formsg/form-submission/${encodeURIComponent(formId)}`
+                `api/v1/webhooks/formsg/form-submission/${encodeURIComponent(formId)}`,
             ),
             method: "POST",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.30",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.30",
+                "X-Fern-SDK-Version": "0.0.31",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.31",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -137,7 +141,7 @@ export class Webhooks {
                 });
             case "timeout":
                 throw new errors.ReferralExchangeTimeoutError(
-                    "Timeout exceeded when calling POST /api/v1/webhooks/formsg/form-submission/{formId}."
+                    "Timeout exceeded when calling POST /api/v1/webhooks/formsg/form-submission/{formId}.",
                 );
             case "unknown":
                 throw new errors.ReferralExchangeError({

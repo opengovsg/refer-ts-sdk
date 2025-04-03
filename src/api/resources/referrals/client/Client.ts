@@ -9,13 +9,15 @@ import urlJoin from "url-join";
 import * as errors from "../../../../errors/index";
 
 export declare namespace Referrals {
-    interface Options {
+    export interface Options {
         environment?: core.Supplier<environments.ReferralExchangeEnvironment | string>;
+        /** Specify a custom URL to connect the client to. */
+        baseUrl?: core.Supplier<string>;
         apiKey?: core.Supplier<string | undefined>;
         fetcher?: core.FetchFunction;
     }
 
-    interface RequestOptions {
+    export interface RequestOptions {
         /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
         /** The number of times to retry the request. Defaults to 2. */
@@ -43,10 +45,10 @@ export class Referrals {
      */
     public async list(
         request: ReferralExchange.ReferralsListRequest,
-        requestOptions?: Referrals.RequestOptions
+        requestOptions?: Referrals.RequestOptions,
     ): Promise<ReferralExchange.PaginatedReferralsDto> {
         const { offset, pageSize, hciCode, status, role } = request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (offset != null) {
             _queryParams["offset"] = offset.toString();
         }
@@ -70,16 +72,17 @@ export class Referrals {
 
         const _response = await (this._options.fetcher ?? core.fetcher)({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ??
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
                     environments.ReferralExchangeEnvironment.SmartCms,
-                "api/v1/referrals"
+                "api/v1/referrals",
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.30",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.30",
+                "X-Fern-SDK-Version": "0.0.31",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.31",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -158,20 +161,21 @@ export class Referrals {
      */
     public async upsert(
         request: ReferralExchange.CreateReferralReq,
-        requestOptions?: Referrals.RequestOptions
+        requestOptions?: Referrals.RequestOptions,
     ): Promise<ReferralExchange.ReferralDto> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ??
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
                     environments.ReferralExchangeEnvironment.SmartCms,
-                "api/v1/referrals"
+                "api/v1/referrals",
             ),
             method: "POST",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.30",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.30",
+                "X-Fern-SDK-Version": "0.0.31",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.31",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -192,7 +196,7 @@ export class Referrals {
             switch (_response.error.statusCode) {
                 case 400:
                     throw new ReferralExchange.BadRequestError(
-                        _response.error.body as ReferralExchange.BadRequestErrorBody
+                        _response.error.body as ReferralExchange.BadRequestErrorBody,
                     );
                 case 401:
                     throw new ReferralExchange.UnauthorizedError(_response.error.body as unknown);
@@ -233,26 +237,27 @@ export class Referrals {
     public async get(
         referralId: string,
         request: ReferralExchange.ReferralsGetRequest = {},
-        requestOptions?: Referrals.RequestOptions
+        requestOptions?: Referrals.RequestOptions,
     ): Promise<ReferralExchange.FullReferralDto> {
         const { includeAttachments } = request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (includeAttachments != null) {
             _queryParams["includeAttachments"] = includeAttachments.toString();
         }
 
         const _response = await (this._options.fetcher ?? core.fetcher)({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ??
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
                     environments.ReferralExchangeEnvironment.SmartCms,
-                `api/v1/referrals/${encodeURIComponent(referralId)}`
+                `api/v1/referrals/${encodeURIComponent(referralId)}`,
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.30",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.30",
+                "X-Fern-SDK-Version": "0.0.31",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.31",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -291,7 +296,7 @@ export class Referrals {
                 });
             case "timeout":
                 throw new errors.ReferralExchangeTimeoutError(
-                    "Timeout exceeded when calling GET /api/v1/referrals/{referralId}."
+                    "Timeout exceeded when calling GET /api/v1/referrals/{referralId}.",
                 );
             case "unknown":
                 throw new errors.ReferralExchangeError({
@@ -311,20 +316,21 @@ export class Referrals {
      */
     public async delete(
         referralId: string,
-        requestOptions?: Referrals.RequestOptions
+        requestOptions?: Referrals.RequestOptions,
     ): Promise<ReferralExchange.ReferralDto> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ??
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
                     environments.ReferralExchangeEnvironment.SmartCms,
-                `api/v1/referrals/${encodeURIComponent(referralId)}`
+                `api/v1/referrals/${encodeURIComponent(referralId)}`,
             ),
             method: "DELETE",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.30",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.30",
+                "X-Fern-SDK-Version": "0.0.31",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.31",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -360,7 +366,7 @@ export class Referrals {
                 });
             case "timeout":
                 throw new errors.ReferralExchangeTimeoutError(
-                    "Timeout exceeded when calling DELETE /api/v1/referrals/{referralId}."
+                    "Timeout exceeded when calling DELETE /api/v1/referrals/{referralId}.",
                 );
             case "unknown":
                 throw new errors.ReferralExchangeError({
@@ -382,20 +388,21 @@ export class Referrals {
     public async cancel(
         referralId: string,
         request: ReferralExchange.CancelReferralReq = {},
-        requestOptions?: Referrals.RequestOptions
+        requestOptions?: Referrals.RequestOptions,
     ): Promise<ReferralExchange.ReferralDto> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ??
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
                     environments.ReferralExchangeEnvironment.SmartCms,
-                `api/v1/referrals/${encodeURIComponent(referralId)}/cancel`
+                `api/v1/referrals/${encodeURIComponent(referralId)}/cancel`,
             ),
             method: "POST",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.30",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.30",
+                "X-Fern-SDK-Version": "0.0.31",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.31",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -432,7 +439,7 @@ export class Referrals {
                 });
             case "timeout":
                 throw new errors.ReferralExchangeTimeoutError(
-                    "Timeout exceeded when calling POST /api/v1/referrals/{referralId}/cancel."
+                    "Timeout exceeded when calling POST /api/v1/referrals/{referralId}/cancel.",
                 );
             case "unknown":
                 throw new errors.ReferralExchangeError({
@@ -456,20 +463,21 @@ export class Referrals {
     public async amend(
         referralId: string,
         request: ReferralExchange.AmendReferralReq,
-        requestOptions?: Referrals.RequestOptions
+        requestOptions?: Referrals.RequestOptions,
     ): Promise<ReferralExchange.ReferralDto> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ??
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
                     environments.ReferralExchangeEnvironment.SmartCms,
-                `api/v1/referrals/${encodeURIComponent(referralId)}/amend`
+                `api/v1/referrals/${encodeURIComponent(referralId)}/amend`,
             ),
             method: "POST",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.30",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.30",
+                "X-Fern-SDK-Version": "0.0.31",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.31",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -506,7 +514,7 @@ export class Referrals {
                 });
             case "timeout":
                 throw new errors.ReferralExchangeTimeoutError(
-                    "Timeout exceeded when calling POST /api/v1/referrals/{referralId}/amend."
+                    "Timeout exceeded when calling POST /api/v1/referrals/{referralId}/amend.",
                 );
             case "unknown":
                 throw new errors.ReferralExchangeError({
@@ -530,20 +538,21 @@ export class Referrals {
     public async accept(
         referralId: string,
         request: ReferralExchange.EaConfirmReferralBody,
-        requestOptions?: Referrals.RequestOptions
+        requestOptions?: Referrals.RequestOptions,
     ): Promise<void> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ??
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
                     environments.ReferralExchangeEnvironment.SmartCms,
-                `api/v1/referrals/${encodeURIComponent(referralId)}/accept`
+                `api/v1/referrals/${encodeURIComponent(referralId)}/accept`,
             ),
             method: "POST",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.30",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.30",
+                "X-Fern-SDK-Version": "0.0.31",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.31",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -580,7 +589,7 @@ export class Referrals {
                 });
             case "timeout":
                 throw new errors.ReferralExchangeTimeoutError(
-                    "Timeout exceeded when calling POST /api/v1/referrals/{referralId}/accept."
+                    "Timeout exceeded when calling POST /api/v1/referrals/{referralId}/accept.",
                 );
             case "unknown":
                 throw new errors.ReferralExchangeError({
@@ -604,20 +613,21 @@ export class Referrals {
     public async reject(
         referralId: string,
         request: ReferralExchange.EaRejectReferralBody,
-        requestOptions?: Referrals.RequestOptions
+        requestOptions?: Referrals.RequestOptions,
     ): Promise<void> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ??
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
                     environments.ReferralExchangeEnvironment.SmartCms,
-                `api/v1/referrals/${encodeURIComponent(referralId)}/reject`
+                `api/v1/referrals/${encodeURIComponent(referralId)}/reject`,
             ),
             method: "POST",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.30",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.30",
+                "X-Fern-SDK-Version": "0.0.31",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.31",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -654,7 +664,7 @@ export class Referrals {
                 });
             case "timeout":
                 throw new errors.ReferralExchangeTimeoutError(
-                    "Timeout exceeded when calling POST /api/v1/referrals/{referralId}/reject."
+                    "Timeout exceeded when calling POST /api/v1/referrals/{referralId}/reject.",
                 );
             case "unknown":
                 throw new errors.ReferralExchangeError({
@@ -674,20 +684,21 @@ export class Referrals {
      */
     public async backToDraft(
         referralId: string,
-        requestOptions?: Referrals.RequestOptions
+        requestOptions?: Referrals.RequestOptions,
     ): Promise<ReferralExchange.ReferralDto> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ??
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
                     environments.ReferralExchangeEnvironment.SmartCms,
-                `api/v1/referrals/${encodeURIComponent(referralId)}/back-to-draft`
+                `api/v1/referrals/${encodeURIComponent(referralId)}/back-to-draft`,
             ),
             method: "POST",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.30",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.30",
+                "X-Fern-SDK-Version": "0.0.31",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.31",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -723,7 +734,7 @@ export class Referrals {
                 });
             case "timeout":
                 throw new errors.ReferralExchangeTimeoutError(
-                    "Timeout exceeded when calling POST /api/v1/referrals/{referralId}/back-to-draft."
+                    "Timeout exceeded when calling POST /api/v1/referrals/{referralId}/back-to-draft.",
                 );
             case "unknown":
                 throw new errors.ReferralExchangeError({

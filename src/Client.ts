@@ -13,13 +13,15 @@ import { Webhooks } from "./api/resources/webhooks/client/Client";
 import { Health } from "./api/resources/health/client/Client";
 
 export declare namespace ReferralExchangeClient {
-    interface Options {
+    export interface Options {
         environment?: core.Supplier<environments.ReferralExchangeEnvironment | string>;
+        /** Specify a custom URL to connect the client to. */
+        baseUrl?: core.Supplier<string>;
         apiKey?: core.Supplier<string | undefined>;
         fetcher?: core.FetchFunction;
     }
 
-    interface RequestOptions {
+    export interface RequestOptions {
         /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
         /** The number of times to retry the request. Defaults to 2. */
