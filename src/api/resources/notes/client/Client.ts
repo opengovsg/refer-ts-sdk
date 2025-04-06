@@ -60,8 +60,8 @@ export class Notes {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.32-prerelease-1743933274",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.32-prerelease-1743933274",
+                "X-Fern-SDK-Version": "0.0.31-prerelease-1743936704",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.31-prerelease-1743936704",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
