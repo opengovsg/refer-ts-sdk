@@ -4,13 +4,11 @@
 
 /**
  * @example
- *     {
- *         appointmentTime: 1714857600000
- *     }
+ *     {}
  */
-export interface EaConfirmReferralBody {
+export interface AcceptReferralBody {
     /** Appointment time, in milliseconds since epoch. */
-    appointmentTime: number;
+    appointmentTime?: number;
     /** Note content */
     noteContent?: string;
 }

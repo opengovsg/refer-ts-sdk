@@ -8,7 +8,7 @@
  *         rejectionMessage: "rejectionMessage"
  *     }
  */
-export interface EaRejectReferralBody {
+export interface RejectReferralBody {
     /** Rejection message */
     rejectionMessage: string;
 }

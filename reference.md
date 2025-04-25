@@ -409,9 +409,7 @@ await client.referrals.amend("referralId", {
 <dd>
 
 ```typescript
-await client.referrals.accept("referralId", {
-    appointmentTime: 1714857600000,
-});
+await client.referrals.accept("referralId");
 ```
 
 </dd>
@@ -435,7 +433,7 @@ await client.referrals.accept("referralId", {
 <dl>
 <dd>
 
-**request:** `ReferralExchange.EaConfirmReferralBody`
+**request:** `ReferralExchange.AcceptReferralBody`
 
 </dd>
 </dl>
@@ -493,7 +491,7 @@ await client.referrals.reject("referralId", {
 <dl>
 <dd>
 
-**request:** `ReferralExchange.EaRejectReferralBody`
+**request:** `ReferralExchange.RejectReferralBody`
 
 </dd>
 </dl>
