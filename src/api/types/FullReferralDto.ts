@@ -18,6 +18,8 @@ export interface FullReferralDto {
     /** List of forms required to complete the referral */
     forms?: ReferralExchange.Form[];
     attachments: ReferralExchange.AttachmentDto[];
+    /** URL to view the referral */
+    url?: string;
     status: ReferralExchange.FullReferralDtoStatus;
     /** Timeslot start time (ISO datetime) */
     timeslotStartAt?: string;

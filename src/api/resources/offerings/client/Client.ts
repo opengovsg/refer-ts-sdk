@@ -33,6 +33,7 @@ export class Offerings {
     constructor(protected readonly _options: Offerings.Options = {}) {}
 
     /**
+     * @param {ReferralExchange.OfferingsListRequest} request
      * @param {Offerings.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link ReferralExchange.UnauthorizedError}
@@ -40,7 +41,20 @@ export class Offerings {
      * @example
      *     await client.offerings.list()
      */
-    public async list(requestOptions?: Offerings.RequestOptions): Promise<ReferralExchange.OfferingDto[]> {
+    public async list(
+        request: ReferralExchange.OfferingsListRequest = {},
+        requestOptions?: Offerings.RequestOptions,
+    ): Promise<ReferralExchange.OfferingDto[]> {
+        const { referrerId, referrerIdType } = request;
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
+        if (referrerId != null) {
+            _queryParams["referrerId"] = referrerId;
+        }
+
+        if (referrerIdType != null) {
+            _queryParams["referrerIdType"] = referrerIdType;
+        }
+
         const _response = await (this._options.fetcher ?? core.fetcher)({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
@@ -52,14 +66,15 @@ export class Offerings {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.35",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.35",
+                "X-Fern-SDK-Version": "0.0.35-prerelease-1745909708",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.35-prerelease-1745909708",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
                 ...requestOptions?.headers,
             },
             contentType: "application/json",
+            queryParameters: _queryParams,
             requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
@@ -129,8 +144,8 @@ export class Offerings {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.35",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.35",
+                "X-Fern-SDK-Version": "0.0.35-prerelease-1745909708",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.35-prerelease-1745909708",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

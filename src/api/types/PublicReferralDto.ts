@@ -18,4 +18,6 @@ export interface PublicReferralDto {
     /** List of forms required to complete the referral */
     forms?: ReferralExchange.Form[];
     attachments: ReferralExchange.AttachmentDto[];
+    /** URL to view the referral */
+    url?: string;
 }

@@ -47,10 +47,18 @@ export class Public {
         request: ReferralExchange.PublicGetReferralRequest = {},
         requestOptions?: Public.RequestOptions,
     ): Promise<ReferralExchange.PublicReferralDto> {
-        const { includeAttachments } = request;
+        const { includeAttachments, additionalField } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (includeAttachments != null) {
             _queryParams["includeAttachments"] = includeAttachments.toString();
+        }
+
+        if (additionalField != null) {
+            if (Array.isArray(additionalField)) {
+                _queryParams["additionalField"] = additionalField.map((item) => item);
+            } else {
+                _queryParams["additionalField"] = additionalField;
+            }
         }
 
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -64,8 +72,8 @@ export class Public {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.35",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.35",
+                "X-Fern-SDK-Version": "0.0.35-prerelease-1745909708",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.35-prerelease-1745909708",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
