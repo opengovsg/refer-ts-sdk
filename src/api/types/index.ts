@@ -32,6 +32,7 @@ export * from "./FullReferralDto";
 export * from "./CreatePatientReqGender";
 export * from "./CreatePatientReq";
 export * from "./ReferrerIdType";
+export * from "./OfferingWithAllowedDto";
 export * from "./Timeslot";
 export * from "./TriggerEmailReminderBody";
 export * from "./FormMetadata";

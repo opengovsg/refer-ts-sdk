@@ -44,7 +44,7 @@ export class Offerings {
     public async list(
         request: ReferralExchange.OfferingsListRequest = {},
         requestOptions?: Offerings.RequestOptions,
-    ): Promise<ReferralExchange.OfferingDto[]> {
+    ): Promise<ReferralExchange.OfferingWithAllowedDto[]> {
         const { referrerId, referrerIdType } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (referrerId != null) {
@@ -66,8 +66,8 @@ export class Offerings {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.35-prerelease-1745909708",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.35-prerelease-1745909708",
+                "X-Fern-SDK-Version": "0.0.35-prerelease-1745982453",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.35-prerelease-1745982453",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -81,7 +81,7 @@ export class Offerings {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return _response.body as ReferralExchange.OfferingDto[];
+            return _response.body as ReferralExchange.OfferingWithAllowedDto[];
         }
 
         if (_response.error.reason === "status-code") {
@@ -144,8 +144,8 @@ export class Offerings {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.35-prerelease-1745909708",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.35-prerelease-1745909708",
+                "X-Fern-SDK-Version": "0.0.35-prerelease-1745982453",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.35-prerelease-1745982453",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

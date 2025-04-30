@@ -620,7 +620,7 @@ await client.notes.create("referralId", {
 
 ## Offerings
 
-<details><summary><code>client.offerings.<a href="/src/api/resources/offerings/client/Client.ts">list</a>({ ...params }) -> ReferralExchange.OfferingDto[]</code></summary>
+<details><summary><code>client.offerings.<a href="/src/api/resources/offerings/client/Client.ts">list</a>({ ...params }) -> ReferralExchange.OfferingWithAllowedDto[]</code></summary>
 <dl>
 <dd>
 
