@@ -50,8 +50,8 @@ export class Health {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.35-prerelease-1745982453",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.35-prerelease-1745982453",
+                "X-Fern-SDK-Version": "0.0.36",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.36",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
