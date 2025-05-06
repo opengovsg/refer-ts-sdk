@@ -9,6 +9,5 @@ import * as ReferralExchange from "../../../../index";
  *     {}
  */
 export interface PublicGetReferralRequest {
-    includeAttachments?: boolean;
     additionalField?: ReferralExchange.AdditionalReferralField | ReferralExchange.AdditionalReferralField[];
 }

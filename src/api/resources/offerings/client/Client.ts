@@ -45,7 +45,7 @@ export class Offerings {
         request: ReferralExchange.OfferingsListRequest = {},
         requestOptions?: Offerings.RequestOptions,
     ): Promise<ReferralExchange.OfferingWithAllowedDto[]> {
-        const { referrerId, referrerIdType } = request;
+        const { referrerId, referrerIdType, referrerInstitutionId } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (referrerId != null) {
             _queryParams["referrerId"] = referrerId;
@@ -53,6 +53,10 @@ export class Offerings {
 
         if (referrerIdType != null) {
             _queryParams["referrerIdType"] = referrerIdType;
+        }
+
+        if (referrerInstitutionId != null) {
+            _queryParams["referrerInstitutionId"] = referrerInstitutionId;
         }
 
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -66,8 +70,8 @@ export class Offerings {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.36",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.36",
+                "X-Fern-SDK-Version": "0.0.37",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.37",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -144,8 +148,8 @@ export class Offerings {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.36",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.36",
+                "X-Fern-SDK-Version": "0.0.37",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.37",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
