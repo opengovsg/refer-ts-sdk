@@ -1,7 +1,9 @@
 export * from "./UnauthorizedErrorBody";
 export * from "./BadRequestErrorBody";
 export * from "./NotFoundErrorBody";
+export * from "./ReferrerIdType";
 export * from "./ReferralEligibility";
+export * from "./SubsidyEligibilityScheme";
 export * from "./SubsidyEligibility";
 export * from "./EligibilityRes";
 export * from "./ReferralStatusFilter";
@@ -31,7 +33,6 @@ export * from "./FullReferralDtoStatus";
 export * from "./FullReferralDto";
 export * from "./CreatePatientReqGender";
 export * from "./CreatePatientReq";
-export * from "./ReferrerIdType";
 export * from "./OfferingWithAllowedDto";
 export * from "./Timeslot";
 export * from "./TriggerEmailReminderBody";

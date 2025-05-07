@@ -10,12 +10,12 @@ import * as ReferralExchange from "../../../../index";
  */
 export interface OfferingsListRequest {
     /**
-     * ID of the referring individual. Use together with `referralIdType` and `referrerInstitutionId` to return offerings that a referrer is allowed to make referrals to.
+     * ID of the referring individual. Use together with `referralIdType` and `referrerInstitutionId` to filter based on referrer.
      */
     referrerId?: string;
     referrerIdType?: ReferralExchange.ReferrerIdType;
     /**
-     * ID of the referring institution. Use together with `referrerId` and `referrerIdType` to return offerings that a referrer is allowed to make referrals to.
+     * ID of the referring institution. Use together with `referrerId` and `referrerIdType` to filter based on referrer.
      */
     referrerInstitutionId?: string;
 }

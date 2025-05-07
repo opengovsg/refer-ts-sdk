@@ -6,5 +6,6 @@ import * as ReferralExchange from "../index";
 
 export interface EligibilityRes {
     referral: ReferralExchange.ReferralEligibility;
-    subsidy: ReferralExchange.SubsidyEligibility;
+    /** Will be present if isAllowed for referral is true */
+    subsidy?: ReferralExchange.SubsidyEligibility;
 }

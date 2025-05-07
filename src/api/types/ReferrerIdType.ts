@@ -3,6 +3,6 @@
  */
 
 /**
- * Type of ID specified in referrerId. Use together with `referrerId` and `referrerInstitutionId` to return offerings that a referrer is allowed to make referrals to.
+ * Type of ID specified in referrerId. Use together with `referrerId` and `referrerInstitutionId` to filter based on referrer.
  */
 export type ReferrerIdType = "mcr";
