@@ -8,7 +8,7 @@ import * as ReferralExchange from "../../../index";
 import urlJoin from "url-join";
 import * as errors from "../../../../errors/index";
 
-export declare namespace Notes {
+export declare namespace Links {
     export interface Options {
         environment?: core.Supplier<environments.ReferralExchangeEnvironment | string>;
         /** Specify a custom URL to connect the client to. */
@@ -29,32 +29,34 @@ export declare namespace Notes {
     }
 }
 
-export class Notes {
-    constructor(protected readonly _options: Notes.Options = {}) {}
+export class Links {
+    constructor(protected readonly _options: Links.Options = {}) {}
 
     /**
-     * @param {string} referralId - Referral ID
-     * @param {ReferralExchange.CreateNoteReq} request
-     * @param {Notes.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {ReferralExchange.CreateLinkReqUpsert} request
+     * @param {Links.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link ReferralExchange.UnauthorizedError}
      *
      * @example
-     *     await client.notes.create("referralId", {
-     *         authorHciCode: "authorHciCode"
+     *     await client.links.apiHoldingControllerCreateUpsertLink({
+     *         refererInstitutionId: "refererInstitutionId",
+     *         refererInstitutionName: "refererInstitutionName",
+     *         referrerId: "referrerId",
+     *         referrerName: "referrerName",
+     *         referrerIdType: "referrerIdType"
      *     })
      */
-    public async create(
-        referralId: string,
-        request: ReferralExchange.CreateNoteReq,
-        requestOptions?: Notes.RequestOptions,
-    ): Promise<ReferralExchange.NoteDto> {
+    public async apiHoldingControllerCreateUpsertLink(
+        request: ReferralExchange.CreateLinkReqUpsert,
+        requestOptions?: Links.RequestOptions,
+    ): Promise<void> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.ReferralExchangeEnvironment.SmartCms,
-                `api/v1/referrals/${encodeURIComponent(referralId)}/notes`,
+                "api/v1/links/upsert",
             ),
             method: "POST",
             headers: {
@@ -75,7 +77,7 @@ export class Notes {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return _response.body as ReferralExchange.NoteDto;
+            return;
         }
 
         if (_response.error.reason === "status-code") {
@@ -98,7 +100,7 @@ export class Notes {
                 });
             case "timeout":
                 throw new errors.ReferralExchangeTimeoutError(
-                    "Timeout exceeded when calling POST /api/v1/referrals/{referralId}/notes.",
+                    "Timeout exceeded when calling POST /api/v1/links/upsert.",
                 );
             case "unknown":
                 throw new errors.ReferralExchangeError({

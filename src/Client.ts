@@ -8,6 +8,7 @@ import { Eligibility } from "./api/resources/eligibility/client/Client";
 import { Referrals } from "./api/resources/referrals/client/Client";
 import { Notes } from "./api/resources/notes/client/Client";
 import { Offerings } from "./api/resources/offerings/client/Client";
+import { Links } from "./api/resources/links/client/Client";
 import { Public } from "./api/resources/public/client/Client";
 import { Webhooks } from "./api/resources/webhooks/client/Client";
 import { Health } from "./api/resources/health/client/Client";
@@ -38,6 +39,7 @@ export class ReferralExchangeClient {
     protected _referrals: Referrals | undefined;
     protected _notes: Notes | undefined;
     protected _offerings: Offerings | undefined;
+    protected _links: Links | undefined;
     protected _public: Public | undefined;
     protected _webhooks: Webhooks | undefined;
     protected _health: Health | undefined;
@@ -58,6 +60,10 @@ export class ReferralExchangeClient {
 
     public get offerings(): Offerings {
         return (this._offerings ??= new Offerings(this._options));
+    }
+
+    public get links(): Links {
+        return (this._links ??= new Links(this._options));
     }
 
     public get public(): Public {

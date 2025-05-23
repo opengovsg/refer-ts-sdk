@@ -727,6 +727,62 @@ await client.offerings.listTimeslots("offeringId", {
 </dl>
 </details>
 
+## Links
+
+<details><summary><code>client.links.<a href="/src/api/resources/links/client/Client.ts">apiHoldingControllerCreateUpsertLink</a>({ ...params }) -> void</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.links.apiHoldingControllerCreateUpsertLink({
+    refererInstitutionId: "refererInstitutionId",
+    refererInstitutionName: "refererInstitutionName",
+    referrerId: "referrerId",
+    referrerName: "referrerName",
+    referrerIdType: "referrerIdType",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `ReferralExchange.CreateLinkReqUpsert`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Links.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## Public
 
 <details><summary><code>client.public.<a href="/src/api/resources/public/client/Client.ts">getReferral</a>(referralId, { ...params }) -> ReferralExchange.PublicReferralDto</code></summary>
