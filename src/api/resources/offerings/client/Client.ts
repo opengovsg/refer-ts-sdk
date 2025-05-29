@@ -70,8 +70,8 @@ export class Offerings {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.38",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.38",
+                "X-Fern-SDK-Version": "0.0.39",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.39",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -124,8 +124,7 @@ export class Offerings {
      *
      * @example
      *     await client.offerings.listTimeslots("offeringId", {
-     *         from: 1.1,
-     *         isSubsidised: true
+     *         from: 1.1
      *     })
      */
     public async listTimeslots(
@@ -136,7 +135,10 @@ export class Offerings {
         const { from: from_, isSubsidised } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         _queryParams["from"] = from_.toString();
-        _queryParams["isSubsidised"] = isSubsidised.toString();
+        if (isSubsidised != null) {
+            _queryParams["isSubsidised"] = isSubsidised.toString();
+        }
+
         const _response = await (this._options.fetcher ?? core.fetcher)({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
@@ -148,8 +150,8 @@ export class Offerings {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.38",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.38",
+                "X-Fern-SDK-Version": "0.0.39",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.39",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

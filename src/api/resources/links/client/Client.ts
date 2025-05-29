@@ -40,11 +40,18 @@ export class Links {
      *
      * @example
      *     await client.links.apiHoldingControllerCreateUpsertLink({
-     *         refererInstitutionId: "refererInstitutionId",
-     *         refererInstitutionName: "refererInstitutionName",
+     *         referrerInstitutionId: "referrerInstitutionId",
+     *         referrerInstitutionName: "referrerInstitutionName",
      *         referrerId: "referrerId",
      *         referrerName: "referrerName",
-     *         referrerIdType: "referrerIdType"
+     *         referrerIdType: "referrerIdType",
+     *         referrerEmail: "referrerEmail",
+     *         referrerContactNumber: "referrerContactNumber",
+     *         patientUin: "patientUin",
+     *         patientName: "patientName",
+     *         patientPhoneNumber: "91234567",
+     *         patientDob: "1990-01-01",
+     *         patientGender: "Male"
      *     })
      */
     public async apiHoldingControllerCreateUpsertLink(
@@ -62,8 +69,8 @@ export class Links {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.38",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.38",
+                "X-Fern-SDK-Version": "0.0.39",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.39",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

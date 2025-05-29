@@ -683,7 +683,6 @@ await client.offerings.list();
 ```typescript
 await client.offerings.listTimeslots("offeringId", {
     from: 1.1,
-    isSubsidised: true,
 });
 ```
 
@@ -743,11 +742,18 @@ await client.offerings.listTimeslots("offeringId", {
 
 ```typescript
 await client.links.apiHoldingControllerCreateUpsertLink({
-    refererInstitutionId: "refererInstitutionId",
-    refererInstitutionName: "refererInstitutionName",
+    referrerInstitutionId: "referrerInstitutionId",
+    referrerInstitutionName: "referrerInstitutionName",
     referrerId: "referrerId",
     referrerName: "referrerName",
     referrerIdType: "referrerIdType",
+    referrerEmail: "referrerEmail",
+    referrerContactNumber: "referrerContactNumber",
+    patientUin: "patientUin",
+    patientName: "patientName",
+    patientPhoneNumber: "91234567",
+    patientDob: "1990-01-01",
+    patientGender: "Male",
 });
 ```
 
