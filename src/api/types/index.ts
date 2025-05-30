@@ -38,5 +38,7 @@ export * from "./Timeslot";
 export * from "./TriggerEmailReminderBody";
 export * from "./FormMetadata";
 export * from "./CreateReferralFormReq";
+export * from "./ReferralLinkType";
+export * from "./ReferralLinkDto";
 export * from "./PublicReferralDto";
 export * from "./OkResponse";

@@ -75,8 +75,8 @@ export class Eligibility {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.39",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.39",
+                "X-Fern-SDK-Version": "0.0.0-develop-1748575737",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.0-develop-1748575737",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

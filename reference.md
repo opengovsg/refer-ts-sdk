@@ -728,7 +728,7 @@ await client.offerings.listTimeslots("offeringId", {
 
 ## Links
 
-<details><summary><code>client.links.<a href="/src/api/resources/links/client/Client.ts">apiHoldingControllerCreateUpsertLink</a>({ ...params }) -> void</code></summary>
+<details><summary><code>client.links.<a href="/src/api/resources/links/client/Client.ts">createUpsertLink</a>({ ...params }) -> ReferralExchange.ReferralLinkDto</code></summary>
 <dl>
 <dd>
 
@@ -741,7 +741,7 @@ await client.offerings.listTimeslots("offeringId", {
 <dd>
 
 ```typescript
-await client.links.apiHoldingControllerCreateUpsertLink({
+await client.links.createUpsertLink({
     referrerInstitutionId: "referrerInstitutionId",
     referrerInstitutionName: "referrerInstitutionName",
     referrerId: "referrerId",
