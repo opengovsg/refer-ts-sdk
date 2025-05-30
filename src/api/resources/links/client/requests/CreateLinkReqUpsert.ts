@@ -11,14 +11,7 @@ import * as ReferralExchange from "../../../../index";
  *         referrerInstitutionName: "referrerInstitutionName",
  *         referrerId: "referrerId",
  *         referrerName: "referrerName",
- *         referrerIdType: "referrerIdType",
- *         referrerEmail: "referrerEmail",
- *         referrerContactNumber: "referrerContactNumber",
- *         patientUin: "patientUin",
- *         patientName: "patientName",
- *         patientPhoneNumber: "91234567",
- *         patientDob: "1990-01-01",
- *         patientGender: "Male"
+ *         referrerIdType: "referrerIdType"
  *     }
  */
 export interface CreateLinkReqUpsert {
@@ -33,17 +26,17 @@ export interface CreateLinkReqUpsert {
     /** Type of the referrer ID */
     referrerIdType: string;
     /** Email of the doctor authoring this referral. */
-    referrerEmail: string;
+    referrerEmail?: string;
     /** Contact number of the doctor authoring this referral. */
-    referrerContactNumber: string;
+    referrerContactNumber?: string;
     /** Patient UIN, e.g. NRIC or FIN */
-    patientUin: string;
+    patientUin?: string;
     /** Patient name */
-    patientName: string;
+    patientName?: string;
     /** Patient phone number - only Singaporean accepted for now */
-    patientPhoneNumber: string;
+    patientPhoneNumber?: string;
     /** Patient date of birth */
-    patientDob: string;
+    patientDob?: string;
     /** Patient gender */
-    patientGender: ReferralExchange.CreateLinkReqUpsertPatientGender;
+    patientGender?: ReferralExchange.CreateLinkReqUpsertPatientGender;
 }

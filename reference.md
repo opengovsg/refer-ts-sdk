@@ -747,13 +747,6 @@ await client.links.createUpsertLink({
     referrerId: "referrerId",
     referrerName: "referrerName",
     referrerIdType: "referrerIdType",
-    referrerEmail: "referrerEmail",
-    referrerContactNumber: "referrerContactNumber",
-    patientUin: "patientUin",
-    patientName: "patientName",
-    patientPhoneNumber: "91234567",
-    patientDob: "1990-01-01",
-    patientGender: "Male",
 });
 ```
 
