@@ -18,6 +18,8 @@ export interface OfferingWithAllowedDto {
     /** Whether this offering supports subsidized referrals. */
     isSubsidisable: boolean;
     timeslotPolicy: ReferralExchange.TimeslotPolicy;
+    /** Category of the offering. Used to group offerings together. */
+    category?: ReferralExchange.OfferingWithAllowedDtoCategory;
     /** Whether the offering is allowed based on the provided query parameters */
     isAllowed: boolean;
 }

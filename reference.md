@@ -668,6 +668,57 @@ await client.offerings.list();
 </dl>
 </details>
 
+<details><summary><code>client.offerings.<a href="/src/api/resources/offerings/client/Client.ts">apiHoldingControllerGetRecommendedOffering</a>({ ...params }) -> ReferralExchange.OfferingDto</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.offerings.apiHoldingControllerGetRecommendedOffering({
+    category: "aac service",
+    postalCode: "postalCode",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `ReferralExchange.ApiHoldingControllerGetRecommendedOfferingRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Offerings.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.offerings.<a href="/src/api/resources/offerings/client/Client.ts">listTimeslots</a>(offeringId, { ...params }) -> ReferralExchange.Timeslot[]</code></summary>
 <dl>
 <dd>

@@ -70,8 +70,8 @@ export class Offerings {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.0-develop-1748577388",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.0-develop-1748577388",
+                "X-Fern-SDK-Version": "0.0.40",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.40",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -116,6 +116,87 @@ export class Offerings {
     }
 
     /**
+     * @param {ReferralExchange.ApiHoldingControllerGetRecommendedOfferingRequest} request
+     * @param {Offerings.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link ReferralExchange.UnauthorizedError}
+     * @throws {@link ReferralExchange.NotFoundError}
+     *
+     * @example
+     *     await client.offerings.apiHoldingControllerGetRecommendedOffering({
+     *         category: "aac service",
+     *         postalCode: "postalCode"
+     *     })
+     */
+    public async apiHoldingControllerGetRecommendedOffering(
+        request: ReferralExchange.ApiHoldingControllerGetRecommendedOfferingRequest,
+        requestOptions?: Offerings.RequestOptions,
+    ): Promise<ReferralExchange.OfferingDto> {
+        const { category, postalCode } = request;
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
+        _queryParams["category"] = category;
+        _queryParams["postalCode"] = postalCode;
+        const _response = await (this._options.fetcher ?? core.fetcher)({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.ReferralExchangeEnvironment.SmartCms,
+                "api/v1/offerings/recommended",
+            ),
+            method: "GET",
+            headers: {
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
+                "X-Fern-SDK-Version": "0.0.40",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.40",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            requestType: "json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return _response.body as ReferralExchange.OfferingDto;
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new ReferralExchange.UnauthorizedError(_response.error.body as unknown);
+                case 404:
+                    throw new ReferralExchange.NotFoundError(_response.error.body as unknown);
+                default:
+                    throw new errors.ReferralExchangeError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.ReferralExchangeError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.ReferralExchangeTimeoutError(
+                    "Timeout exceeded when calling GET /api/v1/offerings/recommended.",
+                );
+            case "unknown":
+                throw new errors.ReferralExchangeError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
      * @param {string} offeringId
      * @param {ReferralExchange.OfferingsListTimeslotsRequest} request
      * @param {Offerings.RequestOptions} requestOptions - Request-specific configuration.
@@ -150,8 +231,8 @@ export class Offerings {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.0-develop-1748577388",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.0-develop-1748577388",
+                "X-Fern-SDK-Version": "0.0.40",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.40",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
