@@ -3,7 +3,7 @@
  */
 
 /**
- * Type of ID specified in referrerId. Use together with `referrerId` and `referrerInstitutionId` to filter based on referrer.
+ * Type of ID specified in referrerId.
  */
 export type ReferrerIdType = "mcr" | "nric" | "email";
 export const ReferrerIdType = {

@@ -7,6 +7,7 @@ import * as ReferralExchange from "../index";
 export interface ReferralDto {
     id: string;
     sender: ReferralExchange.InstitutionCoreDto;
+    senderSystem: ReferralExchange.System;
     offering: ReferralExchange.OfferingDto;
     patient: ReferralExchange.GetReferralPatientDto;
     referringDoctor: ReferralExchange.ReferringDoctorDto;

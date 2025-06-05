@@ -40,6 +40,7 @@ export interface CreateReferralReq {
     senderInstitutionName: string;
     /** MCR number of the doctor authoring this referral. */
     doctorMcr: string;
+    referrerIdType?: ReferralExchange.ReferrerIdType;
     /** Name of the doctor authoring this referral. */
     doctorName: string;
     /** Email of the doctor authoring this referral. */

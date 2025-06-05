@@ -28,4 +28,20 @@ export interface ReferralsListRequest {
      * To filter by the institution's role in the referral. e.g. For outbound referrals, use "sender'
      */
     role?: ReferralExchange.ReferralRole;
+    /**
+     * To filter by the referrer ID
+     */
+    referrerId?: string;
+    /**
+     * Type of ID specified in referrerId. Use together with `referrerId` to filter based on referrer.
+     */
+    referrerIdType?: ReferralExchange.ReferrerIdType;
+    /**
+     * To filter by the requesting institution
+     */
+    institutionId?: string;
+    /**
+     * To filter by the patient UIN
+     */
+    patientUin?: string;
 }

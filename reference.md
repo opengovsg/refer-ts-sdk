@@ -796,8 +796,8 @@ await client.links.createUpsertLink({
     referrerInstitutionId: "referrerInstitutionId",
     referrerInstitutionName: "referrerInstitutionName",
     referrerId: "referrerId",
+    referrerIdType: "mcr",
     referrerName: "referrerName",
-    referrerIdType: "referrerIdType",
 });
 ```
 
