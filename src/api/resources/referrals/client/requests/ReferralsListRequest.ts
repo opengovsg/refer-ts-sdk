@@ -6,9 +6,7 @@ import * as ReferralExchange from "../../../../index";
 
 /**
  * @example
- *     {
- *         hciCode: "hciCode"
- *     }
+ *     {}
  */
 export interface ReferralsListRequest {
     /**
@@ -22,7 +20,7 @@ export interface ReferralsListRequest {
     /**
      * To identify the requesting institution
      */
-    hciCode: string;
+    hciCode?: string;
     status?: ReferralExchange.ReferralStatusFilter | ReferralExchange.ReferralStatusFilter[];
     /**
      * To filter by the institution's role in the referral. e.g. For outbound referrals, use "sender'

@@ -68,9 +68,7 @@ await client.eligibility.get({
 <dd>
 
 ```typescript
-await client.referrals.list({
-    hciCode: "hciCode",
-});
+await client.referrals.list();
 ```
 
 </dd>
