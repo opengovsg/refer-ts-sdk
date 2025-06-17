@@ -15,4 +15,5 @@ export interface CreatePatientReq {
     dob: string;
     /** Patient gender */
     gender: ReferralExchange.CreatePatientReqGender;
+    address: ReferralExchange.CreateAddressReq;
 }

@@ -30,6 +30,13 @@ await client.referrals.upsert({
         phoneNumber: "91234567",
         dob: "1990-01-01",
         gender: "Male",
+        address: {
+            postalCode: "postalCode",
+            block: "block",
+            streetName: "streetName",
+            floorNumber: "floorNumber",
+            unitNumber: "unitNumber",
+        },
     },
     offeringId: "offeringId",
     senderHciCode: "senderHciCode",

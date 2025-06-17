@@ -11,7 +11,14 @@ import * as ReferralExchange from "../../../../index";
  *         referrerInstitutionName: "referrerInstitutionName",
  *         referrerId: "referrerId",
  *         referrerIdType: "mcr",
- *         referrerName: "referrerName"
+ *         referrerName: "referrerName",
+ *         address: {
+ *             postalCode: "postalCode",
+ *             block: "block",
+ *             streetName: "streetName",
+ *             floorNumber: "floorNumber",
+ *             unitNumber: "unitNumber"
+ *         }
  *     }
  */
 export interface CreateLinkReqUpsert {
@@ -38,4 +45,5 @@ export interface CreateLinkReqUpsert {
     patientDob?: string;
     /** Patient gender */
     patientGender?: ReferralExchange.CreateLinkReqUpsertPatientGender;
+    address: ReferralExchange.CreateAddressReq;
 }

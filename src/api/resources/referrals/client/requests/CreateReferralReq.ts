@@ -12,7 +12,14 @@ import * as ReferralExchange from "../../../../index";
  *             name: "name",
  *             phoneNumber: "91234567",
  *             dob: "1990-01-01",
- *             gender: "Male"
+ *             gender: "Male",
+ *             address: {
+ *                 postalCode: "postalCode",
+ *                 block: "block",
+ *                 streetName: "streetName",
+ *                 floorNumber: "floorNumber",
+ *                 unitNumber: "unitNumber"
+ *             }
  *         },
  *         offeringId: "offeringId",
  *         senderHciCode: "senderHciCode",

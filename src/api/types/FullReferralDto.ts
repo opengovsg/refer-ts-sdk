@@ -26,5 +26,4 @@ export interface FullReferralDto {
     timeslotStartAt?: string;
     notes: ReferralExchange.NoteDto[];
     timelineEvents: ReferralExchange.TimelineEventDto[];
-    links: ReferralExchange.ReferralLinkDto[];
 }
