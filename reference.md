@@ -803,13 +803,6 @@ await client.links.createUpsertLink({
     referrerId: "referrerId",
     referrerIdType: "mcr",
     referrerName: "referrerName",
-    address: {
-        postalCode: "postalCode",
-        block: "block",
-        streetName: "streetName",
-        floorNumber: "floorNumber",
-        unitNumber: "unitNumber",
-    },
 });
 ```
 

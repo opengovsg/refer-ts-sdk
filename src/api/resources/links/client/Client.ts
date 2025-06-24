@@ -44,14 +44,7 @@ export class Links {
      *         referrerInstitutionName: "referrerInstitutionName",
      *         referrerId: "referrerId",
      *         referrerIdType: "mcr",
-     *         referrerName: "referrerName",
-     *         address: {
-     *             postalCode: "postalCode",
-     *             block: "block",
-     *             streetName: "streetName",
-     *             floorNumber: "floorNumber",
-     *             unitNumber: "unitNumber"
-     *         }
+     *         referrerName: "referrerName"
      *     })
      */
     public async createUpsertLink(
@@ -69,8 +62,8 @@ export class Links {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.0-develop-1750758882",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.0-develop-1750758882",
+                "X-Fern-SDK-Version": "0.0.0-develop-1750760367",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.0-develop-1750760367",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
