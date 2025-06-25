@@ -28,5 +28,5 @@ export interface FullReferralDto {
     appointmentLocation?: string;
     notes: ReferralExchange.NoteDto[];
     timelineEvents: ReferralExchange.TimelineEventDto[];
-    links: unknown[][];
+    links: ReferralExchange.ReferralLinkDto[];
 }
