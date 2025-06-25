@@ -24,5 +24,7 @@ export interface ReferralDto {
     status: ReferralExchange.ReferralDtoStatus;
     /** Timeslot start time (ISO datetime) */
     timeslotStartAt?: string;
+    /** Appointment location */
+    appointmentLocation?: string;
     notes: ReferralExchange.NoteDto[];
 }

@@ -16,6 +16,7 @@ export type TimelineEventType =
     | "referral.pending-email-ack"
     | "appt.confirmed"
     | "appt.rescheduled"
+    | "appt.location-updated"
     | "appt.rejected"
     | "note.created"
     | "singhealth-patient-details.submitted"
@@ -41,6 +42,7 @@ export const TimelineEventType = {
     ReferralPendingEmailAck: "referral.pending-email-ack",
     ApptConfirmed: "appt.confirmed",
     ApptRescheduled: "appt.rescheduled",
+    ApptLocationUpdated: "appt.location-updated",
     ApptRejected: "appt.rejected",
     NoteCreated: "note.created",
     SinghealthPatientDetailsSubmitted: "singhealth-patient-details.submitted",
