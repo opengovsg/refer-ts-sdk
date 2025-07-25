@@ -8,7 +8,7 @@ import * as ReferralExchange from "../../../index";
 import urlJoin from "url-join";
 import * as errors from "../../../../errors/index";
 
-export declare namespace Notes {
+export declare namespace Aac {
     export interface Options {
         environment?: core.Supplier<environments.ReferralExchangeEnvironment | string>;
         /** Specify a custom URL to connect the client to. */
@@ -29,32 +29,28 @@ export declare namespace Notes {
     }
 }
 
-export class Notes {
-    constructor(protected readonly _options: Notes.Options = {}) {}
+export class Aac {
+    constructor(protected readonly _options: Aac.Options = {}) {}
 
     /**
-     * @param {string} referralId - Referral ID
-     * @param {ReferralExchange.CreateNoteReq} request
-     * @param {Notes.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {ReferralExchange.UpdateAacReq} request
+     * @param {Aac.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link ReferralExchange.UnauthorizedError}
      *
      * @example
-     *     await client.notes.create("referralId", {
-     *         authorHciCode: "authorHciCode"
-     *     })
+     *     await client.aac.aacControllerUpsertAac()
      */
-    public async create(
-        referralId: string,
-        request: ReferralExchange.CreateNoteReq,
-        requestOptions?: Notes.RequestOptions,
-    ): Promise<ReferralExchange.NoteDto> {
+    public async aacControllerUpsertAac(
+        request: ReferralExchange.UpdateAacReq = {},
+        requestOptions?: Aac.RequestOptions,
+    ): Promise<void> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.ReferralExchangeEnvironment.SmartCms,
-                `api/v1/referrals/${encodeURIComponent(referralId)}/notes`,
+                "api/v1/aac/notify-asg-aac",
             ),
             method: "POST",
             headers: {
@@ -75,7 +71,7 @@ export class Notes {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return _response.body as ReferralExchange.NoteDto;
+            return;
         }
 
         if (_response.error.reason === "status-code") {
@@ -98,7 +94,78 @@ export class Notes {
                 });
             case "timeout":
                 throw new errors.ReferralExchangeTimeoutError(
-                    "Timeout exceeded when calling POST /api/v1/referrals/{referralId}/notes.",
+                    "Timeout exceeded when calling POST /api/v1/aac/notify-asg-aac.",
+                );
+            case "unknown":
+                throw new errors.ReferralExchangeError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * @param {ReferralExchange.UpdateAacBoundaryReq} request
+     * @param {Aac.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link ReferralExchange.UnauthorizedError}
+     *
+     * @example
+     *     await client.aac.aacControllerUpsertAacBoundary()
+     */
+    public async aacControllerUpsertAacBoundary(
+        request: ReferralExchange.UpdateAacBoundaryReq = {},
+        requestOptions?: Aac.RequestOptions,
+    ): Promise<void> {
+        const _response = await (this._options.fetcher ?? core.fetcher)({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.ReferralExchangeEnvironment.SmartCms,
+                "api/v1/aac/notify-asg-aac-service-boundary",
+            ),
+            method: "POST",
+            headers: {
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
+                "X-Fern-SDK-Version": "0.0.0-develop-1753420242",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.0-develop-1753420242",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            requestType: "json",
+            body: request,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return;
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new ReferralExchange.UnauthorizedError(_response.error.body as unknown);
+                default:
+                    throw new errors.ReferralExchangeError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.ReferralExchangeError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.ReferralExchangeTimeoutError(
+                    "Timeout exceeded when calling POST /api/v1/aac/notify-asg-aac-service-boundary.",
                 );
             case "unknown":
                 throw new errors.ReferralExchangeError({
