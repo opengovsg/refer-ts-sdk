@@ -44,4 +44,6 @@ export * from "./TriggerEmailReminderBody";
 export * from "./FormMetadata";
 export * from "./CreateReferralFormReq";
 export * from "./PublicReferralDto";
+export * from "./UpdateAacReq";
+export * from "./UpdateAacBoundaryReq";
 export * from "./OkResponse";

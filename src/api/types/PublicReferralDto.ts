@@ -15,8 +15,6 @@ export interface PublicReferralDto {
     isUrgent: boolean;
     /** Created at (ISO datetime) */
     createdAt: string;
-    /** Updated at (ISO datetime) */
-    updatedAt: string;
     formResponses: ReferralExchange.FormResponse[];
     /** List of forms required to complete the referral */
     forms?: ReferralExchange.Form[];

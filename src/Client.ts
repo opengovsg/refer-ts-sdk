@@ -10,7 +10,6 @@ import { Notes } from "./api/resources/notes/client/Client";
 import { Offerings } from "./api/resources/offerings/client/Client";
 import { Links } from "./api/resources/links/client/Client";
 import { Public } from "./api/resources/public/client/Client";
-import { Aac } from "./api/resources/aac/client/Client";
 import { Webhooks } from "./api/resources/webhooks/client/Client";
 import { Health } from "./api/resources/health/client/Client";
 
@@ -42,7 +41,6 @@ export class ReferralExchangeClient {
     protected _offerings: Offerings | undefined;
     protected _links: Links | undefined;
     protected _public: Public | undefined;
-    protected _aac: Aac | undefined;
     protected _webhooks: Webhooks | undefined;
     protected _health: Health | undefined;
 
@@ -70,10 +68,6 @@ export class ReferralExchangeClient {
 
     public get public(): Public {
         return (this._public ??= new Public(this._options));
-    }
-
-    public get aac(): Aac {
-        return (this._aac ??= new Aac(this._options));
     }
 
     public get webhooks(): Webhooks {
