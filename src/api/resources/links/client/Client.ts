@@ -62,8 +62,8 @@ export class Links {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.47",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.47",
+                "X-Fern-SDK-Version": "0.0.48",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.48",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
