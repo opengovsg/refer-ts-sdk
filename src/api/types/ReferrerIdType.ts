@@ -5,9 +5,10 @@
 /**
  * Type of ID specified in referrerId.
  */
-export type ReferrerIdType = "mcr" | "nric" | "email";
+export type ReferrerIdType = "mcr" | "nric" | "email" | "brightUserId";
 export const ReferrerIdType = {
     Mcr: "mcr",
     Nric: "nric",
     Email: "email",
+    BrightUserId: "brightUserId",
 } as const;
