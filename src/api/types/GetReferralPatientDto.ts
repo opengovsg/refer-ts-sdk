@@ -16,6 +16,8 @@ export interface GetReferralPatientDto {
     /** Patient gender */
     gender: ReferralExchange.GetReferralPatientDtoGender;
     address?: ReferralExchange.CreateAddressReq;
+    /** Patient residential status */
+    residentialStatus?: ReferralExchange.GetReferralPatientDtoResidentialStatus;
     /** Current CHAS status */
     chasStatus: string;
 }

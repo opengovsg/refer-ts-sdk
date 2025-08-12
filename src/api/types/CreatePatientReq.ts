@@ -16,4 +16,6 @@ export interface CreatePatientReq {
     /** Patient gender */
     gender: ReferralExchange.CreatePatientReqGender;
     address?: ReferralExchange.CreateAddressReq;
+    /** Patient residential status */
+    residentialStatus?: ReferralExchange.CreatePatientReqResidentialStatus;
 }
