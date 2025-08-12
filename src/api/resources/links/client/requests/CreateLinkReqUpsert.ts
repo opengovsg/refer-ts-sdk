@@ -39,4 +39,6 @@ export interface CreateLinkReqUpsert {
     /** Patient gender */
     patientGender?: ReferralExchange.CreateLinkReqUpsertPatientGender;
     address?: ReferralExchange.CreateAddressReq;
+    /** Patient residential status */
+    residentialStatus?: ReferralExchange.CreateLinkReqUpsertResidentialStatus;
 }
