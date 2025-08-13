@@ -680,7 +680,6 @@ await client.offerings.list();
 
 ```typescript
 await client.offerings.apiHoldingControllerGetRecommendedOffering({
-    category: "aac service",
     postalCode: "postalCode",
 });
 ```

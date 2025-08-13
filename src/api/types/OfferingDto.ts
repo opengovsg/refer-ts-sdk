@@ -19,5 +19,5 @@ export interface OfferingDto {
     isSubsidisable: boolean;
     timeslotPolicy: ReferralExchange.TimeslotPolicy;
     /** Category of the offering. Used to group offerings together. */
-    category?: ReferralExchange.OfferingDtoCategory;
+    category?: "aac";
 }
