@@ -11,4 +11,6 @@ export interface CancelReferralReq {
     cancelledByUin?: string;
     /** Name of the person cancelling the referral, if available */
     cancelledByName?: string;
+    /** Optional note to save when cancelling the referral */
+    cancelNote?: string;
 }
