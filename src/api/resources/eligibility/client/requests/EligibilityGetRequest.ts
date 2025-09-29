@@ -22,6 +22,10 @@ export interface EligibilityGetRequest {
      */
     referrerInstitutionId?: string;
     /**
+     * Postal code of the patient
+     */
+    patientPostalCode?: string;
+    /**
      * Patient's unique identity number (NRIC or FIN)
      */
     uin: string;

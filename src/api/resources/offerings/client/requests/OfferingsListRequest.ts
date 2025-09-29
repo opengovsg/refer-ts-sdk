@@ -18,4 +18,8 @@ export interface OfferingsListRequest {
      * ID of the referring institution. Use together with `referrerId` and `referrerIdType` to filter based on referrer.
      */
     referrerInstitutionId?: string;
+    /**
+     * Postal code of the patient
+     */
+    patientPostalCode?: string;
 }

@@ -48,7 +48,7 @@ export class Eligibility {
         request: ReferralExchange.EligibilityGetRequest,
         requestOptions?: Eligibility.RequestOptions,
     ): Promise<ReferralExchange.EligibilityRes> {
-        const { referrerId, referrerIdType, referrerInstitutionId, uin, offeringId } = request;
+        const { referrerId, referrerIdType, referrerInstitutionId, patientPostalCode, uin, offeringId } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (referrerId != null) {
             _queryParams["referrerId"] = referrerId;
@@ -60,6 +60,10 @@ export class Eligibility {
 
         if (referrerInstitutionId != null) {
             _queryParams["referrerInstitutionId"] = referrerInstitutionId;
+        }
+
+        if (patientPostalCode != null) {
+            _queryParams["patientPostalCode"] = patientPostalCode;
         }
 
         _queryParams["uin"] = uin;
@@ -75,8 +79,8 @@ export class Eligibility {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.50",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.50",
+                "X-Fern-SDK-Version": "0.0.0-develop-1759151439",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.0-develop-1759151439",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
