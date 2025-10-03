@@ -40,6 +40,7 @@ export * from "./CreatePatientReqResidentialStatus";
 export * from "./CreatePatientReq";
 export * from "./OfferingWithAllowedDto";
 export * from "./Timeslot";
+export * from "./UpdateEmailAckOfferingReq";
 export * from "./TriggerEmailReminderBody";
 export * from "./FormMetadata";
 export * from "./CreateReferralFormReq";
