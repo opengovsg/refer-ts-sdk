@@ -16,6 +16,9 @@
 
 ```typescript
 await client.eligibility.get({
+    referrerId: "referrerId",
+    referrerIdType: "mcr",
+    referrerInstitutionId: "referrerInstitutionId",
     uin: "uin",
     offeringId: "offeringId",
 });
@@ -631,7 +634,11 @@ await client.notes.create("referralId", {
 <dd>
 
 ```typescript
-await client.offerings.list();
+await client.offerings.list({
+    referrerId: "referrerId",
+    referrerIdType: "mcr",
+    referrerInstitutionId: "referrerInstitutionId",
+});
 ```
 
 </dd>

@@ -6,18 +6,22 @@ import * as ReferralExchange from "../../../../index";
 
 /**
  * @example
- *     {}
+ *     {
+ *         referrerId: "referrerId",
+ *         referrerIdType: "mcr",
+ *         referrerInstitutionId: "referrerInstitutionId"
+ *     }
  */
 export interface OfferingsListRequest {
     /**
-     * ID of the referring individual. Use together with `referralIdType` and `referrerInstitutionId` to filter based on referrer.
+     * ID of the referring individual.
      */
-    referrerId?: string;
-    referrerIdType?: ReferralExchange.ReferrerIdType;
+    referrerId: string;
+    referrerIdType: ReferralExchange.ReferrerIdType;
     /**
-     * ID of the referring institution. Use together with `referrerId` and `referrerIdType` to filter based on referrer.
+     * ID of the referring institution.
      */
-    referrerInstitutionId?: string;
+    referrerInstitutionId: string;
     /**
      * Postal code of the patient
      */
