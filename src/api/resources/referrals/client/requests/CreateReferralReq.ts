@@ -57,4 +57,10 @@ export interface CreateReferralReq {
     timeslotStartAt?: number;
     /** Form responses */
     formResponses: ReferralExchange.FormResponse[];
+    /** Clinic license number */
+    clinicLicenseNumber?: string;
+    /** Clinic type */
+    clinicType?: ReferralExchange.CreateReferralReqClinicType;
+    /** Any clinical information that is relevant to the referral, e.g. medical history, drug allergies, treatment provided, etc. */
+    clinicalInfo?: string;
 }

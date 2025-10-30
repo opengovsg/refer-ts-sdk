@@ -23,4 +23,10 @@ export interface PublicReferralDto {
     attachments: ReferralExchange.AttachmentDto[];
     /** URL to view the referral */
     url?: string;
+    /** Clinic license number */
+    clinicLicenseNumber?: string;
+    /** Clinic type */
+    clinicType?: ReferralExchange.PublicReferralDtoClinicType;
+    /** Any clinical information that is relevant to the referral, e.g. medical history, drug allergies, treatment provided, etc. */
+    clinicalInfo?: string;
 }

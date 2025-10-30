@@ -23,6 +23,12 @@ export interface FullReferralDto {
     attachments: ReferralExchange.AttachmentDto[];
     /** URL to view the referral */
     url?: string;
+    /** Clinic license number */
+    clinicLicenseNumber?: string;
+    /** Clinic type */
+    clinicType?: ReferralExchange.FullReferralDtoClinicType;
+    /** Any clinical information that is relevant to the referral, e.g. medical history, drug allergies, treatment provided, etc. */
+    clinicalInfo?: string;
     status: ReferralExchange.FullReferralDtoStatus;
     /** Timeslot start time (ISO datetime) */
     timeslotStartAt?: string;
@@ -31,4 +37,5 @@ export interface FullReferralDto {
     notes: ReferralExchange.NoteDto[];
     timelineEvents: ReferralExchange.TimelineEventDto[];
     links: ReferralExchange.ReferralLinkDto[];
+    appointments: ReferralExchange.AppointmentDto[];
 }

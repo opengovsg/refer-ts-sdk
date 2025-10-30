@@ -41,4 +41,12 @@ export interface CreateLinkReqUpsert {
     address?: ReferralExchange.CreateAddressReq;
     /** Patient residential status */
     residentialStatus?: ReferralExchange.CreateLinkReqUpsertResidentialStatus;
+    /** Patient Healthier SG (HSG) enrolment status */
+    isPatientHsgEnrolled?: boolean;
+    /** Clinic license number */
+    clinicLicenseNumber?: string;
+    /** Clinic type */
+    clinicType?: ReferralExchange.CreateLinkReqUpsertClinicType;
+    /** Any clinical information that is relevant to the referral, e.g. medical history, drug allergies, treatment provided, etc. */
+    clinicalInfo?: string;
 }
