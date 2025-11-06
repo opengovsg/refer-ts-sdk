@@ -180,6 +180,24 @@ const client = new ReferralExchangeClient({
 });
 ```
 
+### JWT Authenticated Client
+
+If you need to authenticate requests by signing short-lived JWTs locally, use the `ReferralExchangeJwtClient`. It
+accepts a PEM-encoded ES256 private key and the API key name to embed as the issuer claim. Each request automatically
+receives a freshly signed token (15 second TTL) in the `Authorization` header.
+
+```typescript
+import { ReferralExchangeJwtClient } from "@opengovsg/refx-ts-sdk";
+
+const client = new ReferralExchangeJwtClient({
+    privateKey: process.env.REFX_PRIVATE_KEY!,
+    apiKeyName: process.env.REFX_API_KEY_NAME!,
+    environment: "Production", // or pass baseUrl
+});
+
+const offerings = await client.offerings.list();
+```
+
 ## Contributing
 
 While we value open-source contributions to this SDK, this library is generated programmatically.
