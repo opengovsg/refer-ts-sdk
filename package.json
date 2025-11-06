@@ -9,6 +9,7 @@
         "format": "prettier . --write --ignore-unknown",
         "build": "tsc",
         "prepack": "cp -rv dist/. .",
+        "pretest": "yarn build",
         "test": "jest"
     },
     "dependencies": {
