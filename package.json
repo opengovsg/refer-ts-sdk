@@ -39,6 +39,7 @@
     "browser": {
         "fs": false,
         "os": false,
-        "path": false
+        "path": false,
+        "jsonwebtoken": "./dist/browser/jsonwebtoken-stub.js"
     }
 }
