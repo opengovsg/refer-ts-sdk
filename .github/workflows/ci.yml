@@ -33,11 +33,20 @@ jobs:
     needs: [ compile, test ]
     if: github.event_name == 'push' && contains(github.ref, 'refs/tags/')
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # for pushing tags
+      id-token: write # required for OIDC
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Set up node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          registry-url: 'https://registry.npmjs.org'
+          cache: npm
+      - name: Update npm
+        run: npm install -g npm@latest # Ensure npm 11.5.1 or later is installed for OIDC support
       - name: Install dependencies
         run: yarn install
       - name: Build
@@ -45,7 +54,6 @@ jobs:
 
       - name: Publish to npm
         run: |
-          npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
           if [[ ${GITHUB_REF} == *alpha* ]]; then
             npm publish --access public --tag alpha
           elif [[ ${GITHUB_REF} == *beta* ]]; then
@@ -53,5 +61,3 @@ jobs:
           else
             npm publish --access public
           fi
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
