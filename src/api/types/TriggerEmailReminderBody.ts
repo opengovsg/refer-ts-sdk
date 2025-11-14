@@ -5,4 +5,8 @@
 export interface TriggerEmailReminderBody {
     /** Email to cc the reminder to */
     ccEmail?: string;
+    /** Whether to send the reminder to the destination */
+    remindDestination: boolean;
+    /** Whether to send the reminder to the referrer */
+    remindReferrer: boolean;
 }
