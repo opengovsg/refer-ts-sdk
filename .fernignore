@@ -4,3 +4,5 @@
 
 src/wrapper
 src/index.ts
+src/browser/jsonwebtoken-stub.ts
+tests/unit/wrapper
