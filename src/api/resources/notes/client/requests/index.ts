@@ -1,1 +1,1 @@
-export type { CreateNoteReq } from "./CreateNoteReq.js";
+export { type CreateNoteReq } from "./CreateNoteReq";

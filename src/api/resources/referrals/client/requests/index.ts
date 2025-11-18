@@ -1,9 +1,7 @@
-export type { AcceptReferralBody } from "./AcceptReferralBody.js";
-export type { AmendReferralReq } from "./AmendReferralReq.js";
-export type { BackToDraftReferralsRequest } from "./BackToDraftReferralsRequest.js";
-export type { CancelReferralReq } from "./CancelReferralReq.js";
-export type { CreateReferralReq } from "./CreateReferralReq.js";
-export type { DeleteReferralsRequest } from "./DeleteReferralsRequest.js";
-export type { GetReferralsRequest } from "./GetReferralsRequest.js";
-export type { ListReferralsRequest } from "./ListReferralsRequest.js";
-export type { RejectReferralBody } from "./RejectReferralBody.js";
+export { type ReferralsListRequest } from "./ReferralsListRequest";
+export { type CreateReferralReq } from "./CreateReferralReq";
+export { type ReferralsGetRequest } from "./ReferralsGetRequest";
+export { type CancelReferralReq } from "./CancelReferralReq";
+export { type AmendReferralReq } from "./AmendReferralReq";
+export { type AcceptReferralBody } from "./AcceptReferralBody";
+export { type RejectReferralBody } from "./RejectReferralBody";
