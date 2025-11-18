@@ -1,7 +1,5 @@
 # Reference
-
 ## Eligibility
-
 <details><summary><code>client.eligibility.<a href="/src/api/resources/eligibility/client/Client.ts">get</a>({ ...params }) -> ReferralExchange.EligibilityRes</code></summary>
 <dl>
 <dd>
@@ -20,10 +18,10 @@ await client.eligibility.get({
     referrerIdType: "mcr",
     referrerInstitutionId: "referrerInstitutionId",
     uin: "uin",
-    offeringId: "offeringId",
+    offeringId: "offeringId"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -37,27 +35,27 @@ await client.eligibility.get({
 <dl>
 <dd>
 
-**request:** `ReferralExchange.EligibilityGetRequest`
-
+**request:** `ReferralExchange.GetEligibilityRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Eligibility.RequestOptions`
+**requestOptions:** `Eligibility.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Referrals
-
 <details><summary><code>client.referrals.<a href="/src/api/resources/referrals/client/Client.ts">list</a>({ ...params }) -> ReferralExchange.PaginatedReferralsDto</code></summary>
 <dl>
 <dd>
@@ -72,8 +70,8 @@ await client.eligibility.get({
 
 ```typescript
 await client.referrals.list();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -87,20 +85,21 @@ await client.referrals.list();
 <dl>
 <dd>
 
-**request:** `ReferralExchange.ReferralsListRequest`
-
+**request:** `ReferralExchange.ListReferralsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Referrals.RequestOptions`
+**requestOptions:** `Referrals.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -125,7 +124,7 @@ await client.referrals.upsert({
         name: "name",
         phoneNumber: "91234567",
         dob: "1990-01-01",
-        gender: "Male",
+        gender: "Male"
     },
     offeringId: "offeringId",
     senderHciCode: "senderHciCode",
@@ -137,16 +136,14 @@ await client.referrals.upsert({
     isSubsidised: true,
     isUrgent: true,
     isDraft: true,
-    formResponses: [
-        {
+    formResponses: [{
             question: "question",
             id: "id",
-            answer: "answer",
-        },
-    ],
+            answer: "answer"
+        }]
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -160,26 +157,27 @@ await client.referrals.upsert({
 <dl>
 <dd>
 
-**request:** `ReferralExchange.CreateReferralReq`
-
+**request:** `ReferralExchange.CreateReferralReq` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Referrals.RequestOptions`
+**requestOptions:** `Referrals.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.referrals.<a href="/src/api/resources/referrals/client/Client.ts">get</a>(referralId, { ...params }) -> ReferralExchange.FullReferralDto</code></summary>
+<details><summary><code>client.referrals.<a href="/src/api/resources/referrals/client/Client.ts">get</a>({ ...params }) -> ReferralExchange.FullReferralDto</code></summary>
 <dl>
 <dd>
 
@@ -192,171 +190,11 @@ await client.referrals.upsert({
 <dd>
 
 ```typescript
-await client.referrals.get("referralId");
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**referralId:** `string` — Referral ID
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `ReferralExchange.ReferralsGetRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `Referrals.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.referrals.<a href="/src/api/resources/referrals/client/Client.ts">delete</a>(referralId) -> ReferralExchange.ReferralDto</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.referrals.delete("referralId");
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**referralId:** `string` — Referral ID
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `Referrals.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.referrals.<a href="/src/api/resources/referrals/client/Client.ts">cancel</a>(referralId, { ...params }) -> ReferralExchange.ReferralDto</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.referrals.cancel("referralId");
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**referralId:** `string` — Referral ID
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `ReferralExchange.CancelReferralReq`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `Referrals.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.referrals.<a href="/src/api/resources/referrals/client/Client.ts">amend</a>(referralId, { ...params }) -> ReferralExchange.ReferralDto</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.referrals.amend("referralId", {
-    timeslotStartAt: 1714857600000,
+await client.referrals.get({
+    referralId: "referralId"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -370,34 +208,27 @@ await client.referrals.amend("referralId", {
 <dl>
 <dd>
 
-**referralId:** `string` — Referral ID
-
+**request:** `ReferralExchange.GetReferralsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `ReferralExchange.AmendReferralReq`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `Referrals.RequestOptions`
-
+**requestOptions:** `Referrals.RequestOptions` 
+    
 </dd>
 </dl>
 </dd>
 </dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.referrals.<a href="/src/api/resources/referrals/client/Client.ts">accept</a>(referralId, { ...params }) -> void</code></summary>
+<details><summary><code>client.referrals.<a href="/src/api/resources/referrals/client/Client.ts">delete</a>({ ...params }) -> ReferralExchange.ReferralDto</code></summary>
 <dl>
 <dd>
 
@@ -410,67 +241,11 @@ await client.referrals.amend("referralId", {
 <dd>
 
 ```typescript
-await client.referrals.accept("referralId");
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**referralId:** `string` — Referral ID
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `ReferralExchange.AcceptReferralBody`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `Referrals.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.referrals.<a href="/src/api/resources/referrals/client/Client.ts">reject</a>(referralId, { ...params }) -> void</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.referrals.reject("referralId", {
-    rejectionMessage: "rejectionMessage",
+await client.referrals.delete({
+    referralId: "referralId"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -484,34 +259,27 @@ await client.referrals.reject("referralId", {
 <dl>
 <dd>
 
-**referralId:** `string` — Referral ID
-
+**request:** `ReferralExchange.DeleteReferralsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `ReferralExchange.RejectReferralBody`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `Referrals.RequestOptions`
-
+**requestOptions:** `Referrals.RequestOptions` 
+    
 </dd>
 </dl>
 </dd>
 </dl>
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.referrals.<a href="/src/api/resources/referrals/client/Client.ts">backToDraft</a>(referralId) -> ReferralExchange.ReferralDto</code></summary>
+<details><summary><code>client.referrals.<a href="/src/api/resources/referrals/client/Client.ts">cancel</a>({ ...params }) -> ReferralExchange.ReferralDto</code></summary>
 <dl>
 <dd>
 
@@ -524,9 +292,11 @@ await client.referrals.reject("referralId", {
 <dd>
 
 ```typescript
-await client.referrals.backToDraft("referralId");
-```
+await client.referrals.cancel({
+    referralId: "referralId"
+});
 
+```
 </dd>
 </dl>
 </dd>
@@ -540,28 +310,234 @@ await client.referrals.backToDraft("referralId");
 <dl>
 <dd>
 
-**referralId:** `string` — Referral ID
-
+**request:** `ReferralExchange.CancelReferralReq` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Referrals.RequestOptions`
+**requestOptions:** `Referrals.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
 
 </dd>
 </dl>
+</details>
+
+<details><summary><code>client.referrals.<a href="/src/api/resources/referrals/client/Client.ts">amend</a>({ ...params }) -> ReferralExchange.ReferralDto</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.referrals.amend({
+    referralId: "referralId",
+    timeslotStartAt: 1714857600000
+});
+
+```
 </dd>
 </dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `ReferralExchange.AmendReferralReq` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Referrals.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.referrals.<a href="/src/api/resources/referrals/client/Client.ts">accept</a>({ ...params }) -> void</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.referrals.accept({
+    referralId: "referralId"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `ReferralExchange.AcceptReferralBody` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Referrals.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.referrals.<a href="/src/api/resources/referrals/client/Client.ts">reject</a>({ ...params }) -> void</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.referrals.reject({
+    referralId: "referralId",
+    rejectionMessage: "rejectionMessage"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `ReferralExchange.RejectReferralBody` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Referrals.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.referrals.<a href="/src/api/resources/referrals/client/Client.ts">backToDraft</a>({ ...params }) -> ReferralExchange.ReferralDto</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.referrals.backToDraft({
+    referralId: "referralId"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `ReferralExchange.BackToDraftReferralsRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Referrals.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
 
 </dd>
 </dl>
 </details>
 
 ## Notes
-
-<details><summary><code>client.notes.<a href="/src/api/resources/notes/client/Client.ts">create</a>(referralId, { ...params }) -> ReferralExchange.NoteDto</code></summary>
+<details><summary><code>client.notes.<a href="/src/api/resources/notes/client/Client.ts">create</a>({ ...params }) -> ReferralExchange.NoteDto</code></summary>
 <dl>
 <dd>
 
@@ -574,11 +550,12 @@ await client.referrals.backToDraft("referralId");
 <dd>
 
 ```typescript
-await client.notes.create("referralId", {
-    authorHciCode: "authorHciCode",
+await client.notes.create({
+    referralId: "referralId",
+    authorHciCode: "authorHciCode"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -592,35 +569,27 @@ await client.notes.create("referralId", {
 <dl>
 <dd>
 
-**referralId:** `string` — Referral ID
-
+**request:** `ReferralExchange.CreateNoteReq` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `ReferralExchange.CreateNoteReq`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `Notes.RequestOptions`
-
+**requestOptions:** `Notes.RequestOptions` 
+    
 </dd>
 </dl>
 </dd>
 </dl>
+
 
 </dd>
 </dl>
 </details>
 
 ## Offerings
-
 <details><summary><code>client.offerings.<a href="/src/api/resources/offerings/client/Client.ts">list</a>({ ...params }) -> ReferralExchange.OfferingWithAllowedDto[]</code></summary>
 <dl>
 <dd>
@@ -637,10 +606,10 @@ await client.notes.create("referralId", {
 await client.offerings.list({
     referrerId: "referrerId",
     referrerIdType: "mcr",
-    referrerInstitutionId: "referrerInstitutionId",
+    referrerInstitutionId: "referrerInstitutionId"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -654,20 +623,21 @@ await client.offerings.list({
 <dl>
 <dd>
 
-**request:** `ReferralExchange.OfferingsListRequest`
-
+**request:** `ReferralExchange.ListOfferingsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Offerings.RequestOptions`
+**requestOptions:** `Offerings.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -687,10 +657,11 @@ await client.offerings.list({
 
 ```typescript
 await client.offerings.apiHoldingControllerGetRecommendedOffering({
-    postalCode: "postalCode",
+    category: "aac",
+    postalCode: "postalCode"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -704,26 +675,27 @@ await client.offerings.apiHoldingControllerGetRecommendedOffering({
 <dl>
 <dd>
 
-**request:** `ReferralExchange.ApiHoldingControllerGetRecommendedOfferingRequest`
-
+**request:** `ReferralExchange.ApiHoldingControllerGetRecommendedOfferingRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Offerings.RequestOptions`
+**requestOptions:** `Offerings.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.offerings.<a href="/src/api/resources/offerings/client/Client.ts">listTimeslots</a>(offeringId, { ...params }) -> ReferralExchange.Timeslot[]</code></summary>
+<details><summary><code>client.offerings.<a href="/src/api/resources/offerings/client/Client.ts">listTimeslots</a>({ ...params }) -> ReferralExchange.Timeslot[]</code></summary>
 <dl>
 <dd>
 
@@ -736,11 +708,12 @@ await client.offerings.apiHoldingControllerGetRecommendedOffering({
 <dd>
 
 ```typescript
-await client.offerings.listTimeslots("offeringId", {
-    from: 1.1,
+await client.offerings.listTimeslots({
+    offeringId: "offeringId",
+    from: 1.1
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -754,35 +727,27 @@ await client.offerings.listTimeslots("offeringId", {
 <dl>
 <dd>
 
-**offeringId:** `string`
-
+**request:** `ReferralExchange.ListTimeslotsOfferingsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `ReferralExchange.OfferingsListTimeslotsRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `Offerings.RequestOptions`
-
+**requestOptions:** `Offerings.RequestOptions` 
+    
 </dd>
 </dl>
 </dd>
 </dl>
+
 
 </dd>
 </dl>
 </details>
 
 ## Links
-
 <details><summary><code>client.links.<a href="/src/api/resources/links/client/Client.ts">createUpsertLink</a>({ ...params }) -> ReferralExchange.ReferralLinkDto</code></summary>
 <dl>
 <dd>
@@ -801,10 +766,10 @@ await client.links.createUpsertLink({
     referrerInstitutionName: "referrerInstitutionName",
     referrerId: "referrerId",
     referrerIdType: "mcr",
-    referrerName: "referrerName",
+    referrerName: "referrerName"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -818,28 +783,28 @@ await client.links.createUpsertLink({
 <dl>
 <dd>
 
-**request:** `ReferralExchange.CreateLinkReqUpsert`
-
+**request:** `ReferralExchange.CreateLinkReqUpsert` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Links.RequestOptions`
+**requestOptions:** `Links.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Public
-
-<details><summary><code>client.public.<a href="/src/api/resources/public/client/Client.ts">getReferral</a>(referralId, { ...params }) -> ReferralExchange.PublicReferralDto</code></summary>
+<details><summary><code>client.public.<a href="/src/api/resources/public/client/Client.ts">getReferral</a>({ ...params }) -> ReferralExchange.PublicReferralDto</code></summary>
 <dl>
 <dd>
 
@@ -852,9 +817,11 @@ await client.links.createUpsertLink({
 <dd>
 
 ```typescript
-await client.public.getReferral("referralId");
-```
+await client.public.getReferral({
+    referralId: "referralId"
+});
 
+```
 </dd>
 </dl>
 </dd>
@@ -868,35 +835,27 @@ await client.public.getReferral("referralId");
 <dl>
 <dd>
 
-**referralId:** `string` — Referral ID
-
+**request:** `ReferralExchange.GetReferralPublicRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `ReferralExchange.PublicGetReferralRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `Public.RequestOptions`
-
+**requestOptions:** `Public.RequestOptions` 
+    
 </dd>
 </dl>
 </dd>
 </dl>
+
 
 </dd>
 </dl>
 </details>
 
 ## Webhooks
-
 <details><summary><code>client.webhooks.<a href="/src/api/resources/webhooks/client/Client.ts">submitSingHealthFormsg</a>() -> void</code></summary>
 <dl>
 <dd>
@@ -911,8 +870,8 @@ await client.public.getReferral("referralId");
 
 ```typescript
 await client.webhooks.submitSingHealthFormsg();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -926,18 +885,19 @@ await client.webhooks.submitSingHealthFormsg();
 <dl>
 <dd>
 
-**requestOptions:** `Webhooks.RequestOptions`
+**requestOptions:** `Webhooks.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.webhooks.<a href="/src/api/resources/webhooks/client/Client.ts">submitFormsg</a>(formId) -> void</code></summary>
+<details><summary><code>client.webhooks.<a href="/src/api/resources/webhooks/client/Client.ts">submitFormsg</a>({ ...params }) -> void</code></summary>
 <dl>
 <dd>
 
@@ -950,9 +910,11 @@ await client.webhooks.submitSingHealthFormsg();
 <dd>
 
 ```typescript
-await client.webhooks.submitFormsg("formId");
-```
+await client.webhooks.submitFormsg({
+    formId: "formId"
+});
 
+```
 </dd>
 </dl>
 </dd>
@@ -966,27 +928,27 @@ await client.webhooks.submitFormsg("formId");
 <dl>
 <dd>
 
-**formId:** `string`
-
+**request:** `ReferralExchange.SubmitFormsgWebhooksRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Webhooks.RequestOptions`
+**requestOptions:** `Webhooks.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Health
-
 <details><summary><code>client.health.<a href="/src/api/resources/health/client/Client.ts">check</a>() -> ReferralExchange.OkResponse</code></summary>
 <dl>
 <dd>
@@ -1001,8 +963,8 @@ await client.webhooks.submitFormsg("formId");
 
 ```typescript
 await client.health.check();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -1016,12 +978,13 @@ await client.health.check();
 <dl>
 <dd>
 
-**requestOptions:** `Health.RequestOptions`
+**requestOptions:** `Health.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>

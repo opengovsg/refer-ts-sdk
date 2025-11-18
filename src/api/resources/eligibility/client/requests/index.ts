@@ -1,1 +1,1 @@
-export { type EligibilityGetRequest } from "./EligibilityGetRequest";
+export type { GetEligibilityRequest } from "./GetEligibilityRequest.js";

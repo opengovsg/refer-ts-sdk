@@ -1,1 +1,1 @@
-export { type PublicGetReferralRequest } from "./PublicGetReferralRequest";
+export type { GetReferralPublicRequest } from "./GetReferralPublicRequest.js";

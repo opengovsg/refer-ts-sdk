@@ -1,1 +1,1 @@
-export { type CreateLinkReqUpsert } from "./CreateLinkReqUpsert";
+export type { CreateLinkReqUpsert } from "./CreateLinkReqUpsert.js";
