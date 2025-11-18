@@ -180,6 +180,34 @@ const client = new ReferralExchangeClient({
 });
 ```
 
+### JWT Authenticated Client
+
+If you need to authenticate requests by signing short-lived JWTs locally, use the `ReferralExchangeJwtClient`. It
+accepts a PEM-encoded ES256 private key and the API key name to embed as the issuer claim. By default each request
+receives a freshly signed token (15 second TTL) in the `Authorization` header, but you can opt into caching with a
+refresh buffer to reuse tokens safely. When opting in, you must supply the refresh buffer explicitly so the SDK knows
+how early to rotate tokens.
+
+```typescript
+import { ReferralExchangeJwtClient } from "@opengovsg/refx-ts-sdk";
+
+const client = new ReferralExchangeJwtClient({
+    privateKey: process.env.REFX_PRIVATE_KEY!,
+    apiKeyName: process.env.REFX_API_KEY_NAME!,
+    environment: "Production", // or pass baseUrl
+    tokenCache: {
+        // The refresh buffer (required when enabling caching) is how much time must remain
+        // before we stop reusing a JWT so requests don't arrive after the token's exp timestamp.
+        refreshBufferSeconds: 5,
+    },
+});
+
+const offerings = await client.offerings.list();
+```
+
+Omit the `tokenCache` block (the default) to sign a new token for every request. When you opt in, you must specify
+`refreshBufferSeconds` to control how early the SDK rotates tokens.
+
 ## Contributing
 
 While we value open-source contributions to this SDK, this library is generated programmatically.

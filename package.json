@@ -1,6 +1,6 @@
 {
     "name": "@opengovsg/refx-ts-sdk",
-    "version": "0.0.55",
+    "version": "0.0.0-develop-alpha-1763368419",
     "private": false,
     "repository": "https://github.com/opengovsg/refer-ts-sdk",
     "main": "./index.js",
@@ -9,12 +9,14 @@
         "format": "prettier . --write --ignore-unknown",
         "build": "tsc",
         "prepack": "cp -rv dist/. .",
+        "pretest": "yarn build",
         "test": "jest"
     },
     "dependencies": {
         "url-join": "4.0.1",
         "form-data": "^4.0.0",
         "formdata-node": "^6.0.3",
+        "jsonwebtoken": "^9.0.2",
         "node-fetch": "^2.7.0",
         "qs": "^6.13.1",
         "readable-stream": "^4.5.2"
@@ -23,6 +25,7 @@
         "@types/url-join": "4.0.1",
         "@types/qs": "^6.9.17",
         "@types/node-fetch": "^2.6.12",
+        "@types/jsonwebtoken": "^9.0.7",
         "@types/readable-stream": "^4.0.18",
         "webpack": "^5.97.1",
         "ts-loader": "^9.5.1",
@@ -37,6 +40,7 @@
     "browser": {
         "fs": false,
         "os": false,
-        "path": false
+        "path": false,
+        "jsonwebtoken": "./dist/browser/jsonwebtoken-stub.js"
     }
 }
