@@ -1,7 +1,12 @@
 # Specify files that shouldn't be modified by Fern
 
+# documentation
+README.md
+
+# custom workflow
 .github/workflows/ci.yml
 
+# custom code
 src/wrapper
 src/index.ts
 src/browser/jsonwebtoken-stub.ts
