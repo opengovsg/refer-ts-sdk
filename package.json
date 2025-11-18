@@ -1,6 +1,6 @@
 {
     "name": "@opengovsg/refx-ts-sdk",
-    "version": "0.0.0-develop-alpha-1763368419",
+    "version": "0.0.0-develop-1763446728",
     "private": false,
     "repository": "https://github.com/opengovsg/refer-ts-sdk",
     "main": "./index.js",
@@ -9,23 +9,22 @@
         "format": "prettier . --write --ignore-unknown",
         "build": "tsc",
         "prepack": "cp -rv dist/. .",
-        "pretest": "yarn build",
-        "test": "jest"
+        "test": "jest",
+        "pretest": "yarn build"
     },
     "dependencies": {
         "url-join": "4.0.1",
         "form-data": "^4.0.0",
         "formdata-node": "^6.0.3",
-        "jsonwebtoken": "^9.0.2",
         "node-fetch": "^2.7.0",
         "qs": "^6.13.1",
-        "readable-stream": "^4.5.2"
+        "readable-stream": "^4.5.2",
+        "jsonwebtoken": "^9.0.2"
     },
     "devDependencies": {
         "@types/url-join": "4.0.1",
         "@types/qs": "^6.9.17",
         "@types/node-fetch": "^2.6.12",
-        "@types/jsonwebtoken": "^9.0.7",
         "@types/readable-stream": "^4.0.18",
         "webpack": "^5.97.1",
         "ts-loader": "^9.5.1",
@@ -35,7 +34,8 @@
         "jest-environment-jsdom": "^29.7.0",
         "@types/node": "^18.19.70",
         "prettier": "^3.4.2",
-        "typescript": "~5.7.2"
+        "typescript": "~5.7.2",
+        "@types/jsonwebtoken": "^9.0.7"
     },
     "browser": {
         "fs": false,
