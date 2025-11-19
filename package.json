@@ -1,6 +1,6 @@
 {
     "name": "@opengovsg/refx-ts-sdk",
-    "version": "0.0.0-develop-alpha-1763534116",
+    "version": "0.0.0-develop-alpha-1763535866",
     "private": false,
     "repository": "https://github.com/opengovsg/refer-ts-sdk",
     "main": "./index.js",
