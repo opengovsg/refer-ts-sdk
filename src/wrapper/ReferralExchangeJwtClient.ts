@@ -107,17 +107,18 @@ function createSignedJwt({ privateKey, issuer, subject }: CreateSignedJwtArgs): 
 } {
     const issuedAt = Math.floor(Date.now() / 1000);
     const expiresAtEpochSeconds = issuedAt + JWT_TTL_SECONDS;
+    const signOptions: jwt.SignOptions = {
+        algorithm: "ES256",
+        issuer,
+        expiresIn: JWT_TTL_SECONDS,
+    };
 
-    const token = jwt.sign(
-        {},
-        privateKey,
-        {
-            algorithm: "ES256",
-            issuer,
-            expiresIn: JWT_TTL_SECONDS,
-            subject,
-        },
-    );
+    // Only add the claim if a value is provided(not null or undefined) 
+    if (subject != null) {
+        signOptions.subject = subject;
+    }
+
+    const token = jwt.sign({}, privateKey, signOptions);
 
     return {
         token,
