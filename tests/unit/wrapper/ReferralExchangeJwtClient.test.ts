@@ -57,6 +57,29 @@ describe("ReferralExchangeJwtClient", () => {
         );
     });
 
+    it("includes subject claim when provided", async () => {
+        signMock.mockReturnValue("token-1");
+
+        const client = new ReferralExchangeJwtClient({
+            privateKey: "fake-private-key",
+            apiKeyName: "issuer",
+            subject: "user-123",
+        });
+
+        const fetcher = ((client as any)._options.fetcher) as (args: typeof requestArgs) => Promise<unknown>;
+
+        await fetcher(requestArgs);
+
+        expect(signMock).toHaveBeenCalledWith(
+            {},
+            "fake-private-key",
+            expect.objectContaining({
+                issuer: "issuer",
+                subject: "user-123",
+            }),
+        );
+    });
+
     it("reuses cached tokens until the refresh buffer elapses", async () => {
         signMock.mockReturnValueOnce("token-1").mockReturnValueOnce("token-2");
 
