@@ -57,6 +57,51 @@ describe("ReferralExchangeJwtClient", () => {
         );
     });
 
+    it("omits subject claim when not provided", async () => {
+        signMock.mockReturnValue("token-1");
+
+        const client = new ReferralExchangeJwtClient({
+            privateKey: "fake-private-key",
+            apiKeyName: "issuer",
+        });
+
+        const fetcher = ((client as any)._options.fetcher) as (args: typeof requestArgs) => Promise<unknown>;
+
+        await fetcher(requestArgs);
+
+        const [, , options] = signMock.mock.calls[0];
+        expect(options).toEqual(
+            expect.objectContaining({
+                issuer: "issuer",
+                algorithm: "ES256",
+            }),
+        );
+        expect(options).not.toHaveProperty("subject");
+    });
+
+    it("includes subject claim when provided", async () => {
+        signMock.mockReturnValue("token-1");
+
+        const client = new ReferralExchangeJwtClient({
+            privateKey: "fake-private-key",
+            apiKeyName: "issuer",
+            subject: "user-123",
+        });
+
+        const fetcher = ((client as any)._options.fetcher) as (args: typeof requestArgs) => Promise<unknown>;
+
+        await fetcher(requestArgs);
+
+        expect(signMock).toHaveBeenCalledWith(
+            {},
+            "fake-private-key",
+            expect.objectContaining({
+                issuer: "issuer",
+                subject: "user-123",
+            }),
+        );
+    });
+
     it("reuses cached tokens until the refresh buffer elapses", async () => {
         signMock.mockReturnValueOnce("token-1").mockReturnValueOnce("token-2");
 
