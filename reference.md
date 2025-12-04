@@ -179,6 +179,70 @@ await client.referrals.upsert({
 </dl>
 </details>
 
+<details><summary><code>client.referrals.<a href="/src/api/resources/referrals/client/Client.ts">listByInstitution</a>(institutionIdType, institutionId, { ...params }) -> ReferralExchange.PaginatedReferralsDto</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.referrals.listByInstitution("hci", "institutionId");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**institutionIdType:** `ReferralExchange.InstitutionIdType` — The type of institution ID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**institutionId:** `string` — The institution ID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `ReferralExchange.ReferralsListByInstitutionRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Referrals.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.referrals.<a href="/src/api/resources/referrals/client/Client.ts">get</a>(referralId, { ...params }) -> ReferralExchange.FullReferralDto</code></summary>
 <dl>
 <dd>

@@ -8,7 +8,7 @@ import * as ReferralExchange from "../../../../index";
  * @example
  *     {}
  */
-export interface ReferralsListRequest {
+export interface ReferralsListByInstitutionRequest {
     /**
      * Offset for pagination
      */
@@ -34,12 +34,4 @@ export interface ReferralsListRequest {
      * To filter by the patient UIN
      */
     patientUin?: string;
-    /**
-     * To identify the requesting institution
-     */
-    hciCode?: string;
-    /**
-     * To filter by the requesting institution
-     */
-    institutionId?: string;
 }

@@ -28,6 +28,7 @@ export * from "./ReferralDto";
 export * from "./PaginatedQuery";
 export * from "./PaginationMetadata";
 export * from "./PaginatedReferralsDto";
+export * from "./InstitutionIdType";
 export * from "./AdditionalReferralField";
 export * from "./TimelineEventType";
 export * from "./TimelineEventDtoSystem";
