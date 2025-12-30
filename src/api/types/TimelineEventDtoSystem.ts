@@ -13,7 +13,20 @@ export type TimelineEventDtoSystem =
     | "Bright"
     | "FYI"
     | "AAC"
-    | "GPConnect";
+    | "GPConnect"
+    | "CLINICASSIST"
+    | "LINKDOCTORS"
+    | "GALENHEALTH"
+    | "VANDACMS"
+    | "MANADR"
+    | "PLATO"
+    | "RAFFLESMG"
+    | "RUBICON"
+    | "SGIMED"
+    | "UNITEDCREST"
+    | "IAPPS"
+    | "UNOTECH"
+    | "ZANDEN";
 export const TimelineEventDtoSystem = {
     Has: "HAS",
     PartnersBuddy: "PartnersBuddy",
@@ -23,4 +36,17 @@ export const TimelineEventDtoSystem = {
     Fyi: "FYI",
     Aac: "AAC",
     GpConnect: "GPConnect",
+    Clinicassist: "CLINICASSIST",
+    Linkdoctors: "LINKDOCTORS",
+    Galenhealth: "GALENHEALTH",
+    Vandacms: "VANDACMS",
+    Manadr: "MANADR",
+    Plato: "PLATO",
+    Rafflesmg: "RAFFLESMG",
+    Rubicon: "RUBICON",
+    Sgimed: "SGIMED",
+    Unitedcrest: "UNITEDCREST",
+    Iapps: "IAPPS",
+    Unotech: "UNOTECH",
+    Zanden: "ZANDEN",
 } as const;
