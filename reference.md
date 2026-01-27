@@ -256,7 +256,9 @@ await client.referrals.listByInstitution("hci", "institutionId");
 <dd>
 
 ```typescript
-await client.referrals.get("referralId");
+await client.referrals.get("referralId", {
+    requesterIdentifier: "requester@example.com",
+});
 ```
 
 </dd>
@@ -916,7 +918,9 @@ await client.links.createUpsertLink({
 <dd>
 
 ```typescript
-await client.public.getReferral("referralId");
+await client.public.getReferral("referralId", {
+    requesterIdentifier: "requester@example.com",
+});
 ```
 
 </dd>

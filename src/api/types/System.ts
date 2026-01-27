@@ -23,7 +23,8 @@ export type System =
     | "UNITEDCREST"
     | "IAPPS"
     | "UNOTECH"
-    | "ZANDEN";
+    | "ZANDEN"
+    | "SCGINTERNAL";
 export const System = {
     Has: "HAS",
     PartnersBuddy: "PartnersBuddy",
@@ -46,4 +47,5 @@ export const System = {
     Iapps: "IAPPS",
     Unotech: "UNOTECH",
     Zanden: "ZANDEN",
+    Scginternal: "SCGINTERNAL",
 } as const;

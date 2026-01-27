@@ -21,5 +21,5 @@ export interface GetReferralPatientDto {
     /** Patient Healthier SG (HSG) enrolment status */
     isHsgEnrolled?: boolean;
     /** Current CHAS status */
-    chasStatus: string;
+    chasStatus?: string;
 }

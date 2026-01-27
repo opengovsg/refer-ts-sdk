@@ -6,8 +6,14 @@ import * as ReferralExchange from "../../../../index";
 
 /**
  * @example
- *     {}
+ *     {
+ *         requesterIdentifier: "requester@example.com"
+ *     }
  */
 export interface PublicGetReferralRequest {
     additionalField?: ReferralExchange.AdditionalReferralField | ReferralExchange.AdditionalReferralField[];
+    /**
+     * Identifier for the individual requesting attachments/link/url. Required when requesting attachments/link/url. Preferred to be an email.
+     */
+    requesterIdentifier?: string;
 }

@@ -26,7 +26,8 @@ export type TimelineEventDtoSystem =
     | "UNITEDCREST"
     | "IAPPS"
     | "UNOTECH"
-    | "ZANDEN";
+    | "ZANDEN"
+    | "SCGINTERNAL";
 export const TimelineEventDtoSystem = {
     Has: "HAS",
     PartnersBuddy: "PartnersBuddy",
@@ -49,4 +50,5 @@ export const TimelineEventDtoSystem = {
     Iapps: "IAPPS",
     Unotech: "UNOTECH",
     Zanden: "ZANDEN",
+    Scginternal: "SCGINTERNAL",
 } as const;

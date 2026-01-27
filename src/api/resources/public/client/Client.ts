@@ -40,14 +40,16 @@ export class Public {
      * @throws {@link ReferralExchange.NotFoundError}
      *
      * @example
-     *     await client.public.getReferral("referralId")
+     *     await client.public.getReferral("referralId", {
+     *         requesterIdentifier: "requester@example.com"
+     *     })
      */
     public async getReferral(
         referralId: string,
         request: ReferralExchange.PublicGetReferralRequest = {},
         requestOptions?: Public.RequestOptions,
     ): Promise<ReferralExchange.PublicReferralDto> {
-        const { additionalField } = request;
+        const { additionalField, requesterIdentifier } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (additionalField != null) {
             if (Array.isArray(additionalField)) {
@@ -55,6 +57,10 @@ export class Public {
             } else {
                 _queryParams["additionalField"] = additionalField;
             }
+        }
+
+        if (requesterIdentifier != null) {
+            _queryParams["requesterIdentifier"] = requesterIdentifier;
         }
 
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -68,8 +74,8 @@ export class Public {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.58",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.58",
+                "X-Fern-SDK-Version": "0.0.59",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.59",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
