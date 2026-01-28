@@ -59,5 +59,8 @@ jobs:
           elif [[ ${GITHUB_REF} == *beta* ]]; then
             npm publish --access public --tag beta
           else
-            npm publish --access public
+            npm publish --access public --tag stable
+            PKG_NAME=$(node -p "require('./package.json').name")
+            PKG_VERSION=$(node -p "require('./package.json').version")
+            npm dist-tag add ${PKG_NAME}@${PKG_VERSION} latest
           fi
