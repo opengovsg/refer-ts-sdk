@@ -7,4 +7,6 @@ export interface Timeslot {
     from: number;
     /** End time in milliseconds since epoch */
     to: number;
+    /** Optional description of the timeslot */
+    description?: string;
 }

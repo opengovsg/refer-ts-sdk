@@ -8,6 +8,9 @@ export interface Form {
     id: string;
     url: string;
     description: string;
+    fields?: Record<string, unknown>[];
+    version?: number;
+    migrated?: boolean;
     isFilled: boolean;
     formResponses: ReferralExchange.FormResponse[];
 }

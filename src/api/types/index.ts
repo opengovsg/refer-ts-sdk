@@ -43,6 +43,7 @@ export * from "./FullReferralDto";
 export * from "./CreatePatientReqGender";
 export * from "./CreatePatientReqResidentialStatus";
 export * from "./CreatePatientReq";
+export * from "./CreateReferrerReq";
 export * from "./OfferingWithAllowedDto";
 export * from "./Timeslot";
 export * from "./UpdateEmailAckOfferingReq";

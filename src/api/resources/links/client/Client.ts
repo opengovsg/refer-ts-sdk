@@ -36,6 +36,7 @@ export class Links {
      * @param {ReferralExchange.CreateLinkReqUpsert} request
      * @param {Links.RequestOptions} requestOptions - Request-specific configuration.
      *
+     * @throws {@link ReferralExchange.BadRequestError}
      * @throws {@link ReferralExchange.UnauthorizedError}
      *
      * @example
@@ -62,8 +63,8 @@ export class Links {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.59",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.59",
+                "X-Fern-SDK-Version": "0.0.60",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.60",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -82,6 +83,8 @@ export class Links {
 
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
+                case 400:
+                    throw new ReferralExchange.BadRequestError(_response.error.body as unknown);
                 case 401:
                     throw new ReferralExchange.UnauthorizedError(_response.error.body as unknown);
                 default:
