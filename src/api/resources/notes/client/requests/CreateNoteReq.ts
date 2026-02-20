@@ -5,7 +5,9 @@
 /**
  * @example
  *     {
- *         authorHciCode: "authorHciCode"
+ *         authorHciCode: "authorHciCode",
+ *         institutionIdType: "hci",
+ *         institutionId: "institutionId"
  *     }
  */
 export interface CreateNoteReq {
@@ -13,4 +15,6 @@ export interface CreateNoteReq {
     content?: string;
     /** Author HCI code. Must be already tied to your system. */
     authorHciCode: string;
+    /** The institution ID */
+    institutionId: string;
 }

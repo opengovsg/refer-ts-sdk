@@ -5,14 +5,11 @@
 /**
  * @example
  *     {
- *         rejectionMessage: "rejectionMessage",
  *         institutionIdType: "hci",
  *         institutionId: "institutionId"
  *     }
  */
-export interface RejectReferralBody {
-    /** Rejection message */
-    rejectionMessage: string;
+export interface BackToDraftReferralBody {
     /** The institution ID */
     institutionId: string;
 }

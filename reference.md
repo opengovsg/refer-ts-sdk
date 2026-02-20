@@ -258,6 +258,8 @@ await client.referrals.listByInstitution("hci", "institutionId");
 ```typescript
 await client.referrals.get("referralId", {
     requesterIdentifier: "requester@example.com",
+    institutionIdType: "hci",
+    institutionId: "institutionId",
 });
 ```
 
@@ -301,7 +303,7 @@ await client.referrals.get("referralId", {
 </dl>
 </details>
 
-<details><summary><code>client.referrals.<a href="/src/api/resources/referrals/client/Client.ts">delete</a>(referralId) -> ReferralExchange.ReferralDto</code></summary>
+<details><summary><code>client.referrals.<a href="/src/api/resources/referrals/client/Client.ts">delete</a>(referralId, { ...params }) -> ReferralExchange.ReferralDto</code></summary>
 <dl>
 <dd>
 
@@ -314,7 +316,10 @@ await client.referrals.get("referralId", {
 <dd>
 
 ```typescript
-await client.referrals.delete("referralId");
+await client.referrals.delete("referralId", {
+    institutionIdType: "hci",
+    institutionId: "institutionId",
+});
 ```
 
 </dd>
@@ -331,6 +336,14 @@ await client.referrals.delete("referralId");
 <dd>
 
 **referralId:** `string` — Referral ID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `ReferralExchange.ReferralsDeleteRequest`
 
 </dd>
 </dl>
@@ -362,7 +375,10 @@ await client.referrals.delete("referralId");
 <dd>
 
 ```typescript
-await client.referrals.cancel("referralId");
+await client.referrals.cancel("referralId", {
+    institutionIdType: "hci",
+    institutionId: "institutionId",
+});
 ```
 
 </dd>
@@ -420,6 +436,8 @@ await client.referrals.cancel("referralId");
 ```typescript
 await client.referrals.amend("referralId", {
     timeslotStartAt: 1714857600000,
+    institutionIdType: "hci",
+    institutionId: "institutionId",
 });
 ```
 
@@ -476,7 +494,10 @@ await client.referrals.amend("referralId", {
 <dd>
 
 ```typescript
-await client.referrals.accept("referralId");
+await client.referrals.accept("referralId", {
+    institutionIdType: "hci",
+    institutionId: "institutionId",
+});
 ```
 
 </dd>
@@ -534,6 +555,8 @@ await client.referrals.accept("referralId");
 ```typescript
 await client.referrals.reject("referralId", {
     rejectionMessage: "rejectionMessage",
+    institutionIdType: "hci",
+    institutionId: "institutionId",
 });
 ```
 
@@ -577,7 +600,7 @@ await client.referrals.reject("referralId", {
 </dl>
 </details>
 
-<details><summary><code>client.referrals.<a href="/src/api/resources/referrals/client/Client.ts">backToDraft</a>(referralId) -> ReferralExchange.ReferralDto</code></summary>
+<details><summary><code>client.referrals.<a href="/src/api/resources/referrals/client/Client.ts">backToDraft</a>(referralId, { ...params }) -> ReferralExchange.ReferralDto</code></summary>
 <dl>
 <dd>
 
@@ -590,7 +613,10 @@ await client.referrals.reject("referralId", {
 <dd>
 
 ```typescript
-await client.referrals.backToDraft("referralId");
+await client.referrals.backToDraft("referralId", {
+    institutionIdType: "hci",
+    institutionId: "institutionId",
+});
 ```
 
 </dd>
@@ -607,6 +633,14 @@ await client.referrals.backToDraft("referralId");
 <dd>
 
 **referralId:** `string` — Referral ID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `ReferralExchange.BackToDraftReferralBody`
 
 </dd>
 </dl>
@@ -642,6 +676,8 @@ await client.referrals.backToDraft("referralId");
 ```typescript
 await client.notes.create("referralId", {
     authorHciCode: "authorHciCode",
+    institutionIdType: "hci",
+    institutionId: "institutionId",
 });
 ```
 
@@ -849,7 +885,7 @@ await client.offerings.listTimeslots("offeringId", {
 
 ## Links
 
-<details><summary><code>client.links.<a href="/src/api/resources/links/client/Client.ts">createUpsertLink</a>({ ...params }) -> ReferralExchange.ReferralLinkDto</code></summary>
+<details><summary><code>client.links.<a href="/src/api/resources/links/client/Client.ts">createUpsertLink</a>({ ...params }) -> ReferralExchange.ReferralUpsertLinkDto</code></summary>
 <dl>
 <dd>
 
@@ -866,6 +902,7 @@ await client.links.createUpsertLink({
     referrerInstitutionId: "referrerInstitutionId",
     referrerInstitutionName: "referrerInstitutionName",
     referrerId: "referrerId",
+    requesterIdentifier: "requester@example.com",
     referrerIdType: "mcr",
     referrerName: "referrerName",
 });
@@ -920,6 +957,8 @@ await client.links.createUpsertLink({
 ```typescript
 await client.public.getReferral("referralId", {
     requesterIdentifier: "requester@example.com",
+    institutionIdType: "hci",
+    institutionId: "institutionId",
 });
 ```
 

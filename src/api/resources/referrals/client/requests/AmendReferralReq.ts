@@ -5,10 +5,14 @@
 /**
  * @example
  *     {
- *         timeslotStartAt: 1714857600000
+ *         timeslotStartAt: 1714857600000,
+ *         institutionIdType: "hci",
+ *         institutionId: "institutionId"
  *     }
  */
 export interface AmendReferralReq {
     /** New timeslot start time, in milliseconds since epoch. */
     timeslotStartAt: number;
+    /** The institution ID */
+    institutionId: string;
 }

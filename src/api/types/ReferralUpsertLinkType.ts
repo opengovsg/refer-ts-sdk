@@ -3,6 +3,6 @@
  */
 
 /**
- * The type of institution ID
+ * type of referral link
  */
-export type InstitutionIdType = "hci";
+export type ReferralUpsertLinkType = "upsert";

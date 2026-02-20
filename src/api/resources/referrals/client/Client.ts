@@ -99,8 +99,8 @@ export class Referrals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.60",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.60",
+                "X-Fern-SDK-Version": "0.0.61",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.61",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -192,8 +192,8 @@ export class Referrals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.60",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.60",
+                "X-Fern-SDK-Version": "0.0.61",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.61",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -301,8 +301,8 @@ export class Referrals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.60",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.60",
+                "X-Fern-SDK-Version": "0.0.61",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.61",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -358,15 +358,17 @@ export class Referrals {
      *
      * @example
      *     await client.referrals.get("referralId", {
-     *         requesterIdentifier: "requester@example.com"
+     *         requesterIdentifier: "requester@example.com",
+     *         institutionIdType: "hci",
+     *         institutionId: "institutionId"
      *     })
      */
     public async get(
         referralId: string,
-        request: ReferralExchange.ReferralsGetRequest = {},
+        request: ReferralExchange.ReferralsGetRequest,
         requestOptions?: Referrals.RequestOptions,
     ): Promise<ReferralExchange.FullReferralDto> {
-        const { additionalField, requesterIdentifier } = request;
+        const { additionalField, requesterIdentifier, institutionIdType, institutionId } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (additionalField != null) {
             if (Array.isArray(additionalField)) {
@@ -376,10 +378,9 @@ export class Referrals {
             }
         }
 
-        if (requesterIdentifier != null) {
-            _queryParams["requesterIdentifier"] = requesterIdentifier;
-        }
-
+        _queryParams["requesterIdentifier"] = requesterIdentifier;
+        _queryParams["institutionIdType"] = institutionIdType;
+        _queryParams["institutionId"] = institutionId;
         const _response = await (this._options.fetcher ?? core.fetcher)({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
@@ -391,8 +392,8 @@ export class Referrals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.60",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.60",
+                "X-Fern-SDK-Version": "0.0.61",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.61",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -442,17 +443,26 @@ export class Referrals {
 
     /**
      * @param {string} referralId - Referral ID
+     * @param {ReferralExchange.ReferralsDeleteRequest} request
      * @param {Referrals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link ReferralExchange.UnauthorizedError}
      *
      * @example
-     *     await client.referrals.delete("referralId")
+     *     await client.referrals.delete("referralId", {
+     *         institutionIdType: "hci",
+     *         institutionId: "institutionId"
+     *     })
      */
     public async delete(
         referralId: string,
+        request: ReferralExchange.ReferralsDeleteRequest,
         requestOptions?: Referrals.RequestOptions,
     ): Promise<ReferralExchange.ReferralDto> {
+        const { institutionIdType, institutionId } = request;
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
+        _queryParams["institutionIdType"] = institutionIdType;
+        _queryParams["institutionId"] = institutionId;
         const _response = await (this._options.fetcher ?? core.fetcher)({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
@@ -464,14 +474,15 @@ export class Referrals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.60",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.60",
+                "X-Fern-SDK-Version": "0.0.61",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.61",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
                 ...requestOptions?.headers,
             },
             contentType: "application/json",
+            queryParameters: _queryParams,
             requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
@@ -518,11 +529,14 @@ export class Referrals {
      * @throws {@link ReferralExchange.UnauthorizedError}
      *
      * @example
-     *     await client.referrals.cancel("referralId")
+     *     await client.referrals.cancel("referralId", {
+     *         institutionIdType: "hci",
+     *         institutionId: "institutionId"
+     *     })
      */
     public async cancel(
         referralId: string,
-        request: ReferralExchange.CancelReferralReq = {},
+        request: ReferralExchange.CancelReferralReq,
         requestOptions?: Referrals.RequestOptions,
     ): Promise<ReferralExchange.ReferralDto> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -536,8 +550,8 @@ export class Referrals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.60",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.60",
+                "X-Fern-SDK-Version": "0.0.61",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.61",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -545,7 +559,7 @@ export class Referrals {
             },
             contentType: "application/json",
             requestType: "json",
-            body: request,
+            body: { ...request, institutionIdType: "hci" },
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -592,7 +606,9 @@ export class Referrals {
      *
      * @example
      *     await client.referrals.amend("referralId", {
-     *         timeslotStartAt: 1714857600000
+     *         timeslotStartAt: 1714857600000,
+     *         institutionIdType: "hci",
+     *         institutionId: "institutionId"
      *     })
      */
     public async amend(
@@ -611,8 +627,8 @@ export class Referrals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.60",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.60",
+                "X-Fern-SDK-Version": "0.0.61",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.61",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -620,7 +636,7 @@ export class Referrals {
             },
             contentType: "application/json",
             requestType: "json",
-            body: request,
+            body: { ...request, institutionIdType: "hci" },
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -667,11 +683,14 @@ export class Referrals {
      * @throws {@link ReferralExchange.UnauthorizedError}
      *
      * @example
-     *     await client.referrals.accept("referralId")
+     *     await client.referrals.accept("referralId", {
+     *         institutionIdType: "hci",
+     *         institutionId: "institutionId"
+     *     })
      */
     public async accept(
         referralId: string,
-        request: ReferralExchange.AcceptReferralBody = {},
+        request: ReferralExchange.AcceptReferralBody,
         requestOptions?: Referrals.RequestOptions,
     ): Promise<void> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -685,8 +704,8 @@ export class Referrals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.60",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.60",
+                "X-Fern-SDK-Version": "0.0.61",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.61",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -694,7 +713,7 @@ export class Referrals {
             },
             contentType: "application/json",
             requestType: "json",
-            body: request,
+            body: { ...request, institutionIdType: "hci" },
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -743,7 +762,9 @@ export class Referrals {
      *
      * @example
      *     await client.referrals.reject("referralId", {
-     *         rejectionMessage: "rejectionMessage"
+     *         rejectionMessage: "rejectionMessage",
+     *         institutionIdType: "hci",
+     *         institutionId: "institutionId"
      *     })
      */
     public async reject(
@@ -762,8 +783,8 @@ export class Referrals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.60",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.60",
+                "X-Fern-SDK-Version": "0.0.61",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.61",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -771,7 +792,7 @@ export class Referrals {
             },
             contentType: "application/json",
             requestType: "json",
-            body: request,
+            body: { ...request, institutionIdType: "hci" },
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -811,15 +832,20 @@ export class Referrals {
 
     /**
      * @param {string} referralId - Referral ID
+     * @param {ReferralExchange.BackToDraftReferralBody} request
      * @param {Referrals.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link ReferralExchange.UnauthorizedError}
      *
      * @example
-     *     await client.referrals.backToDraft("referralId")
+     *     await client.referrals.backToDraft("referralId", {
+     *         institutionIdType: "hci",
+     *         institutionId: "institutionId"
+     *     })
      */
     public async backToDraft(
         referralId: string,
+        request: ReferralExchange.BackToDraftReferralBody,
         requestOptions?: Referrals.RequestOptions,
     ): Promise<ReferralExchange.ReferralDto> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -833,8 +859,8 @@ export class Referrals {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.60",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.60",
+                "X-Fern-SDK-Version": "0.0.61",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.61",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -842,6 +868,7 @@ export class Referrals {
             },
             contentType: "application/json",
             requestType: "json",
+            body: { ...request, institutionIdType: "hci" },
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

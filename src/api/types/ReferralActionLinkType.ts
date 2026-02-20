@@ -5,9 +5,8 @@
 /**
  * type of referral link
  */
-export type ReferralLinkType = "upsert" | "amend" | "select-timeslot" | "fill-singhealth-formsg";
-export const ReferralLinkType = {
-    Upsert: "upsert",
+export type ReferralActionLinkType = "amend" | "select-timeslot" | "fill-singhealth-formsg";
+export const ReferralActionLinkType = {
     Amend: "amend",
     SelectTimeslot: "select-timeslot",
     FillSinghealthFormsg: "fill-singhealth-formsg",

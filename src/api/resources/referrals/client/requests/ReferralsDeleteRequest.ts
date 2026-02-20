@@ -7,17 +7,11 @@ import * as ReferralExchange from "../../../../index";
 /**
  * @example
  *     {
- *         requesterIdentifier: "requester@example.com",
  *         institutionIdType: "hci",
  *         institutionId: "institutionId"
  *     }
  */
-export interface PublicGetReferralRequest {
-    additionalField?: ReferralExchange.AdditionalReferralField | ReferralExchange.AdditionalReferralField[];
-    /**
-     * Identifier for the individual requesting the referral. Preferred to be an email.
-     */
-    requesterIdentifier: string;
+export interface ReferralsDeleteRequest {
     /**
      * The type of institution ID
      */

@@ -41,15 +41,17 @@ export class Public {
      *
      * @example
      *     await client.public.getReferral("referralId", {
-     *         requesterIdentifier: "requester@example.com"
+     *         requesterIdentifier: "requester@example.com",
+     *         institutionIdType: "hci",
+     *         institutionId: "institutionId"
      *     })
      */
     public async getReferral(
         referralId: string,
-        request: ReferralExchange.PublicGetReferralRequest = {},
+        request: ReferralExchange.PublicGetReferralRequest,
         requestOptions?: Public.RequestOptions,
     ): Promise<ReferralExchange.PublicReferralDto> {
-        const { additionalField, requesterIdentifier } = request;
+        const { additionalField, requesterIdentifier, institutionIdType, institutionId } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (additionalField != null) {
             if (Array.isArray(additionalField)) {
@@ -59,10 +61,9 @@ export class Public {
             }
         }
 
-        if (requesterIdentifier != null) {
-            _queryParams["requesterIdentifier"] = requesterIdentifier;
-        }
-
+        _queryParams["requesterIdentifier"] = requesterIdentifier;
+        _queryParams["institutionIdType"] = institutionIdType;
+        _queryParams["institutionId"] = institutionId;
         const _response = await (this._options.fetcher ?? core.fetcher)({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
@@ -74,8 +75,8 @@ export class Public {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.60",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.60",
+                "X-Fern-SDK-Version": "0.0.61",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.61",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

@@ -44,6 +44,7 @@ export class Links {
      *         referrerInstitutionId: "referrerInstitutionId",
      *         referrerInstitutionName: "referrerInstitutionName",
      *         referrerId: "referrerId",
+     *         requesterIdentifier: "requester@example.com",
      *         referrerIdType: "mcr",
      *         referrerName: "referrerName"
      *     })
@@ -51,7 +52,7 @@ export class Links {
     public async createUpsertLink(
         request: ReferralExchange.CreateLinkReqUpsert,
         requestOptions?: Links.RequestOptions,
-    ): Promise<ReferralExchange.ReferralLinkDto> {
+    ): Promise<ReferralExchange.ReferralUpsertLinkDto> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
@@ -63,8 +64,8 @@ export class Links {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.60",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.60",
+                "X-Fern-SDK-Version": "0.0.61",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.61",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -78,7 +79,7 @@ export class Links {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return _response.body as ReferralExchange.ReferralLinkDto;
+            return _response.body as ReferralExchange.ReferralUpsertLinkDto;
         }
 
         if (_response.error.reason === "status-code") {

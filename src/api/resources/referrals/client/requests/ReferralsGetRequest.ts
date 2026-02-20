@@ -7,13 +7,23 @@ import * as ReferralExchange from "../../../../index";
 /**
  * @example
  *     {
- *         requesterIdentifier: "requester@example.com"
+ *         requesterIdentifier: "requester@example.com",
+ *         institutionIdType: "hci",
+ *         institutionId: "institutionId"
  *     }
  */
 export interface ReferralsGetRequest {
     additionalField?: ReferralExchange.AdditionalReferralField | ReferralExchange.AdditionalReferralField[];
     /**
-     * Identifier for the individual requesting attachments/link/url. Required when requesting attachments/link/url. Preferred to be an email.
+     * Identifier for the individual requesting the referral. Preferred to be an email.
      */
-    requesterIdentifier?: string;
+    requesterIdentifier: string;
+    /**
+     * The type of institution ID
+     */
+    institutionIdType: ReferralExchange.InstitutionIdType;
+    /**
+     * The institution ID
+     */
+    institutionId: string;
 }

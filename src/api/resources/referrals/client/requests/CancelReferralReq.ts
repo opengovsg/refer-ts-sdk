@@ -4,7 +4,10 @@
 
 /**
  * @example
- *     {}
+ *     {
+ *         institutionIdType: "hci",
+ *         institutionId: "institutionId"
+ *     }
  */
 export interface CancelReferralReq {
     /** UIN of the person cancelling the referral, if available */
@@ -13,4 +16,6 @@ export interface CancelReferralReq {
     cancelledByName?: string;
     /** Optional note to save when cancelling the referral */
     cancelNote?: string;
+    /** The institution ID */
+    institutionId: string;
 }

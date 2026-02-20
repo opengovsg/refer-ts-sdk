@@ -10,6 +10,7 @@ import * as ReferralExchange from "../../../../index";
  *         referrerInstitutionId: "referrerInstitutionId",
  *         referrerInstitutionName: "referrerInstitutionName",
  *         referrerId: "referrerId",
+ *         requesterIdentifier: "requester@example.com",
  *         referrerIdType: "mcr",
  *         referrerName: "referrerName"
  *     }
@@ -22,7 +23,7 @@ export interface CreateLinkReqUpsert {
     /** Id of the doctor authoring this referral. */
     referrerId: string;
     /** Identifier for the individual requesting the link. The individual may or may not be the referrer. Preferred to be an email. */
-    requesterIdentifier?: string;
+    requesterIdentifier: string;
     referrerIdType: ReferralExchange.ReferrerIdType;
     /** Name of the doctor authoring this referral. */
     referrerName: string;

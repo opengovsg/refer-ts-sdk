@@ -4,10 +4,10 @@
 
 import * as ReferralExchange from "../index";
 
-export interface ReferralLinkDto {
-    type: ReferralExchange.ReferralLinkType;
+export interface ReferralUpsertLinkDto {
     /** The ID of the referral */
     referralId: string;
     /** The URL of the link */
     url: string;
+    type: ReferralExchange.ReferralUpsertLinkType;
 }

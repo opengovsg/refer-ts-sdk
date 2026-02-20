@@ -4,11 +4,16 @@
 
 /**
  * @example
- *     {}
+ *     {
+ *         institutionIdType: "hci",
+ *         institutionId: "institutionId"
+ *     }
  */
 export interface AcceptReferralBody {
     /** Appointment time, in milliseconds since epoch. */
     appointmentTime?: number;
     /** Note content */
     noteContent?: string;
+    /** The institution ID */
+    institutionId: string;
 }

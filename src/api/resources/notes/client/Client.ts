@@ -41,7 +41,9 @@ export class Notes {
      *
      * @example
      *     await client.notes.create("referralId", {
-     *         authorHciCode: "authorHciCode"
+     *         authorHciCode: "authorHciCode",
+     *         institutionIdType: "hci",
+     *         institutionId: "institutionId"
      *     })
      */
     public async create(
@@ -60,8 +62,8 @@ export class Notes {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.60",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.60",
+                "X-Fern-SDK-Version": "0.0.61",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.61",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -69,7 +71,7 @@ export class Notes {
             },
             contentType: "application/json",
             requestType: "json",
-            body: request,
+            body: { ...request, institutionIdType: "hci" },
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
