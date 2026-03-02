@@ -5,8 +5,9 @@
 /**
  * Clinic type
  */
-export type CreateLinkReqUpsertClinicType = "CHAS-only" | "CHAS and HSG";
+export type CreateLinkReqUpsertClinicType = "CHAS-only" | "CHAS and HSG" | "CHAS and Healthier SG";
 export const CreateLinkReqUpsertClinicType = {
     ChasOnly: "CHAS-only",
     ChasAndHsg: "CHAS and HSG",
+    ChasAndHealthierSg: "CHAS and Healthier SG",
 } as const;

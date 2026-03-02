@@ -20,4 +20,6 @@ export interface OfferingDto {
     timeslotPolicy: ReferralExchange.TimeslotPolicy;
     /** Category of the offering. Used to group offerings together. */
     category?: "aac";
+    /** NEHR code for the offering */
+    nehrCode?: string;
 }

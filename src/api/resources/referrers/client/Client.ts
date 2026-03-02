@@ -8,7 +8,7 @@ import * as ReferralExchange from "../../../index";
 import urlJoin from "url-join";
 import * as errors from "../../../../errors/index";
 
-export declare namespace Health {
+export declare namespace Referrers {
     export interface Options {
         environment?: core.Supplier<environments.ReferralExchangeEnvironment | string>;
         /** Specify a custom URL to connect the client to. */
@@ -29,22 +29,37 @@ export declare namespace Health {
     }
 }
 
-export class Health {
-    constructor(protected readonly _options: Health.Options = {}) {}
+export class Referrers {
+    constructor(protected readonly _options: Referrers.Options = {}) {}
 
     /**
-     * @param {Health.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {ReferralExchange.ApiHoldingControllerGetReferrersRequest} request
+     * @param {Referrers.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link ReferralExchange.UnauthorizedError}
      *
      * @example
-     *     await client.health.check()
+     *     await client.referrers.apiHoldingControllerGetReferrers({
+     *         idType: "mcr"
+     *     })
      */
-    public async check(requestOptions?: Health.RequestOptions): Promise<ReferralExchange.OkResponse> {
+    public async apiHoldingControllerGetReferrers(
+        request: ReferralExchange.ApiHoldingControllerGetReferrersRequest,
+        requestOptions?: Referrers.RequestOptions,
+    ): Promise<ReferralExchange.GetReferrersRes> {
+        const { idType, whitelisted } = request;
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
+        _queryParams["idType"] = idType;
+        if (whitelisted != null) {
+            _queryParams["whitelisted"] = whitelisted.toString();
+        }
+
         const _response = await (this._options.fetcher ?? core.fetcher)({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.ReferralExchangeEnvironment.SmartCms,
-                "api/v1/health",
+                "api/v1/referrers",
             ),
             method: "GET",
             headers: {
@@ -58,20 +73,26 @@ export class Health {
                 ...requestOptions?.headers,
             },
             contentType: "application/json",
+            queryParameters: _queryParams,
             requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return _response.body as ReferralExchange.OkResponse;
+            return _response.body as ReferralExchange.GetReferrersRes;
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.ReferralExchangeError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new ReferralExchange.UnauthorizedError(_response.error.body as unknown);
+                default:
+                    throw new errors.ReferralExchangeError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {
@@ -81,7 +102,7 @@ export class Health {
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.ReferralExchangeTimeoutError("Timeout exceeded when calling GET /api/v1/health.");
+                throw new errors.ReferralExchangeTimeoutError("Timeout exceeded when calling GET /api/v1/referrers.");
             case "unknown":
                 throw new errors.ReferralExchangeError({
                     message: _response.error.errorMessage,

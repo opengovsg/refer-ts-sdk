@@ -5,8 +5,9 @@
 /**
  * Clinic type
  */
-export type PublicReferralDtoClinicType = "CHAS-only" | "CHAS and HSG";
+export type PublicReferralDtoClinicType = "CHAS-only" | "CHAS and HSG" | "CHAS and Healthier SG";
 export const PublicReferralDtoClinicType = {
     ChasOnly: "CHAS-only",
     ChasAndHsg: "CHAS and HSG",
+    ChasAndHealthierSg: "CHAS and Healthier SG",
 } as const;

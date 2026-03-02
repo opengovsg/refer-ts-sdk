@@ -721,6 +721,58 @@ await client.notes.create("referralId", {
 </dl>
 </details>
 
+## Referrers
+
+<details><summary><code>client.referrers.<a href="/src/api/resources/referrers/client/Client.ts">apiHoldingControllerGetReferrers</a>({ ...params }) -> ReferralExchange.GetReferrersRes</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.referrers.apiHoldingControllerGetReferrers({
+    idType: "mcr",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `ReferralExchange.ApiHoldingControllerGetReferrersRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Referrers.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## Offerings
 
 <details><summary><code>client.offerings.<a href="/src/api/resources/offerings/client/Client.ts">list</a>({ ...params }) -> ReferralExchange.OfferingWithAllowedDto[]</code></summary>
