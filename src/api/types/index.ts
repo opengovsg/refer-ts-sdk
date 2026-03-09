@@ -46,6 +46,7 @@ export * from "./CreatePatientReq";
 export * from "./CreateReferrerReq";
 export * from "./ReferrerStatusDto";
 export * from "./GetReferrersRes";
+export * from "./EligibilityReasonDto";
 export * from "./OfferingWithAllowedDto";
 export * from "./Timeslot";
 export * from "./UpdateEmailAckOfferingReq";

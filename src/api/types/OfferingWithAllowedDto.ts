@@ -25,5 +25,5 @@ export interface OfferingWithAllowedDto {
     /** Whether the offering is allowed based on the provided query parameters */
     isAllowed: boolean;
     /** Reason the offering is not allowed, if applicable */
-    reason?: string;
+    reason?: ReferralExchange.EligibilityReasonDto[];
 }

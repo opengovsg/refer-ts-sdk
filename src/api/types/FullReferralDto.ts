@@ -30,6 +30,8 @@ export interface FullReferralDto {
     /** Any clinical information that is relevant to the referral, e.g. medical history, drug allergies, treatment provided, etc. */
     clinicalInfo?: string;
     status: ReferralExchange.FullReferralDtoStatus;
+    /** Whether this referral can be cancelled */
+    isCancellable: boolean;
     /** Timeslot start time (ISO datetime) */
     timeslotStartAt?: string;
     /** Appointment location */
