@@ -8,6 +8,7 @@ import * as ReferralExchange from "../../../../index";
  * @example
  *     {
  *         referrerInstitutionId: "referrerInstitutionId",
+ *         referrerInstitutionIdType: "hci",
  *         referrerInstitutionName: "referrerInstitutionName",
  *         referrerId: "referrerId",
  *         requesterIdentifier: "requester@example.com",

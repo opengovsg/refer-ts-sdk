@@ -952,6 +952,7 @@ await client.offerings.listTimeslots("offeringId", {
 ```typescript
 await client.links.createUpsertLink({
     referrerInstitutionId: "referrerInstitutionId",
+    referrerInstitutionIdType: "hci",
     referrerInstitutionName: "referrerInstitutionName",
     referrerId: "referrerId",
     requesterIdentifier: "requester@example.com",

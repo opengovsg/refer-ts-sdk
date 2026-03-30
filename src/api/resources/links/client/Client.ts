@@ -42,6 +42,7 @@ export class Links {
      * @example
      *     await client.links.createUpsertLink({
      *         referrerInstitutionId: "referrerInstitutionId",
+     *         referrerInstitutionIdType: "hci",
      *         referrerInstitutionName: "referrerInstitutionName",
      *         referrerId: "referrerId",
      *         requesterIdentifier: "requester@example.com",
@@ -64,8 +65,8 @@ export class Links {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.62",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.62",
+                "X-Fern-SDK-Version": "0.0.63",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.63",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -73,7 +74,7 @@ export class Links {
             },
             contentType: "application/json",
             requestType: "json",
-            body: request,
+            body: { ...request, referrerInstitutionIdType: "hci" },
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
