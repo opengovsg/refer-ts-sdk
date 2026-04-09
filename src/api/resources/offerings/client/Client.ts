@@ -69,8 +69,8 @@ export class Offerings {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.63",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.63",
+                "X-Fern-SDK-Version": "0.0.64",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.64",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -123,6 +123,7 @@ export class Offerings {
      *
      * @example
      *     await client.offerings.apiHoldingControllerGetRecommendedOffering({
+     *         category: "aac",
      *         postalCode: "postalCode"
      *     })
      */
@@ -145,8 +146,8 @@ export class Offerings {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.63",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.63",
+                "X-Fern-SDK-Version": "0.0.64",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.64",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -229,8 +230,8 @@ export class Offerings {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-                "X-Fern-SDK-Version": "0.0.63",
-                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.63",
+                "X-Fern-SDK-Version": "0.0.64",
+                "User-Agent": "@opengovsg/refx-ts-sdk/0.0.64",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

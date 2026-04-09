@@ -15,6 +15,8 @@ export type TimelineEventType =
     | "referral.validated"
     | "referral.pending-email-ack"
     | "appt.confirmed"
+    | "appt.cancelled"
+    | "appt.no-show"
     | "appt.rescheduled"
     | "appt.location-updated"
     | "appt.rejected"
@@ -41,6 +43,8 @@ export const TimelineEventType = {
     ReferralValidated: "referral.validated",
     ReferralPendingEmailAck: "referral.pending-email-ack",
     ApptConfirmed: "appt.confirmed",
+    ApptCancelled: "appt.cancelled",
+    ApptNoShow: "appt.no-show",
     ApptRescheduled: "appt.rescheduled",
     ApptLocationUpdated: "appt.location-updated",
     ApptRejected: "appt.rejected",

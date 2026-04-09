@@ -19,7 +19,7 @@ export interface OfferingDto {
     isSubsidisable: boolean;
     timeslotPolicy: ReferralExchange.TimeslotPolicy;
     /** Category of the offering. Used to group offerings together. */
-    category?: "aac";
+    category?: ReferralExchange.OfferingDtoCategory;
     /** NEHR code for the offering */
     nehrCode?: string;
 }

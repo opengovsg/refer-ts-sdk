@@ -18,6 +18,8 @@ export interface CreatePatientReq {
     address?: ReferralExchange.CreateAddressReq;
     /** Patient residential status */
     residentialStatus?: ReferralExchange.CreatePatientReqResidentialStatus;
+    /** Patient nationality */
+    nationality?: ReferralExchange.CreatePatientReqNationality;
     /** Patient Healthier SG (HSG) enrolment status */
     isHsgEnrolled?: boolean;
 }

@@ -841,6 +841,7 @@ await client.offerings.list({
 
 ```typescript
 await client.offerings.apiHoldingControllerGetRecommendedOffering({
+    category: "aac",
     postalCode: "postalCode",
 });
 ```
