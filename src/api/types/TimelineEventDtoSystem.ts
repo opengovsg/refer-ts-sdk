@@ -13,6 +13,7 @@ export type TimelineEventDtoSystem =
     | "Bright"
     | "FYI"
     | "AAC"
+    | "NGEMR"
     | "GPConnect"
     | "CLINICASSIST"
     | "LINKDOCTORS"
@@ -36,6 +37,7 @@ export const TimelineEventDtoSystem = {
     Bright: "Bright",
     Fyi: "FYI",
     Aac: "AAC",
+    Ngemr: "NGEMR",
     GpConnect: "GPConnect",
     Clinicassist: "CLINICASSIST",
     Linkdoctors: "LINKDOCTORS",

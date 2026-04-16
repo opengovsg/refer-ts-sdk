@@ -10,6 +10,7 @@ export type System =
     | "Bright"
     | "FYI"
     | "AAC"
+    | "NGEMR"
     | "GPConnect"
     | "CLINICASSIST"
     | "LINKDOCTORS"
@@ -33,6 +34,7 @@ export const System = {
     Bright: "Bright",
     Fyi: "FYI",
     Aac: "AAC",
+    Ngemr: "NGEMR",
     GpConnect: "GPConnect",
     Clinicassist: "CLINICASSIST",
     Linkdoctors: "LINKDOCTORS",

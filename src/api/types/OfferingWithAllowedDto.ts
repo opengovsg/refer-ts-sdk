@@ -20,6 +20,8 @@ export interface OfferingWithAllowedDto {
     timeslotPolicy: ReferralExchange.TimeslotPolicy;
     /** Category of the offering. Used to group offerings together. */
     category?: ReferralExchange.OfferingWithAllowedDtoCategory;
+    /** Specialty of the offering */
+    specialty?: string;
     /** NEHR code for the offering */
     nehrCode?: string;
     /** Whether the offering is allowed based on the provided query parameters */
