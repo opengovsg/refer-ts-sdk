@@ -3,9 +3,10 @@
  */
 
 import * as errors from "../../errors/index";
+import * as ReferralExchange from "../index";
 
 export class NotFoundError extends errors.ReferralExchangeError {
-    constructor(body?: unknown) {
+    constructor(body: ReferralExchange.NotFoundErrorBody) {
         super({
             message: "NotFoundError",
             statusCode: 404,

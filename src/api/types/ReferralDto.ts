@@ -29,7 +29,9 @@ export interface ReferralDto {
     clinicType?: ReferralExchange.ReferralDtoClinicType;
     /** Any clinical information that is relevant to the referral, e.g. medical history, drug allergies, treatment provided, etc. */
     clinicalInfo?: string;
+    /** Deprecated. Use coreStatus instead. */
     status: ReferralExchange.ReferralDtoStatus;
+    coreStatus: ReferralExchange.ReferralDtoCoreStatus;
     /** Whether this referral can be cancelled */
     isCancellable: boolean;
     /** Timeslot start time (ISO datetime) */

@@ -11,4 +11,5 @@ export interface AppointmentDto {
     subSpecialtyName?: string;
     visitDateTime: string;
     isDischarged: boolean;
+    location?: string;
 }

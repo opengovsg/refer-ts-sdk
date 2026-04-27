@@ -3,9 +3,10 @@
  */
 
 import * as errors from "../../errors/index";
+import * as ReferralExchange from "../index";
 
 export class BadRequestError extends errors.ReferralExchangeError {
-    constructor(body?: unknown) {
+    constructor(body: ReferralExchange.BadRequestErrorBody) {
         super({
             message: "BadRequestError",
             statusCode: 400,

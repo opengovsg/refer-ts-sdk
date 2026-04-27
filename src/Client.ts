@@ -4,22 +4,17 @@
 
 import * as environments from "./environments";
 import * as core from "./core";
-import { Eligibility } from "./api/resources/eligibility/client/Client";
-import { Referrals } from "./api/resources/referrals/client/Client";
-import { Notes } from "./api/resources/notes/client/Client";
-import { Referrers } from "./api/resources/referrers/client/Client";
-import { Offerings } from "./api/resources/offerings/client/Client";
-import { Links } from "./api/resources/links/client/Client";
-import { Public } from "./api/resources/public/client/Client";
-import { Webhooks } from "./api/resources/webhooks/client/Client";
-import { Health } from "./api/resources/health/client/Client";
+import { RetrievingReferrals } from "./api/resources/retrievingReferrals/client/Client";
+import { UpdatingReferrals } from "./api/resources/updatingReferrals/client/Client";
+import { ReferralNotes } from "./api/resources/referralNotes/client/Client";
+import { CreatingReferrals } from "./api/resources/creatingReferrals/client/Client";
 
 export declare namespace ReferralExchangeClient {
     export interface Options {
         environment?: core.Supplier<environments.ReferralExchangeEnvironment | string>;
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
-        apiKey?: core.Supplier<string | undefined>;
+        apiKey: core.Supplier<string>;
         fetcher?: core.FetchFunction;
     }
 
@@ -36,51 +31,26 @@ export declare namespace ReferralExchangeClient {
 }
 
 export class ReferralExchangeClient {
-    protected _eligibility: Eligibility | undefined;
-    protected _referrals: Referrals | undefined;
-    protected _notes: Notes | undefined;
-    protected _referrers: Referrers | undefined;
-    protected _offerings: Offerings | undefined;
-    protected _links: Links | undefined;
-    protected _public: Public | undefined;
-    protected _webhooks: Webhooks | undefined;
-    protected _health: Health | undefined;
+    protected _retrievingReferrals: RetrievingReferrals | undefined;
+    protected _updatingReferrals: UpdatingReferrals | undefined;
+    protected _referralNotes: ReferralNotes | undefined;
+    protected _creatingReferrals: CreatingReferrals | undefined;
 
-    constructor(protected readonly _options: ReferralExchangeClient.Options = {}) {}
+    constructor(protected readonly _options: ReferralExchangeClient.Options) {}
 
-    public get eligibility(): Eligibility {
-        return (this._eligibility ??= new Eligibility(this._options));
+    public get retrievingReferrals(): RetrievingReferrals {
+        return (this._retrievingReferrals ??= new RetrievingReferrals(this._options));
     }
 
-    public get referrals(): Referrals {
-        return (this._referrals ??= new Referrals(this._options));
+    public get updatingReferrals(): UpdatingReferrals {
+        return (this._updatingReferrals ??= new UpdatingReferrals(this._options));
     }
 
-    public get notes(): Notes {
-        return (this._notes ??= new Notes(this._options));
+    public get referralNotes(): ReferralNotes {
+        return (this._referralNotes ??= new ReferralNotes(this._options));
     }
 
-    public get referrers(): Referrers {
-        return (this._referrers ??= new Referrers(this._options));
-    }
-
-    public get offerings(): Offerings {
-        return (this._offerings ??= new Offerings(this._options));
-    }
-
-    public get links(): Links {
-        return (this._links ??= new Links(this._options));
-    }
-
-    public get public(): Public {
-        return (this._public ??= new Public(this._options));
-    }
-
-    public get webhooks(): Webhooks {
-        return (this._webhooks ??= new Webhooks(this._options));
-    }
-
-    public get health(): Health {
-        return (this._health ??= new Health(this._options));
+    public get creatingReferrals(): CreatingReferrals {
+        return (this._creatingReferrals ??= new CreatingReferrals(this._options));
     }
 }

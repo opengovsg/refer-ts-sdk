@@ -7,10 +7,16 @@
  * timeslot-required: Timeslots must be selected when creating a referral.
  * optional-timeslots-and-urgentable: Timeslots are selectable but optional. If no timeslot is selected, the referral will be routed to a manual call-centre for scheduling. If you indicate `isUrgent: true`, the timeslot will be disregarded and referral will be sent to the call-centre for triage.
  * no-timeslots: Timeslots are not selectable for this offering. Calling the timeslot API will return an error.
+ * no-timeslots-and-urgentable: Timeslots are not selectable for this offering, but referrals can be marked as urgent.
  */
-export type TimeslotPolicy = "timeslot-required" | "optional-timeslots-and-urgentable" | "no-timeslots";
+export type TimeslotPolicy =
+    | "timeslot-required"
+    | "optional-timeslots-and-urgentable"
+    | "no-timeslots"
+    | "no-timeslots-and-urgentable";
 export const TimeslotPolicy = {
     TimeslotRequired: "timeslot-required",
     OptionalTimeslotsAndUrgentable: "optional-timeslots-and-urgentable",
     NoTimeslots: "no-timeslots",
+    NoTimeslotsAndUrgentable: "no-timeslots-and-urgentable",
 } as const;

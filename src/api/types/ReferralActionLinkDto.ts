@@ -10,4 +10,6 @@ export interface ReferralActionLinkDto {
     /** The URL of the link */
     url: string;
     type: ReferralExchange.ReferralActionLinkType;
+    /** Human-readable label that can be displayed directly to users */
+    label: string;
 }
