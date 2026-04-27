@@ -5,4 +5,8 @@
 /**
  * The type of institution ID
  */
-export type InstitutionIdType = "hci";
+export type InstitutionIdType = "hci" | "uen";
+export const InstitutionIdType = {
+    Hci: "hci",
+    Uen: "uen",
+} as const;
