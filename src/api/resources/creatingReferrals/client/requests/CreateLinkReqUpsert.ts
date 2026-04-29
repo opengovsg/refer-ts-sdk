@@ -19,7 +19,6 @@ import * as ReferralExchange from "../../../../index";
 export interface CreateLinkReqUpsert {
     /** HCI code of the institution authoring this referral. */
     referrerInstitutionId: string;
-    referrerInstitutionIdType: ReferralExchange.InstitutionIdType;
     /** Name of the institution authoring this referral. */
     referrerInstitutionName: string;
     /** Id of the doctor authoring this referral. */

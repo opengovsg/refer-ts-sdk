@@ -42,4 +42,8 @@ export interface FullReferralDto {
     timelineEvents: ReferralExchange.TimelineEventDto[];
     links: ReferralExchange.ReferralActionLinkDto[];
     appointments: ReferralExchange.AppointmentDto[];
+    /** Referral form rendered as HTML for NEHR integration */
+    nehrForm?: string;
+    /** Form type description(s) for NEHR integration, concatenated by | if multiple */
+    nehrFormType?: string;
 }
