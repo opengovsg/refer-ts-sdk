@@ -8,6 +8,7 @@ export interface Form {
     id: string;
     url: string;
     description: string;
+    remark?: string;
     fields?: Record<string, unknown>[];
     version?: number;
     migrated?: boolean;
