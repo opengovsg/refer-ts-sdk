@@ -5,8 +5,10 @@
 /**
  * Category of the offering. Used to group offerings together.
  */
-export type OfferingDtoCategory = "aac" | "acp";
+export type OfferingDtoCategory = "aac" | "acp" | "gpfirst" | "ae";
 export const OfferingDtoCategory = {
     Aac: "aac",
     Acp: "acp",
+    Gpfirst: "gpfirst",
+    Ae: "ae",
 } as const;
