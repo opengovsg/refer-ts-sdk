@@ -11,7 +11,7 @@ export interface OfferingDto {
     institutionHciCode: string;
     institution: ReferralExchange.InstitutionCoreDto;
     system: ReferralExchange.System;
-    /** Clinical guidelines and other information which clinicians should read before proceeding with creating the referral. May contain URLs - should be rendered in a Linkify component */
+    /** Clinical guidelines and other information which clinicians should read before proceeding with creating the referral. Rendered as markdown in the frontend infobox. Use `[label](https://…)` for links; bare URLs are not auto-linked. */
     description: string;
     /** Whether the offering is able to receive new referrals currently */
     isActive: boolean;

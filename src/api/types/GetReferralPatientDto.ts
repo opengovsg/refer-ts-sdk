@@ -20,8 +20,6 @@ export interface GetReferralPatientDto {
     residentialStatus?: ReferralExchange.GetReferralPatientDtoResidentialStatus;
     /** Patient nationality */
     nationality?: ReferralExchange.GetReferralPatientDtoNationality;
-    /** Patient Healthier SG (HSG) enrolment status */
-    isHsgEnrolled?: boolean;
     /** Current CHAS status */
     chasStatus?: string;
 }
