@@ -1,2 +1,2 @@
-export { type RetrievingReferralsListByInstitutionRequest } from "./RetrievingReferralsListByInstitutionRequest";
-export { type RetrievingReferralsGetRequest } from "./RetrievingReferralsGetRequest";
+export type { GetRetrievingReferralsRequest } from "./GetRetrievingReferralsRequest";
+export type { ListByInstitutionRetrievingReferralsRequest } from "./ListByInstitutionRetrievingReferralsRequest";

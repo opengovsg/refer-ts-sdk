@@ -1,7 +1,5 @@
 # Reference
-
 ## RetrievingReferrals
-
 <details><summary><code>client.retrievingReferrals.<a href="/src/api/resources/retrievingReferrals/client/Client.ts">listByInstitution</a>(institutionIdType, institutionId, { ...params }) -> ReferralExchange.PaginatedReferralsDto</code></summary>
 <dl>
 <dd>
@@ -16,8 +14,8 @@
 
 ```typescript
 await client.retrievingReferrals.listByInstitution("hci", "institutionId");
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -32,7 +30,7 @@ await client.retrievingReferrals.listByInstitution("hci", "institutionId");
 <dd>
 
 **institutionIdType:** `ReferralExchange.InstitutionIdType` — The type of institution ID
-
+    
 </dd>
 </dl>
 
@@ -40,27 +38,28 @@ await client.retrievingReferrals.listByInstitution("hci", "institutionId");
 <dd>
 
 **institutionId:** `string` — The institution ID
-
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `ReferralExchange.RetrievingReferralsListByInstitutionRequest`
-
+**request:** `ReferralExchange.ListByInstitutionRetrievingReferralsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `RetrievingReferrals.RequestOptions`
+**requestOptions:** `RetrievingReferralsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -82,10 +81,10 @@ await client.retrievingReferrals.listByInstitution("hci", "institutionId");
 await client.retrievingReferrals.get("referralId", {
     requesterIdentifier: "requester@example.com",
     institutionIdType: "hci",
-    institutionId: "institutionId",
+    institutionId: "institutionId"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -100,34 +99,34 @@ await client.retrievingReferrals.get("referralId", {
 <dd>
 
 **referralId:** `string` — Referral ID
-
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `ReferralExchange.RetrievingReferralsGetRequest`
-
+**request:** `ReferralExchange.GetRetrievingReferralsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `RetrievingReferrals.RequestOptions`
+**requestOptions:** `RetrievingReferralsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## UpdatingReferrals
-
 <details><summary><code>client.updatingReferrals.<a href="/src/api/resources/updatingReferrals/client/Client.ts">delete</a>(referralId, { ...params }) -> ReferralExchange.ReferralDto</code></summary>
 <dl>
 <dd>
@@ -143,10 +142,10 @@ await client.retrievingReferrals.get("referralId", {
 ```typescript
 await client.updatingReferrals.delete("referralId", {
     institutionIdType: "hci",
-    institutionId: "institutionId",
+    institutionId: "institutionId"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -161,27 +160,28 @@ await client.updatingReferrals.delete("referralId", {
 <dd>
 
 **referralId:** `string` — Referral ID
-
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `ReferralExchange.UpdatingReferralsDeleteRequest`
-
+**request:** `ReferralExchange.DeleteUpdatingReferralsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `UpdatingReferrals.RequestOptions`
+**requestOptions:** `UpdatingReferralsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -203,10 +203,10 @@ await client.updatingReferrals.delete("referralId", {
 await client.updatingReferrals.cancel("referralId", {
     cancelNote: "cancelNote",
     institutionIdType: "hci",
-    institutionId: "institutionId",
+    institutionId: "institutionId"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -221,27 +221,28 @@ await client.updatingReferrals.cancel("referralId", {
 <dd>
 
 **referralId:** `string` — Referral ID
-
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `ReferralExchange.CancelReferralReq`
-
+**request:** `ReferralExchange.CancelReferralReq` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `UpdatingReferrals.RequestOptions`
+**requestOptions:** `UpdatingReferralsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -262,10 +263,10 @@ await client.updatingReferrals.cancel("referralId", {
 ```typescript
 await client.updatingReferrals.backToDraft("referralId", {
     institutionIdType: "hci",
-    institutionId: "institutionId",
+    institutionId: "institutionId"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -280,34 +281,34 @@ await client.updatingReferrals.backToDraft("referralId", {
 <dd>
 
 **referralId:** `string` — Referral ID
-
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `ReferralExchange.BackToDraftReferralBody`
-
+**request:** `ReferralExchange.BackToDraftReferralBody` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `UpdatingReferrals.RequestOptions`
+**requestOptions:** `UpdatingReferralsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## ReferralNotes
-
 <details><summary><code>client.referralNotes.<a href="/src/api/resources/referralNotes/client/Client.ts">create</a>(referralId, { ...params }) -> ReferralExchange.NoteDto</code></summary>
 <dl>
 <dd>
@@ -324,10 +325,10 @@ await client.updatingReferrals.backToDraft("referralId", {
 await client.referralNotes.create("referralId", {
     authorHciCode: "authorHciCode",
     institutionIdType: "hci",
-    institutionId: "institutionId",
+    institutionId: "institutionId"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -342,34 +343,34 @@ await client.referralNotes.create("referralId", {
 <dd>
 
 **referralId:** `string` — Referral ID
-
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `ReferralExchange.CreateNoteReq`
-
+**request:** `ReferralExchange.CreateNoteReq` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `ReferralNotes.RequestOptions`
+**requestOptions:** `ReferralNotesClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## CreatingReferrals
-
 <details><summary><code>client.creatingReferrals.<a href="/src/api/resources/creatingReferrals/client/Client.ts">createUpsertLink</a>({ ...params }) -> ReferralExchange.ReferralUpsertLinkDto</code></summary>
 <dl>
 <dd>
@@ -390,10 +391,10 @@ await client.creatingReferrals.createUpsertLink({
     referrerId: "referrerId",
     requesterIdentifier: "requester@example.com",
     referrerIdType: "mcr",
-    referrerName: "referrerName",
+    referrerName: "referrerName"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -407,21 +408,23 @@ await client.creatingReferrals.createUpsertLink({
 <dl>
 <dd>
 
-**request:** `ReferralExchange.CreateLinkReqUpsert`
-
+**request:** `ReferralExchange.CreateLinkReqUpsert` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CreatingReferrals.RequestOptions`
+**requestOptions:** `CreatingReferralsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
+

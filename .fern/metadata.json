@@ -1,0 +1,42 @@
+{
+    "cliVersion": "5.37.9",
+    "generatorName": "fernapi/fern-typescript-sdk",
+    "generatorVersion": "3.70.7",
+    "generatorConfig": {
+        "namespaceExport": "ReferralExchange",
+        "allowCustomFetcher": true,
+        "skipResponseValidation": false,
+        "includeApiReference": true,
+        "noSerdeLayer": true,
+        "packageJson": {
+            "scripts": {
+                "pretest": "yarn build"
+            },
+            "dependencies": {
+                "jsonwebtoken": "^9.0.2"
+            },
+            "devDependencies": {
+                "@types/jsonwebtoken": "^9.0.7"
+            },
+            "browser": {
+                "jsonwebtoken": "./dist/browser/jsonwebtoken-stub.js"
+            }
+        },
+        "inlineFileProperties": false,
+        "inlinePathParameters": false,
+        "enableInlineTypes": false,
+        "omitUndefined": false,
+        "useLegacyExports": true,
+        "streamType": "wrapper",
+        "fileResponseType": "stream",
+        "formDataSupport": "Node16",
+        "fetchSupport": "node-fetch",
+        "packageManager": "yarn",
+        "testFramework": "jest"
+    },
+    "originGitCommit": "24e52bdb53bdc2ed736f0240b81ce609a8830cc5",
+    "originGitCommitIsDirty": true,
+    "invokedBy": "manual",
+    "requestedVersion": "0.0.0-test-0.0.69",
+    "sdkVersion": "0.0.0-test-0.0.69"
+}
