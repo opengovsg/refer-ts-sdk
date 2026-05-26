@@ -1,13 +1,11 @@
 import jwt from "jsonwebtoken";
 
 import { ReferralExchangeClient } from "../Client";
-import { fetcherImpl } from "../core/fetcher/Fetcher";
-import type { FetchFunction } from "../core/fetcher/Fetcher";
 
 const JWT_TTL_SECONDS = 15;
 
 export declare namespace ReferralExchangeJwtClient {
-    export interface Options extends Omit<ReferralExchangeClient.Options, "fetcher" | "apiKey"> {
+    export interface Options extends Omit<ReferralExchangeClient.Options, "apiKey"> {
         privateKey: string;
         apiKeyName: string;
         subject?: string;
@@ -23,10 +21,14 @@ export class ReferralExchangeJwtClient extends ReferralExchangeClient {
     constructor(options: ReferralExchangeJwtClient.Options) {
         const { privateKey, apiKeyName, subject, tokenCache, ...baseOptions } = options;
         const signer = new JwtSigner({ privateKey, issuer: apiKeyName, subject, tokenCache });
-        const fetcher = createJwtFetcher(signer);
         super({
             ...baseOptions,
-            fetcher,
+            // apiKey is required by BaseClientOptions but unused — the auth function below
+            // takes precedence and short-circuits before apiKey is read.
+            apiKey: "",
+            auth: async () => ({
+                headers: { Authorization: `Bearer ${await signer.getToken()}` },
+            }),
         });
     }
 }
@@ -82,19 +84,6 @@ class JwtSigner {
     }
 }
 
-function createJwtFetcher(signer: JwtSigner): FetchFunction {
-    return async (args) => {
-        const token = await signer.getToken();
-        const headers = { ...(args.headers ?? {}) };
-        headers.Authorization = `Bearer ${token}`;
-
-        return fetcherImpl({
-            ...args,
-            headers,
-        });
-    };
-}
-
 interface CreateSignedJwtArgs {
     privateKey: string;
     issuer: string;
@@ -111,12 +100,8 @@ function createSignedJwt({ privateKey, issuer, subject }: CreateSignedJwtArgs): 
         algorithm: "ES256",
         issuer,
         expiresIn: JWT_TTL_SECONDS,
+        ...(subject != null && { subject }),
     };
-
-    // Only add the claim if a value is provided(not null or undefined) 
-    if (subject != null) {
-        signOptions.subject = subject;
-    }
 
     const token = jwt.sign({}, privateKey, signOptions);
 

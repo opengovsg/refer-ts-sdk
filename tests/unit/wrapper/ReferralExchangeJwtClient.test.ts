@@ -1,7 +1,3 @@
-jest.mock("../../../src/core/fetcher/Fetcher", () => ({
-    fetcherImpl: jest.fn(),
-}));
-
 jest.mock("jsonwebtoken", () => ({
     __esModule: true,
     default: {
@@ -13,15 +9,14 @@ import jwt from "jsonwebtoken";
 
 import { ReferralExchangeJwtClient } from "../../../src/wrapper/ReferralExchangeJwtClient";
 
-const fetcherImplMock = jest.requireMock("../../../src/core/fetcher/Fetcher").fetcherImpl as jest.Mock;
 const signMock = jwt.sign as jest.Mock<string, any[]>;
 
-describe("ReferralExchangeJwtClient", () => {
-    const requestArgs = { url: "https://refx.test/resource", method: "GET" };
+function getAuthRequest(client: ReferralExchangeJwtClient): Promise<{ headers: Record<string, string> }> {
+    return (client as any)._options.authProvider.getAuthRequest();
+}
 
+describe("ReferralExchangeJwtClient", () => {
     beforeEach(() => {
-        fetcherImplMock.mockReset();
-        fetcherImplMock.mockResolvedValue({ ok: true });
         signMock.mockReset();
     });
 
@@ -33,28 +28,14 @@ describe("ReferralExchangeJwtClient", () => {
             apiKeyName: "issuer",
         });
 
-        const fetcher = ((client as any)._options.fetcher) as (args: typeof requestArgs) => Promise<unknown>;
-
-        await fetcher(requestArgs);
-        await fetcher(requestArgs);
+        await expect(getAuthRequest(client)).resolves.toEqual({
+            headers: { Authorization: "Bearer token-1" },
+        });
+        await expect(getAuthRequest(client)).resolves.toEqual({
+            headers: { Authorization: "Bearer token-2" },
+        });
 
         expect(signMock).toHaveBeenCalledTimes(2);
-        expect(fetcherImplMock).toHaveBeenNthCalledWith(
-            1,
-            expect.objectContaining({
-                headers: expect.objectContaining({
-                    Authorization: "Bearer token-1",
-                }),
-            }),
-        );
-        expect(fetcherImplMock).toHaveBeenNthCalledWith(
-            2,
-            expect.objectContaining({
-                headers: expect.objectContaining({
-                    Authorization: "Bearer token-2",
-                }),
-            }),
-        );
     });
 
     it("omits subject claim when not provided", async () => {
@@ -65,9 +46,7 @@ describe("ReferralExchangeJwtClient", () => {
             apiKeyName: "issuer",
         });
 
-        const fetcher = ((client as any)._options.fetcher) as (args: typeof requestArgs) => Promise<unknown>;
-
-        await fetcher(requestArgs);
+        await getAuthRequest(client);
 
         const [, , options] = signMock.mock.calls[0];
         expect(options).toEqual(
@@ -88,9 +67,7 @@ describe("ReferralExchangeJwtClient", () => {
             subject: "user-123",
         });
 
-        const fetcher = ((client as any)._options.fetcher) as (args: typeof requestArgs) => Promise<unknown>;
-
-        await fetcher(requestArgs);
+        await getAuthRequest(client);
 
         expect(signMock).toHaveBeenCalledWith(
             {},
@@ -110,43 +87,24 @@ describe("ReferralExchangeJwtClient", () => {
             apiKeyName: "issuer",
             tokenCache: { refreshBufferSeconds: 5 },
         });
-        const fetcher = ((client as any)._options.fetcher) as (args: typeof requestArgs) => Promise<unknown>;
 
         let nowMs = 0;
         const dateSpy = jest.spyOn(Date, "now").mockImplementation(() => nowMs);
 
         nowMs = 0;
-        await fetcher(requestArgs);
+        await expect(getAuthRequest(client)).resolves.toEqual({
+            headers: { Authorization: "Bearer token-1" },
+        });
         nowMs = 2_000; // 2 seconds, still outside the 5 second refresh buffer window.
-        await fetcher(requestArgs);
+        await expect(getAuthRequest(client)).resolves.toEqual({
+            headers: { Authorization: "Bearer token-1" },
+        });
         nowMs = 11_000; // 11 seconds -> only 4 seconds remain before expiry, so refresh.
-        await fetcher(requestArgs);
+        await expect(getAuthRequest(client)).resolves.toEqual({
+            headers: { Authorization: "Bearer token-2" },
+        });
 
         expect(signMock).toHaveBeenCalledTimes(2);
-        expect(fetcherImplMock).toHaveBeenNthCalledWith(
-            1,
-            expect.objectContaining({
-                headers: expect.objectContaining({
-                    Authorization: "Bearer token-1",
-                }),
-            }),
-        );
-        expect(fetcherImplMock).toHaveBeenNthCalledWith(
-            2,
-            expect.objectContaining({
-                headers: expect.objectContaining({
-                    Authorization: "Bearer token-1",
-                }),
-            }),
-        );
-        expect(fetcherImplMock).toHaveBeenNthCalledWith(
-            3,
-            expect.objectContaining({
-                headers: expect.objectContaining({
-                    Authorization: "Bearer token-2",
-                }),
-            }),
-        );
 
         dateSpy.mockRestore();
     });
@@ -159,43 +117,24 @@ describe("ReferralExchangeJwtClient", () => {
             apiKeyName: "issuer",
             tokenCache: { refreshBufferSeconds: 30 }, // larger than JWT_TTL_SECONDS
         });
-        const fetcher = ((client as any)._options.fetcher) as (args: typeof requestArgs) => Promise<unknown>;
 
         let nowMs = 0;
         const dateSpy = jest.spyOn(Date, "now").mockImplementation(() => nowMs);
 
         nowMs = 0;
-        await fetcher(requestArgs);
+        await expect(getAuthRequest(client)).resolves.toEqual({
+            headers: { Authorization: "Bearer token-1" },
+        });
         nowMs = 500; // 0.5 seconds < (15s - 14s clamp) so the cached token is still valid
-        await fetcher(requestArgs);
+        await expect(getAuthRequest(client)).resolves.toEqual({
+            headers: { Authorization: "Bearer token-1" },
+        });
         nowMs = 1_500; // 1.5 seconds -> exceeds the clamped threshold, so a new token is signed
-        await fetcher(requestArgs);
+        await expect(getAuthRequest(client)).resolves.toEqual({
+            headers: { Authorization: "Bearer token-2" },
+        });
 
         expect(signMock).toHaveBeenCalledTimes(2);
-        expect(fetcherImplMock).toHaveBeenNthCalledWith(
-            1,
-            expect.objectContaining({
-                headers: expect.objectContaining({
-                    Authorization: "Bearer token-1",
-                }),
-            }),
-        );
-        expect(fetcherImplMock).toHaveBeenNthCalledWith(
-            2,
-            expect.objectContaining({
-                headers: expect.objectContaining({
-                    Authorization: "Bearer token-1",
-                }),
-            }),
-        );
-        expect(fetcherImplMock).toHaveBeenNthCalledWith(
-            3,
-            expect.objectContaining({
-                headers: expect.objectContaining({
-                    Authorization: "Bearer token-2",
-                }),
-            }),
-        );
 
         dateSpy.mockRestore();
     });
