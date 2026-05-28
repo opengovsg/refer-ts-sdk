@@ -60,8 +60,8 @@ export function normalizeClientOptions<T extends BaseClientOptions = BaseClientO
         {
             "X-Fern-Language": "JavaScript",
             "X-Fern-SDK-Name": "@opengovsg/refx-ts-sdk",
-            "X-Fern-SDK-Version": "0.0.0-test-0.0.69",
-            "User-Agent": "@opengovsg/refx-ts-sdk/0.0.0-test-0.0.69",
+            "X-Fern-SDK-Version": "0.0.70",
+            "User-Agent": "@opengovsg/refx-ts-sdk/0.0.70",
             "X-Fern-Runtime": core.RUNTIME.type,
             "X-Fern-Runtime-Version": core.RUNTIME.version,
         },

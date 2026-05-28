@@ -13,6 +13,8 @@ export interface ReferralDto {
     isUrgent: boolean;
     /** Created at (ISO datetime) */
     createdAt: string;
+    /** Submitted at (ISO datetime). Absent if the referral is a draft. */
+    submittedAt?: string | undefined;
     /** Updated at (ISO datetime) */
     updatedAt: string;
     formResponses: ReferralExchange.FormResponse[];

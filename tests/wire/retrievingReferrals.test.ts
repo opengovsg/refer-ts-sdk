@@ -63,6 +63,7 @@ describe("RetrievingReferralsClient", () => {
                     isSubsidised: true,
                     isUrgent: true,
                     createdAt: "2024-05-01T00:00:00Z",
+                    submittedAt: "2024-05-01T00:00:00Z",
                     updatedAt: "2024-05-01T00:00:00Z",
                     formResponses: [{ question: "question", id: "id", answer: "answer" }],
                     forms: [
@@ -198,6 +199,7 @@ describe("RetrievingReferralsClient", () => {
             isSubsidised: true,
             isUrgent: true,
             createdAt: "2024-05-01T00:00:00Z",
+            submittedAt: "2024-05-01T00:00:00Z",
             updatedAt: "2024-05-01T00:00:00Z",
             formResponses: [{ question: "question", id: "id", answer: "answer" }],
             forms: [

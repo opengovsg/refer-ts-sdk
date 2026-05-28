@@ -34,9 +34,9 @@
         "packageManager": "yarn",
         "testFramework": "jest"
     },
-    "originGitCommit": "24e52bdb53bdc2ed736f0240b81ce609a8830cc5",
+    "originGitCommit": "d70dc7796c5691edc4432727c7ff18565d5109fb",
     "originGitCommitIsDirty": true,
     "invokedBy": "manual",
-    "requestedVersion": "0.0.0-test-0.0.69",
-    "sdkVersion": "0.0.0-test-0.0.69"
+    "requestedVersion": "0.0.70",
+    "sdkVersion": "0.0.70"
 }
