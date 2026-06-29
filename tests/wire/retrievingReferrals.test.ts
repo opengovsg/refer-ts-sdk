@@ -7,7 +7,7 @@ import { mockServerPool } from "../mock-server/MockServerPool";
 describe("RetrievingReferralsClient", () => {
     test("listByInstitution (1)", async () => {
         const server = mockServerPool.createServer();
-        const client = new ReferralExchangeClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        const client = new ReferralExchangeClient({ maxRetries: 0, environment: server.baseUrl });
 
         const rawResponseBody = {
             data: [
@@ -83,6 +83,7 @@ describe("RetrievingReferralsClient", () => {
                     status: "draft",
                     coreStatus: "draft",
                     isCancellable: true,
+                    canBackToDraft: true,
                     timeslotStartAt: "2024-05-01T00:00:00Z",
                     appointmentLocation: "appointmentLocation",
                     notes: [
@@ -114,7 +115,7 @@ describe("RetrievingReferralsClient", () => {
 
     test("listByInstitution (2)", async () => {
         const server = mockServerPool.createServer();
-        const client = new ReferralExchangeClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        const client = new ReferralExchangeClient({ maxRetries: 0, environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
 
@@ -133,7 +134,7 @@ describe("RetrievingReferralsClient", () => {
 
     test("get (1)", async () => {
         const server = mockServerPool.createServer();
-        const client = new ReferralExchangeClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        const client = new ReferralExchangeClient({ maxRetries: 0, environment: server.baseUrl });
 
         const rawResponseBody = {
             id: "id",
@@ -223,6 +224,7 @@ describe("RetrievingReferralsClient", () => {
             status: "draft",
             coreStatus: "draft",
             isCancellable: true,
+            canBackToDraft: true,
             timeslotStartAt: "2024-05-01T00:00:00Z",
             appointmentLocation: "appointmentLocation",
             notes: [
@@ -277,7 +279,7 @@ describe("RetrievingReferralsClient", () => {
 
     test("get (2)", async () => {
         const server = mockServerPool.createServer();
-        const client = new ReferralExchangeClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        const client = new ReferralExchangeClient({ maxRetries: 0, environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
 
@@ -300,7 +302,7 @@ describe("RetrievingReferralsClient", () => {
 
     test("get (3)", async () => {
         const server = mockServerPool.createServer();
-        const client = new ReferralExchangeClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        const client = new ReferralExchangeClient({ maxRetries: 0, environment: server.baseUrl });
 
         const rawResponseBody = {};
 

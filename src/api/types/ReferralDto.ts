@@ -34,6 +34,8 @@ export interface ReferralDto {
     coreStatus: ReferralExchange.ReferralDtoCoreStatus;
     /** Whether this referral can be cancelled */
     isCancellable: boolean;
+    /** Whether this referral can be sent back to draft (to be amended and resubmitted) */
+    canBackToDraft: boolean;
     /** Timeslot start time (ISO datetime) */
     timeslotStartAt?: string | undefined;
     /** Appointment location */

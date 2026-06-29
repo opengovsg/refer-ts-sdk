@@ -7,7 +7,7 @@ import { mockServerPool } from "../mock-server/MockServerPool";
 describe("CreatingReferralsClient", () => {
     test("createUpsertLink (1)", async () => {
         const server = mockServerPool.createServer();
-        const client = new ReferralExchangeClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        const client = new ReferralExchangeClient({ maxRetries: 0, environment: server.baseUrl });
         const rawRequestBody = {
             referrerInstitutionId: "referrerInstitutionId",
             referrerInstitutionIdType: "hci",
@@ -42,7 +42,7 @@ describe("CreatingReferralsClient", () => {
 
     test("createUpsertLink (2)", async () => {
         const server = mockServerPool.createServer();
-        const client = new ReferralExchangeClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        const client = new ReferralExchangeClient({ maxRetries: 0, environment: server.baseUrl });
         const rawRequestBody = {
             referrerInstitutionId: "referrerInstitutionId",
             referrerInstitutionIdType: "hci",
@@ -78,7 +78,7 @@ describe("CreatingReferralsClient", () => {
 
     test("createUpsertLink (3)", async () => {
         const server = mockServerPool.createServer();
-        const client = new ReferralExchangeClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        const client = new ReferralExchangeClient({ maxRetries: 0, environment: server.baseUrl });
         const rawRequestBody = {
             referrerInstitutionId: "referrerInstitutionId",
             referrerInstitutionIdType: "hci",

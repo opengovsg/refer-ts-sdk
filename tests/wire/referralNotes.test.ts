@@ -7,7 +7,7 @@ import { mockServerPool } from "../mock-server/MockServerPool";
 describe("ReferralNotesClient", () => {
     test("create (1)", async () => {
         const server = mockServerPool.createServer();
-        const client = new ReferralExchangeClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        const client = new ReferralExchangeClient({ maxRetries: 0, environment: server.baseUrl });
         const rawRequestBody = {
             authorHciCode: "authorHciCode",
             institutionIdType: "hci",
@@ -41,7 +41,7 @@ describe("ReferralNotesClient", () => {
 
     test("create (2)", async () => {
         const server = mockServerPool.createServer();
-        const client = new ReferralExchangeClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        const client = new ReferralExchangeClient({ maxRetries: 0, environment: server.baseUrl });
         const rawRequestBody = {
             authorHciCode: "authorHciCode",
             institutionIdType: "hci",

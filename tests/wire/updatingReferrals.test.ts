@@ -7,7 +7,7 @@ import { mockServerPool } from "../mock-server/MockServerPool";
 describe("UpdatingReferralsClient", () => {
     test("delete (1)", async () => {
         const server = mockServerPool.createServer();
-        const client = new ReferralExchangeClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        const client = new ReferralExchangeClient({ maxRetries: 0, environment: server.baseUrl });
 
         const rawResponseBody = {
             id: "id",
@@ -97,6 +97,7 @@ describe("UpdatingReferralsClient", () => {
             status: "draft",
             coreStatus: "draft",
             isCancellable: true,
+            canBackToDraft: true,
             timeslotStartAt: "2024-05-01T00:00:00Z",
             appointmentLocation: "appointmentLocation",
             notes: [
@@ -128,7 +129,7 @@ describe("UpdatingReferralsClient", () => {
 
     test("delete (2)", async () => {
         const server = mockServerPool.createServer();
-        const client = new ReferralExchangeClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        const client = new ReferralExchangeClient({ maxRetries: 0, environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
 
@@ -150,7 +151,7 @@ describe("UpdatingReferralsClient", () => {
 
     test("cancel (1)", async () => {
         const server = mockServerPool.createServer();
-        const client = new ReferralExchangeClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        const client = new ReferralExchangeClient({ maxRetries: 0, environment: server.baseUrl });
         const rawRequestBody = { cancelNote: "cancelNote", institutionIdType: "hci", institutionId: "institutionId" };
         const rawResponseBody = {
             id: "id",
@@ -240,6 +241,7 @@ describe("UpdatingReferralsClient", () => {
             status: "draft",
             coreStatus: "draft",
             isCancellable: true,
+            canBackToDraft: true,
             timeslotStartAt: "2024-05-01T00:00:00Z",
             appointmentLocation: "appointmentLocation",
             notes: [
@@ -273,7 +275,7 @@ describe("UpdatingReferralsClient", () => {
 
     test("cancel (2)", async () => {
         const server = mockServerPool.createServer();
-        const client = new ReferralExchangeClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        const client = new ReferralExchangeClient({ maxRetries: 0, environment: server.baseUrl });
         const rawRequestBody = { cancelNote: "cancelNote", institutionIdType: "hci", institutionId: "institutionId" };
         const rawResponseBody = { key: "value" };
 
@@ -297,7 +299,7 @@ describe("UpdatingReferralsClient", () => {
 
     test("backToDraft (1)", async () => {
         const server = mockServerPool.createServer();
-        const client = new ReferralExchangeClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        const client = new ReferralExchangeClient({ maxRetries: 0, environment: server.baseUrl });
         const rawRequestBody = { institutionIdType: "hci", institutionId: "institutionId" };
         const rawResponseBody = {
             id: "id",
@@ -387,6 +389,7 @@ describe("UpdatingReferralsClient", () => {
             status: "draft",
             coreStatus: "draft",
             isCancellable: true,
+            canBackToDraft: true,
             timeslotStartAt: "2024-05-01T00:00:00Z",
             appointmentLocation: "appointmentLocation",
             notes: [
@@ -419,7 +422,7 @@ describe("UpdatingReferralsClient", () => {
 
     test("backToDraft (2)", async () => {
         const server = mockServerPool.createServer();
-        const client = new ReferralExchangeClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        const client = new ReferralExchangeClient({ maxRetries: 0, environment: server.baseUrl });
         const rawRequestBody = { institutionIdType: "hci", institutionId: "institutionId" };
         const rawResponseBody = { key: "value" };
 

@@ -5,7 +5,7 @@ import { ReferralNotesClient } from "./api/resources/referralNotes/client/Client
 import { RetrievingReferralsClient } from "./api/resources/retrievingReferrals/client/Client";
 import { UpdatingReferralsClient } from "./api/resources/updatingReferrals/client/Client";
 import type { BaseClientOptions, BaseRequestOptions } from "./BaseClient";
-import { type NormalizedClientOptionsWithAuth, normalizeClientOptionsWithAuth } from "./BaseClient";
+import { type NormalizedClientOptions, normalizeClientOptions } from "./BaseClient";
 import * as core from "./core";
 
 export declare namespace ReferralExchangeClient {
@@ -15,14 +15,14 @@ export declare namespace ReferralExchangeClient {
 }
 
 export class ReferralExchangeClient {
-    protected readonly _options: NormalizedClientOptionsWithAuth<ReferralExchangeClient.Options>;
+    protected readonly _options: NormalizedClientOptions<ReferralExchangeClient.Options>;
     protected _retrievingReferrals: RetrievingReferralsClient | undefined;
     protected _updatingReferrals: UpdatingReferralsClient | undefined;
     protected _referralNotes: ReferralNotesClient | undefined;
     protected _creatingReferrals: CreatingReferralsClient | undefined;
 
-    constructor(options: ReferralExchangeClient.Options) {
-        this._options = normalizeClientOptionsWithAuth(options);
+    constructor(options: ReferralExchangeClient.Options = {}) {
+        this._options = normalizeClientOptions(options);
     }
 
     public get retrievingReferrals(): RetrievingReferralsClient {
@@ -66,7 +66,6 @@ export class ReferralExchangeClient {
                 maxRetries: this._options.maxRetries,
                 fetch: this._options.fetch,
                 logging: this._options.logging,
-                getAuthHeaders: async () => (await this._options.authProvider.getAuthRequest()).headers,
             },
             requestOptions,
         );

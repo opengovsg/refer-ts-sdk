@@ -52,6 +52,6 @@ export interface CreateLinkReqUpsert {
     clinicLicenseNumber?: string;
     /** Clinic type */
     clinicType?: ReferralExchange.CreateLinkReqUpsertClinicType;
-    /** Any clinical information that is relevant to the referral, e.g. medical history, drug allergies, treatment provided, etc. */
+    /** Optional but strongly recommended. When provided, this field enables pre-filling of the referral form. Includes medical history, drug allergies, treatment provided, and other relevant clinical context. */
     clinicalInfo?: string;
 }
