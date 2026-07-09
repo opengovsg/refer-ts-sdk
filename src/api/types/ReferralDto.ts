@@ -9,6 +9,7 @@ export interface ReferralDto {
     offering: ReferralExchange.OfferingDto;
     patient: ReferralExchange.GetReferralPatientDto;
     referringDoctor: ReferralExchange.ReferringDoctorDto;
+    offeringClinician?: ReferralExchange.OfferingClinicianDto | undefined;
     isSubsidised: boolean;
     isUrgent: boolean;
     /** Created at (ISO datetime) */
@@ -29,8 +30,6 @@ export interface ReferralDto {
     clinicType?: ReferralExchange.ReferralDtoClinicType | undefined;
     /** Any clinical information that is relevant to the referral, e.g. medical history, drug allergies, treatment provided, etc. */
     clinicalInfo?: string | undefined;
-    /** Deprecated. Use coreStatus instead. */
-    status: ReferralExchange.ReferralDtoStatus;
     coreStatus: ReferralExchange.ReferralDtoCoreStatus;
     /** Whether this referral can be cancelled */
     isCancellable: boolean;

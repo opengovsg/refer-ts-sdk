@@ -60,6 +60,7 @@ describe("RetrievingReferralsClient", () => {
                         email: "email",
                         contactNumber: "contactNumber",
                     },
+                    offeringClinician: { name: "name" },
                     isSubsidised: true,
                     isUrgent: true,
                     createdAt: "2024-05-01T00:00:00Z",
@@ -80,7 +81,6 @@ describe("RetrievingReferralsClient", () => {
                     clinicLicenseNumber: "clinicLicenseNumber",
                     clinicType: "CHAS-only",
                     clinicalInfo: "clinicalInfo",
-                    status: "draft",
                     coreStatus: "draft",
                     isCancellable: true,
                     canBackToDraft: true,
@@ -185,6 +185,10 @@ describe("RetrievingReferralsClient", () => {
                     streetName: "streetName",
                     floorNumber: "floorNumber",
                     unitNumber: "unitNumber",
+                    buildingName: "buildingName",
+                    city: "city",
+                    geographicalArea: "North",
+                    country: "Singapore",
                 },
                 residentialStatus: "SC",
                 nationality: "Singapore",
@@ -197,6 +201,7 @@ describe("RetrievingReferralsClient", () => {
                 email: "email",
                 contactNumber: "contactNumber",
             },
+            offeringClinician: { name: "name" },
             isSubsidised: true,
             isUrgent: true,
             createdAt: "2024-05-01T00:00:00Z",
@@ -221,7 +226,6 @@ describe("RetrievingReferralsClient", () => {
             clinicLicenseNumber: "clinicLicenseNumber",
             clinicType: "CHAS-only",
             clinicalInfo: "clinicalInfo",
-            status: "draft",
             coreStatus: "draft",
             isCancellable: true,
             canBackToDraft: true,
@@ -246,6 +250,7 @@ describe("RetrievingReferralsClient", () => {
                 },
             ],
             links: [{ referralId: "referralId", url: "url", type: "amend", label: "label" }],
+            actions: [{ type: "amend", label: "label", attachment: { id: "id", uploadedAt: "2024-05-01T00:00:00Z" } }],
             appointments: [
                 {
                     status: "scheduled",
@@ -321,5 +326,65 @@ describe("RetrievingReferralsClient", () => {
                 institutionId: "institutionId",
             });
         }).rejects.toThrow(ReferralExchange.NotFoundError);
+    });
+
+    test("getActionLink (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new ReferralExchangeClient({ maxRetries: 0, environment: server.baseUrl });
+        const rawRequestBody = {
+            requesterIdentifier: "requester@example.com",
+            institutionIdType: "hci",
+            institutionId: "institutionId",
+        };
+        const rawResponseBody = {
+            type: "amend",
+            label: "label",
+            attachment: { id: "id", uploadedAt: "2024-05-01T00:00:00Z" },
+            url: "url",
+        };
+
+        server
+            .mockEndpoint()
+            .post("/api/v1/referrals/referralId/action-links/amend")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.retrievingReferrals.getActionLink("referralId", "amend", {
+            requesterIdentifier: "requester@example.com",
+            institutionIdType: "hci",
+            institutionId: "institutionId",
+        });
+        expect(response).toEqual(rawResponseBody);
+    });
+
+    test("getActionLink (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new ReferralExchangeClient({ maxRetries: 0, environment: server.baseUrl });
+        const rawRequestBody = {
+            requesterIdentifier: "requesterIdentifier",
+            institutionIdType: "hci",
+            institutionId: "institutionId",
+        };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/api/v1/referrals/referralId/action-links/amend")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.retrievingReferrals.getActionLink("referralId", "amend", {
+                requesterIdentifier: "requesterIdentifier",
+                institutionIdType: "hci",
+                institutionId: "institutionId",
+            });
+        }).rejects.toThrow(ReferralExchange.UnauthorizedError);
     });
 });

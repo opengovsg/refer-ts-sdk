@@ -204,4 +204,85 @@ export class RetrievingReferralsClient {
             "/api/v1/referrals/{referralId}",
         );
     }
+
+    /**
+     * @param {string} referralId - The ID of the referral
+     * @param {ReferralExchange.ReferralActionLinkTypeV2} type - The type of action link to retrieve
+     * @param {ReferralExchange.GetReferralActionLinkReq} request
+     * @param {RetrievingReferralsClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link ReferralExchange.UnauthorizedError}
+     *
+     * @example
+     *     await client.retrievingReferrals.getActionLink("referralId", "amend", {
+     *         requesterIdentifier: "requester@example.com",
+     *         institutionIdType: "hci",
+     *         institutionId: "institutionId"
+     *     })
+     */
+    public getActionLink(
+        referralId: string,
+        type: ReferralExchange.ReferralActionLinkTypeV2,
+        request: ReferralExchange.GetReferralActionLinkReq,
+        requestOptions?: RetrievingReferralsClient.RequestOptions,
+    ): core.HttpResponsePromise<ReferralExchange.ReferralActionLinkDtoV2> {
+        return core.HttpResponsePromise.fromPromise(this.__getActionLink(referralId, type, request, requestOptions));
+    }
+
+    private async __getActionLink(
+        referralId: string,
+        type: ReferralExchange.ReferralActionLinkTypeV2,
+        request: ReferralExchange.GetReferralActionLinkReq,
+        requestOptions?: RetrievingReferralsClient.RequestOptions,
+    ): Promise<core.WithRawResponse<ReferralExchange.ReferralActionLinkDtoV2>> {
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(this._options?.headers, requestOptions?.headers);
+        const _response = await (this._options.fetcher ?? core.fetcher)({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.ReferralExchangeEnvironment.SmartCms,
+                `api/v1/referrals/${core.url.encodePathParam(referralId)}/action-links/${core.url.encodePathParam(type)}`,
+            ),
+            method: "POST",
+            headers: _headers,
+            contentType: "application/json",
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
+            requestType: "json",
+            body: request,
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: _response.body as ReferralExchange.ReferralActionLinkDtoV2,
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new ReferralExchange.UnauthorizedError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
+                default:
+                    throw new errors.ReferralExchangeError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
+        }
+
+        return handleNonStatusCodeError(
+            _response.error,
+            _response.rawResponse,
+            "POST",
+            "/api/v1/referrals/{referralId}/action-links/{type}",
+        );
+    }
 }

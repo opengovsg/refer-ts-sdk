@@ -126,6 +126,75 @@ await client.retrievingReferrals.get("referralId", {
 </dl>
 </details>
 
+<details><summary><code>client.retrievingReferrals.<a href="/src/api/resources/retrievingReferrals/client/Client.ts">getActionLink</a>(referralId, type, { ...params }) -> ReferralExchange.ReferralActionLinkDtoV2</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.retrievingReferrals.getActionLink("referralId", "amend", {
+    requesterIdentifier: "requester@example.com",
+    institutionIdType: "hci",
+    institutionId: "institutionId"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**referralId:** `string` — The ID of the referral
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**type:** `ReferralExchange.ReferralActionLinkTypeV2` — The type of action link to retrieve
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `ReferralExchange.GetReferralActionLinkReq` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `RetrievingReferralsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## UpdatingReferrals
 <details><summary><code>client.updatingReferrals.<a href="/src/api/resources/updatingReferrals/client/Client.ts">delete</a>(referralId, { ...params }) -> ReferralExchange.ReferralDto</code></summary>
 <dl>

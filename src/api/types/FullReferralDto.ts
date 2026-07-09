@@ -9,6 +9,7 @@ export interface FullReferralDto {
     offering: ReferralExchange.OfferingDto;
     patient: ReferralExchange.GetReferralPatientDto;
     referringDoctor: ReferralExchange.ReferringDoctorDto;
+    offeringClinician?: ReferralExchange.OfferingClinicianDto | undefined;
     isSubsidised: boolean;
     isUrgent: boolean;
     /** Created at (ISO datetime) */
@@ -29,8 +30,6 @@ export interface FullReferralDto {
     clinicType?: ReferralExchange.FullReferralDtoClinicType | undefined;
     /** Any clinical information that is relevant to the referral, e.g. medical history, drug allergies, treatment provided, etc. */
     clinicalInfo?: string | undefined;
-    /** Deprecated. Use coreStatus instead. */
-    status: ReferralExchange.FullReferralDtoStatus;
     coreStatus: ReferralExchange.FullReferralDtoCoreStatus;
     /** Whether this referral can be cancelled */
     isCancellable: boolean;
@@ -43,6 +42,7 @@ export interface FullReferralDto {
     notes: ReferralExchange.NoteDto[];
     timelineEvents: ReferralExchange.TimelineEventDto[];
     links: ReferralExchange.ReferralActionLinkDto[];
+    actions: ReferralExchange.ReferralActionMetadataDto[];
     appointments: ReferralExchange.AppointmentDto[];
     /** Referral form rendered as HTML for NEHR integration */
     nehrForm?: string | undefined;
