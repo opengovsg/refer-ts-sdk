@@ -18,6 +18,10 @@ export interface GetReferralPatientDto {
     residentialStatus?: ReferralExchange.GetReferralPatientDtoResidentialStatus | undefined;
     /** Patient nationality */
     nationality?: ReferralExchange.GetReferralPatientDtoNationality | undefined;
+    /** Patient race */
+    race?: ReferralExchange.GetReferralPatientDtoRace | undefined;
+    /** Patient email */
+    email?: string | undefined;
     /** Current CHAS status */
     chasStatus: string | null;
 }

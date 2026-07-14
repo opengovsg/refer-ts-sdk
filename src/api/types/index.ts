@@ -16,6 +16,7 @@ export * from "./FullReferralDtoCoreStatus";
 export * from "./GetReferralPatientDto";
 export * from "./GetReferralPatientDtoGender";
 export * from "./GetReferralPatientDtoNationality";
+export * from "./GetReferralPatientDtoRace";
 export * from "./GetReferralPatientDtoResidentialStatus";
 export * from "./InstitutionCoreDto";
 export * from "./InstitutionIdType";

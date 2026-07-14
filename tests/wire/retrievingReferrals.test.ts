@@ -192,6 +192,8 @@ describe("RetrievingReferralsClient", () => {
                 },
                 residentialStatus: "SC",
                 nationality: "Singapore",
+                race: "Chinese",
+                email: "email",
                 chasStatus: "chasStatus",
             },
             referringDoctor: {

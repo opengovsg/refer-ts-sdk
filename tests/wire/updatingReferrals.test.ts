@@ -65,6 +65,8 @@ describe("UpdatingReferralsClient", () => {
                 },
                 residentialStatus: "SC",
                 nationality: "Singapore",
+                race: "Chinese",
+                email: "email",
                 chasStatus: "chasStatus",
             },
             referringDoctor: {
@@ -213,6 +215,8 @@ describe("UpdatingReferralsClient", () => {
                 },
                 residentialStatus: "SC",
                 nationality: "Singapore",
+                race: "Chinese",
+                email: "email",
                 chasStatus: "chasStatus",
             },
             referringDoctor: {
@@ -365,6 +369,8 @@ describe("UpdatingReferralsClient", () => {
                 },
                 residentialStatus: "SC",
                 nationality: "Singapore",
+                race: "Chinese",
+                email: "email",
                 chasStatus: "chasStatus",
             },
             referringDoctor: {
