@@ -32,5 +32,6 @@ export const TimelineEventType = {
     ReferralSmsStatusChanged: "referral.sms-status-changed",
     ReferralSinghealthPatientCreateReminderSent: "referral.singhealth-patient-create-reminder-sent",
     ReferralSenderHciChanged: "referral.sender-hci-changed",
+    ReferralOfferingFallback: "referral.offering-fallback",
 } as const;
 export type TimelineEventType = (typeof TimelineEventType)[keyof typeof TimelineEventType];
