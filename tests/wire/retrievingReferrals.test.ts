@@ -123,6 +123,25 @@ describe("RetrievingReferralsClient", () => {
             .mockEndpoint()
             .get("/api/v1/institutions/hci/institutionId/referrals")
             .respondWith()
+            .statusCode(400)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.retrievingReferrals.listByInstitution("hci", "institutionId");
+        }).rejects.toThrow(ReferralExchange.BadRequestError);
+    });
+
+    test("listByInstitution (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new ReferralExchangeClient({ maxRetries: 0, environment: server.baseUrl });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/api/v1/institutions/hci/institutionId/referrals")
+            .respondWith()
             .statusCode(401)
             .jsonBody(rawResponseBody)
             .build();
@@ -130,6 +149,63 @@ describe("RetrievingReferralsClient", () => {
         await expect(async () => {
             return await client.retrievingReferrals.listByInstitution("hci", "institutionId");
         }).rejects.toThrow(ReferralExchange.UnauthorizedError);
+    });
+
+    test("listByInstitution (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new ReferralExchangeClient({ maxRetries: 0, environment: server.baseUrl });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/api/v1/institutions/hci/institutionId/referrals")
+            .respondWith()
+            .statusCode(403)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.retrievingReferrals.listByInstitution("hci", "institutionId");
+        }).rejects.toThrow(ReferralExchange.ForbiddenError);
+    });
+
+    test("listByInstitution (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new ReferralExchangeClient({ maxRetries: 0, environment: server.baseUrl });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/api/v1/institutions/hci/institutionId/referrals")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.retrievingReferrals.listByInstitution("hci", "institutionId");
+        }).rejects.toThrow(ReferralExchange.NotFoundError);
+    });
+
+    test("listByInstitution (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new ReferralExchangeClient({ maxRetries: 0, environment: server.baseUrl });
+
+        const rawResponseBody = {};
+
+        server
+            .mockEndpoint()
+            .get("/api/v1/institutions/hci/institutionId/referrals")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.retrievingReferrals.listByInstitution("hci", "institutionId");
+        }).rejects.toThrow(ReferralExchange.TooManyRequestsError);
     });
 
     test("get (1)", async () => {
@@ -294,6 +370,29 @@ describe("RetrievingReferralsClient", () => {
             .mockEndpoint()
             .get("/api/v1/referrals/referralId")
             .respondWith()
+            .statusCode(400)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.retrievingReferrals.get("referralId", {
+                requesterIdentifier: "requesterIdentifier",
+                institutionIdType: "hci",
+                institutionId: "institutionId",
+            });
+        }).rejects.toThrow(ReferralExchange.BadRequestError);
+    });
+
+    test("get (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new ReferralExchangeClient({ maxRetries: 0, environment: server.baseUrl });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/api/v1/referrals/referralId")
+            .respondWith()
             .statusCode(401)
             .jsonBody(rawResponseBody)
             .build();
@@ -307,11 +406,34 @@ describe("RetrievingReferralsClient", () => {
         }).rejects.toThrow(ReferralExchange.UnauthorizedError);
     });
 
-    test("get (3)", async () => {
+    test("get (4)", async () => {
         const server = mockServerPool.createServer();
         const client = new ReferralExchangeClient({ maxRetries: 0, environment: server.baseUrl });
 
-        const rawResponseBody = {};
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/api/v1/referrals/referralId")
+            .respondWith()
+            .statusCode(403)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.retrievingReferrals.get("referralId", {
+                requesterIdentifier: "requesterIdentifier",
+                institutionIdType: "hci",
+                institutionId: "institutionId",
+            });
+        }).rejects.toThrow(ReferralExchange.ForbiddenError);
+    });
+
+    test("get (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new ReferralExchangeClient({ maxRetries: 0, environment: server.baseUrl });
+
+        const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
@@ -377,6 +499,34 @@ describe("RetrievingReferralsClient", () => {
             .post("/api/v1/referrals/referralId/action-links/amend")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(400)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.retrievingReferrals.getActionLink("referralId", "amend", {
+                requesterIdentifier: "requesterIdentifier",
+                institutionIdType: "hci",
+                institutionId: "institutionId",
+            });
+        }).rejects.toThrow(ReferralExchange.BadRequestError);
+    });
+
+    test("getActionLink (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new ReferralExchangeClient({ maxRetries: 0, environment: server.baseUrl });
+        const rawRequestBody = {
+            requesterIdentifier: "requesterIdentifier",
+            institutionIdType: "hci",
+            institutionId: "institutionId",
+        };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/api/v1/referrals/referralId/action-links/amend")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(401)
             .jsonBody(rawResponseBody)
             .build();
@@ -388,5 +538,61 @@ describe("RetrievingReferralsClient", () => {
                 institutionId: "institutionId",
             });
         }).rejects.toThrow(ReferralExchange.UnauthorizedError);
+    });
+
+    test("getActionLink (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new ReferralExchangeClient({ maxRetries: 0, environment: server.baseUrl });
+        const rawRequestBody = {
+            requesterIdentifier: "requesterIdentifier",
+            institutionIdType: "hci",
+            institutionId: "institutionId",
+        };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/api/v1/referrals/referralId/action-links/amend")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(403)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.retrievingReferrals.getActionLink("referralId", "amend", {
+                requesterIdentifier: "requesterIdentifier",
+                institutionIdType: "hci",
+                institutionId: "institutionId",
+            });
+        }).rejects.toThrow(ReferralExchange.ForbiddenError);
+    });
+
+    test("getActionLink (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new ReferralExchangeClient({ maxRetries: 0, environment: server.baseUrl });
+        const rawRequestBody = {
+            requesterIdentifier: "requesterIdentifier",
+            institutionIdType: "hci",
+            institutionId: "institutionId",
+        };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/api/v1/referrals/referralId/action-links/amend")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.retrievingReferrals.getActionLink("referralId", "amend", {
+                requesterIdentifier: "requesterIdentifier",
+                institutionIdType: "hci",
+                institutionId: "institutionId",
+            });
+        }).rejects.toThrow(ReferralExchange.NotFoundError);
     });
 });

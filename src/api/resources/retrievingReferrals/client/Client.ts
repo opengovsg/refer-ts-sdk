@@ -28,7 +28,11 @@ export class RetrievingReferralsClient {
      * @param {ReferralExchange.ListByInstitutionRetrievingReferralsRequest} request
      * @param {RetrievingReferralsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
+     * @throws {@link ReferralExchange.BadRequestError}
      * @throws {@link ReferralExchange.UnauthorizedError}
+     * @throws {@link ReferralExchange.ForbiddenError}
+     * @throws {@link ReferralExchange.NotFoundError}
+     * @throws {@link ReferralExchange.TooManyRequestsError}
      *
      * @example
      *     await client.retrievingReferrals.listByInstitution("hci", "institutionId")
@@ -90,9 +94,20 @@ export class RetrievingReferralsClient {
 
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
+                case 400:
+                    throw new ReferralExchange.BadRequestError(_response.error.body as unknown, _response.rawResponse);
                 case 401:
                     throw new ReferralExchange.UnauthorizedError(
                         _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
+                case 403:
+                    throw new ReferralExchange.ForbiddenError(_response.error.body as unknown, _response.rawResponse);
+                case 404:
+                    throw new ReferralExchange.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                case 429:
+                    throw new ReferralExchange.TooManyRequestsError(
+                        _response.error.body as ReferralExchange.TooManyRequestsErrorBody,
                         _response.rawResponse,
                     );
                 default:
@@ -117,7 +132,9 @@ export class RetrievingReferralsClient {
      * @param {ReferralExchange.GetRetrievingReferralsRequest} request
      * @param {RetrievingReferralsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
+     * @throws {@link ReferralExchange.BadRequestError}
      * @throws {@link ReferralExchange.UnauthorizedError}
+     * @throws {@link ReferralExchange.ForbiddenError}
      * @throws {@link ReferralExchange.NotFoundError}
      *
      * @example
@@ -178,16 +195,17 @@ export class RetrievingReferralsClient {
 
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
+                case 400:
+                    throw new ReferralExchange.BadRequestError(_response.error.body as unknown, _response.rawResponse);
                 case 401:
                     throw new ReferralExchange.UnauthorizedError(
                         _response.error.body as unknown,
                         _response.rawResponse,
                     );
+                case 403:
+                    throw new ReferralExchange.ForbiddenError(_response.error.body as unknown, _response.rawResponse);
                 case 404:
-                    throw new ReferralExchange.NotFoundError(
-                        _response.error.body as ReferralExchange.NotFoundErrorBody,
-                        _response.rawResponse,
-                    );
+                    throw new ReferralExchange.NotFoundError(_response.error.body as unknown, _response.rawResponse);
                 default:
                     throw new errors.ReferralExchangeError({
                         statusCode: _response.error.statusCode,
@@ -211,7 +229,10 @@ export class RetrievingReferralsClient {
      * @param {ReferralExchange.GetReferralActionLinkReq} request
      * @param {RetrievingReferralsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
+     * @throws {@link ReferralExchange.BadRequestError}
      * @throws {@link ReferralExchange.UnauthorizedError}
+     * @throws {@link ReferralExchange.ForbiddenError}
+     * @throws {@link ReferralExchange.NotFoundError}
      *
      * @example
      *     await client.retrievingReferrals.getActionLink("referralId", "amend", {
@@ -264,11 +285,17 @@ export class RetrievingReferralsClient {
 
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
+                case 400:
+                    throw new ReferralExchange.BadRequestError(_response.error.body as unknown, _response.rawResponse);
                 case 401:
                     throw new ReferralExchange.UnauthorizedError(
                         _response.error.body as unknown,
                         _response.rawResponse,
                     );
+                case 403:
+                    throw new ReferralExchange.ForbiddenError(_response.error.body as unknown, _response.rawResponse);
+                case 404:
+                    throw new ReferralExchange.NotFoundError(_response.error.body as unknown, _response.rawResponse);
                 default:
                     throw new errors.ReferralExchangeError({
                         statusCode: _response.error.statusCode,

@@ -3,11 +3,11 @@
 import type * as core from "../../core";
 import * as errors from "../../errors/index";
 
-export class NotFoundError extends errors.ReferralExchangeError {
+export class ForbiddenError extends errors.ReferralExchangeError {
     constructor(body?: unknown, rawResponse?: core.RawResponse) {
         super({
-            message: "NotFoundError",
-            statusCode: 404,
+            message: "ForbiddenError",
+            statusCode: 403,
             body: body,
             rawResponse: rawResponse,
         });

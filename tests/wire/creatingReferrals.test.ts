@@ -52,7 +52,7 @@ describe("CreatingReferralsClient", () => {
             referrerIdType: "mcr",
             referrerName: "referrerName",
         };
-        const rawResponseBody = {};
+        const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
@@ -110,5 +110,77 @@ describe("CreatingReferralsClient", () => {
                 referrerName: "referrerName",
             });
         }).rejects.toThrow(ReferralExchange.UnauthorizedError);
+    });
+
+    test("createUpsertLink (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new ReferralExchangeClient({ maxRetries: 0, environment: server.baseUrl });
+        const rawRequestBody = {
+            referrerInstitutionId: "referrerInstitutionId",
+            referrerInstitutionIdType: "hci",
+            referrerInstitutionName: "referrerInstitutionName",
+            referrerId: "referrerId",
+            requesterIdentifier: "requesterIdentifier",
+            referrerIdType: "mcr",
+            referrerName: "referrerName",
+        };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/api/v1/links/upsert")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(403)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.creatingReferrals.createUpsertLink({
+                referrerInstitutionId: "referrerInstitutionId",
+                referrerInstitutionIdType: "hci",
+                referrerInstitutionName: "referrerInstitutionName",
+                referrerId: "referrerId",
+                requesterIdentifier: "requesterIdentifier",
+                referrerIdType: "mcr",
+                referrerName: "referrerName",
+            });
+        }).rejects.toThrow(ReferralExchange.ForbiddenError);
+    });
+
+    test("createUpsertLink (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new ReferralExchangeClient({ maxRetries: 0, environment: server.baseUrl });
+        const rawRequestBody = {
+            referrerInstitutionId: "referrerInstitutionId",
+            referrerInstitutionIdType: "hci",
+            referrerInstitutionName: "referrerInstitutionName",
+            referrerId: "referrerId",
+            requesterIdentifier: "requesterIdentifier",
+            referrerIdType: "mcr",
+            referrerName: "referrerName",
+        };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/api/v1/links/upsert")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.creatingReferrals.createUpsertLink({
+                referrerInstitutionId: "referrerInstitutionId",
+                referrerInstitutionIdType: "hci",
+                referrerInstitutionName: "referrerInstitutionName",
+                referrerId: "referrerId",
+                requesterIdentifier: "requesterIdentifier",
+                referrerIdType: "mcr",
+                referrerName: "referrerName",
+            });
+        }).rejects.toThrow(ReferralExchange.NotFoundError);
     });
 });

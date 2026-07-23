@@ -27,7 +27,10 @@ export class ReferralNotesClient {
      * @param {ReferralExchange.CreateNoteReq} request
      * @param {ReferralNotesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
+     * @throws {@link ReferralExchange.BadRequestError}
      * @throws {@link ReferralExchange.UnauthorizedError}
+     * @throws {@link ReferralExchange.ForbiddenError}
+     * @throws {@link ReferralExchange.NotFoundError}
      *
      * @example
      *     await client.referralNotes.create("referralId", {
@@ -75,11 +78,17 @@ export class ReferralNotesClient {
 
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
+                case 400:
+                    throw new ReferralExchange.BadRequestError(_response.error.body as unknown, _response.rawResponse);
                 case 401:
                     throw new ReferralExchange.UnauthorizedError(
                         _response.error.body as unknown,
                         _response.rawResponse,
                     );
+                case 403:
+                    throw new ReferralExchange.ForbiddenError(_response.error.body as unknown, _response.rawResponse);
+                case 404:
+                    throw new ReferralExchange.NotFoundError(_response.error.body as unknown, _response.rawResponse);
                 default:
                     throw new errors.ReferralExchangeError({
                         statusCode: _response.error.statusCode,

@@ -28,6 +28,8 @@ export class CreatingReferralsClient {
      *
      * @throws {@link ReferralExchange.BadRequestError}
      * @throws {@link ReferralExchange.UnauthorizedError}
+     * @throws {@link ReferralExchange.ForbiddenError}
+     * @throws {@link ReferralExchange.NotFoundError}
      *
      * @example
      *     await client.creatingReferrals.createUpsertLink({
@@ -81,15 +83,16 @@ export class CreatingReferralsClient {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 400:
-                    throw new ReferralExchange.BadRequestError(
-                        _response.error.body as ReferralExchange.BadRequestErrorBody,
-                        _response.rawResponse,
-                    );
+                    throw new ReferralExchange.BadRequestError(_response.error.body as unknown, _response.rawResponse);
                 case 401:
                     throw new ReferralExchange.UnauthorizedError(
                         _response.error.body as unknown,
                         _response.rawResponse,
                     );
+                case 403:
+                    throw new ReferralExchange.ForbiddenError(_response.error.body as unknown, _response.rawResponse);
+                case 404:
+                    throw new ReferralExchange.NotFoundError(_response.error.body as unknown, _response.rawResponse);
                 default:
                     throw new errors.ReferralExchangeError({
                         statusCode: _response.error.statusCode,

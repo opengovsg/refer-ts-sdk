@@ -27,7 +27,10 @@ export class UpdatingReferralsClient {
      * @param {ReferralExchange.DeleteUpdatingReferralsRequest} request
      * @param {UpdatingReferralsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
+     * @throws {@link ReferralExchange.BadRequestError}
      * @throws {@link ReferralExchange.UnauthorizedError}
+     * @throws {@link ReferralExchange.ForbiddenError}
+     * @throws {@link ReferralExchange.NotFoundError}
      *
      * @example
      *     await client.updatingReferrals.delete("referralId", {
@@ -80,11 +83,17 @@ export class UpdatingReferralsClient {
 
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
+                case 400:
+                    throw new ReferralExchange.BadRequestError(_response.error.body as unknown, _response.rawResponse);
                 case 401:
                     throw new ReferralExchange.UnauthorizedError(
                         _response.error.body as unknown,
                         _response.rawResponse,
                     );
+                case 403:
+                    throw new ReferralExchange.ForbiddenError(_response.error.body as unknown, _response.rawResponse);
+                case 404:
+                    throw new ReferralExchange.NotFoundError(_response.error.body as unknown, _response.rawResponse);
                 default:
                     throw new errors.ReferralExchangeError({
                         statusCode: _response.error.statusCode,
@@ -107,7 +116,10 @@ export class UpdatingReferralsClient {
      * @param {ReferralExchange.CancelReferralReq} request
      * @param {UpdatingReferralsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
+     * @throws {@link ReferralExchange.BadRequestError}
      * @throws {@link ReferralExchange.UnauthorizedError}
+     * @throws {@link ReferralExchange.ForbiddenError}
+     * @throws {@link ReferralExchange.NotFoundError}
      *
      * @example
      *     await client.updatingReferrals.cancel("referralId", {
@@ -155,11 +167,17 @@ export class UpdatingReferralsClient {
 
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
+                case 400:
+                    throw new ReferralExchange.BadRequestError(_response.error.body as unknown, _response.rawResponse);
                 case 401:
                     throw new ReferralExchange.UnauthorizedError(
                         _response.error.body as unknown,
                         _response.rawResponse,
                     );
+                case 403:
+                    throw new ReferralExchange.ForbiddenError(_response.error.body as unknown, _response.rawResponse);
+                case 404:
+                    throw new ReferralExchange.NotFoundError(_response.error.body as unknown, _response.rawResponse);
                 default:
                     throw new errors.ReferralExchangeError({
                         statusCode: _response.error.statusCode,
@@ -182,7 +200,10 @@ export class UpdatingReferralsClient {
      * @param {ReferralExchange.BackToDraftReferralBody} request
      * @param {UpdatingReferralsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
+     * @throws {@link ReferralExchange.BadRequestError}
      * @throws {@link ReferralExchange.UnauthorizedError}
+     * @throws {@link ReferralExchange.ForbiddenError}
+     * @throws {@link ReferralExchange.NotFoundError}
      *
      * @example
      *     await client.updatingReferrals.backToDraft("referralId", {
@@ -229,11 +250,17 @@ export class UpdatingReferralsClient {
 
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
+                case 400:
+                    throw new ReferralExchange.BadRequestError(_response.error.body as unknown, _response.rawResponse);
                 case 401:
                     throw new ReferralExchange.UnauthorizedError(
                         _response.error.body as unknown,
                         _response.rawResponse,
                     );
+                case 403:
+                    throw new ReferralExchange.ForbiddenError(_response.error.body as unknown, _response.rawResponse);
+                case 404:
+                    throw new ReferralExchange.NotFoundError(_response.error.body as unknown, _response.rawResponse);
                 default:
                     throw new errors.ReferralExchangeError({
                         statusCode: _response.error.statusCode,

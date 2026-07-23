@@ -2,12 +2,13 @@
 
 import type * as core from "../../core";
 import * as errors from "../../errors/index";
+import type * as ReferralExchange from "../index";
 
-export class NotFoundError extends errors.ReferralExchangeError {
-    constructor(body?: unknown, rawResponse?: core.RawResponse) {
+export class TooManyRequestsError extends errors.ReferralExchangeError {
+    constructor(body: ReferralExchange.TooManyRequestsErrorBody, rawResponse?: core.RawResponse) {
         super({
-            message: "NotFoundError",
-            statusCode: 404,
+            message: "TooManyRequestsError",
+            statusCode: 429,
             body: body,
             rawResponse: rawResponse,
         });
