@@ -6,6 +6,6 @@ export interface ReferringDoctorDto {
     mcr: string;
     idType: ReferralExchange.ReferrerIdType;
     name: string;
-    email: string;
-    contactNumber: string;
+    email?: string | undefined;
+    contactNumber?: string | undefined;
 }
