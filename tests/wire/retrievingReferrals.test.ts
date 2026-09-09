@@ -46,7 +46,6 @@ describe("RetrievingReferralsClient", () => {
                         timeslotPolicy: "timeslot-required",
                     },
                     patient: {
-                        uin: "uin",
                         name: "name",
                         phoneNumber: "91234567",
                         dob: "1990-01-01",

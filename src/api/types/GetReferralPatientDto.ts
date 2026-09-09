@@ -4,13 +4,13 @@ import type * as ReferralExchange from "../index";
 
 export interface GetReferralPatientDto {
     /** Patient UIN, e.g. NRIC or FIN */
-    uin: string;
+    uin?: string | undefined;
     /** Patient name */
     name: string;
     /** Patient phone number - only Singaporean accepted for now */
-    phoneNumber: string;
+    phoneNumber?: string | undefined;
     /** Patient date of birth */
-    dob: string;
+    dob?: string | undefined;
     /** Patient gender */
     gender: ReferralExchange.GetReferralPatientDtoGender;
     address?: ReferralExchange.CreateAddressReq | undefined;
