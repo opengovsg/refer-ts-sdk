@@ -20,6 +20,7 @@ export const TimelineEventType = {
     ApptRescheduled: "appt.rescheduled",
     ApptLocationUpdated: "appt.location-updated",
     ApptRejected: "appt.rejected",
+    ApptBookingFallback: "appt.booking-fallback",
     NoteCreated: "note.created",
     SinghealthPatientDetailsSubmitted: "singhealth-patient-details.submitted",
     ReferralEaReminderSent: "referral.ea-reminder-sent",
@@ -33,5 +34,6 @@ export const TimelineEventType = {
     ReferralSinghealthPatientCreateReminderSent: "referral.singhealth-patient-create-reminder-sent",
     ReferralSenderHciChanged: "referral.sender-hci-changed",
     ReferralOfferingFallback: "referral.offering-fallback",
+    AttachmentUploaded: "attachment.uploaded",
 } as const;
 export type TimelineEventType = (typeof TimelineEventType)[keyof typeof TimelineEventType];
