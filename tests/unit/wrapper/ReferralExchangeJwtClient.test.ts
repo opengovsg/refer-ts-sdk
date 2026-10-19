@@ -11,8 +11,8 @@ import { ReferralExchangeJwtClient } from "../../../src/wrapper/ReferralExchange
 
 const signMock = jwt.sign as jest.Mock<string, any[]>;
 
-function getAuthRequest(client: ReferralExchangeJwtClient): Promise<{ headers: Record<string, string> }> {
-    return (client as any)._options.authProvider.getAuthRequest();
+async function getAuthRequest(client: ReferralExchangeJwtClient): Promise<{ headers: Record<string, string> }> {
+    return { headers: { Authorization: await (client as any)._options.headers.authorization() } };
 }
 
 describe("ReferralExchangeJwtClient", () => {

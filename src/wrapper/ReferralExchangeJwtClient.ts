@@ -23,12 +23,10 @@ export class ReferralExchangeJwtClient extends ReferralExchangeClient {
         const signer = new JwtSigner({ privateKey, issuer: apiKeyName, subject, tokenCache });
         super({
             ...baseOptions,
-            // apiKey is required by BaseClientOptions but unused — the auth function below
-            // takes precedence and short-circuits before apiKey is read.
-            apiKey: "",
-            auth: async () => ({
-                headers: { Authorization: `Bearer ${await signer.getToken()}` },
-            }),
+            headers: {
+                ...baseOptions.headers,
+                Authorization: async () => `Bearer ${await signer.getToken()}`,
+            },
         });
     }
 }
