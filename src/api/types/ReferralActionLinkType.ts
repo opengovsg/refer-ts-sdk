@@ -4,6 +4,5 @@
 export const ReferralActionLinkType = {
     Amend: "amend",
     SelectTimeslot: "select-timeslot",
-    FillSinghealthFormsg: "fill-singhealth-formsg",
 } as const;
 export type ReferralActionLinkType = (typeof ReferralActionLinkType)[keyof typeof ReferralActionLinkType];

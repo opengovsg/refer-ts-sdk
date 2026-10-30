@@ -4,7 +4,6 @@
 export const ReferralActionLinkTypeV2 = {
     Amend: "amend",
     SelectTimeslot: "select-timeslot",
-    FillSinghealthFormsg: "fill-singhealth-formsg",
     Attachment: "attachment",
     View: "view",
 } as const;

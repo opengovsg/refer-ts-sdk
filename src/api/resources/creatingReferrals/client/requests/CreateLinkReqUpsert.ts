@@ -41,7 +41,7 @@ export interface CreateLinkReqUpsert {
     patientDob?: string;
     /** Patient gender */
     patientGender?: ReferralExchange.CreateLinkReqUpsertPatientGender;
-    address?: ReferralExchange.CreateAddressReq;
+    address?: ReferralExchange.CreateLinkAddressReq;
     /** Patient residential status */
     residentialStatus?: ReferralExchange.CreateLinkReqUpsertResidentialStatus;
     /** Patient nationality */
