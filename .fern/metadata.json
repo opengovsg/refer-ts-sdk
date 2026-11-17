@@ -34,10 +34,10 @@
         "packageManager": "yarn",
         "testFramework": "jest"
     },
-    "originGitCommit": "10ab0eb296e39f66a469367ab960afaf84e7afa2",
+    "originGitCommit": "c3a53d9340a70c87b9acaf25fe2f9505c37c7ffe",
     "originGitCommitIsDirty": false,
     "invokedBy": "ci",
-    "requestedVersion": "0.0.80",
+    "requestedVersion": "0.0.81",
     "ciProvider": "github",
-    "sdkVersion": "0.0.80"
+    "sdkVersion": "0.0.81"
 }
